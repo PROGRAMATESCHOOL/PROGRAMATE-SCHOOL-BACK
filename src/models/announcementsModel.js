@@ -11,7 +11,7 @@ const AnnouncementSchema = new mongoose.Schema({
     descriptionAnnouncement: {
         type: String,
         require: true
-    },    
+    },
     students: {
         type: String,
         require: true

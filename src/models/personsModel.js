@@ -24,7 +24,6 @@ const PersonSchema = new mongoose.Schema({
         type: Number,
         require: true
     },
-    
     emailPerson: {
         type: String,
         require: true
