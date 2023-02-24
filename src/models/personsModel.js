@@ -15,11 +15,13 @@ const PersonSchema = new mongoose.Schema({
     lastname1Person: {
         type: String,
         require: true
-    },
     lastname2Person: {
         type: String,
         require: false
     },
+    documentPerson: {
+    },
+    documentPerson: {
     documentPerson: {
         type: Number,
         require: true
