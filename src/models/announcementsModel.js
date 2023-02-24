@@ -7,27 +7,25 @@ const AnnouncementSchema = new mongoose.Schema({
     nameAnnouncement: {
         type: String,
         require: true
-    }
+    },
     descriptionAnnouncement: {
         type: String,
         require: true
-    }
-    
+    },    
     students: {
         type: String,
         require: true
         // Referenced from Document Person (One or Many)
-    }
+    },
     conditionStudent: {
         type: Boolean,
         require: true
-    }
+    },
     createdBySuperAdmin: {
         type: String,
         require: true
         // Referenced from Document Person (Only One)
     }
-
 })
 
 module.exports = mongoose.model("AnnouncementModel", AnnouncementSchema)
