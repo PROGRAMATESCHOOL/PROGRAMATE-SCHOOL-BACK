@@ -26,7 +26,6 @@ const AnnouncementSchema = new mongoose.Schema({
         require: true
         // Referenced from Document Person (Only One)
     }
-
 })
 
 module.exports = mongoose.model("AnnouncementModel", AnnouncementSchema)
