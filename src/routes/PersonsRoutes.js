@@ -5,7 +5,7 @@ const GetAllPersonsController = require("../controllers/GetAllPersonsController"
 const router = express.Router();
 
 router
-    .get("/", GetAllPersonsController.getAllPersons)
-    .post("/:personEmail, personPassword", LoginController.loginPerson)
+    .get("/persons", GetAllPersonsController.getAllPersons)
+    .post("/login", LoginController.loginPerson)
 
 module.exports = router;
