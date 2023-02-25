@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const PersonRoutes = require("./routes/zzPersonsRoutes");
+const PersonRoutes = require("./routes/PersonsRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -17,14 +17,13 @@ const PORT = process.env.PORT || 3000;
 
 mongoose.set('strictQuery', true);
 
-app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
 
-app.use("api/login/", PersonRoutes);
+app.use("/api/", PersonRoutes);
 
-mongoose.connect(`mongodb://127.0.0.1:27017/PSchool`)
-//mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@programateschool.ohubrss.mongodb.net/DBProgramateSchool`)
+//mongoose.connect(`mongodb://127.0.0.1:27017/PSchool`)
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@programateschool.ohubrss.mongodb.net/DBProgramateSchool`)
     .then(() => console.log ("Connected successfully"))
     .catch ((err) => console.error(err));
 
