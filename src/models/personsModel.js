@@ -15,6 +15,7 @@ const PersonSchema = new mongoose.Schema({
     lastname1Person: {
         type: String,
         require: true
+    },
     lastname2Person: {
         type: String,
         require: false
@@ -51,6 +52,6 @@ const PersonSchema = new mongoose.Schema({
         type: String,
         require: false,
     }
-})
+}})
 
 module.exports = mongoose.model("PersonModel", PersonSchema)
