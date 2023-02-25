@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt')
 const loginPerson = async (req, res) => {
     const { emailPerson, passwordPerson, profilePerson } = req.body;
 
-
     const existingUserByEmail = await Person.findOne({ emailPerson }).exec();
     if (!existingUserByEmail) {
         //alert("Correo no registrado. Por favor registrese si es estudiante, si es administrador, contacte a la mesa de ayuda")
@@ -18,7 +17,10 @@ const loginPerson = async (req, res) => {
         //alert("Contraseña errónea. Inténtelo de nuevo")
         return res.status(401).send({ errors: ['Contraseña incorrecta'] })
     } else {
-        const profilePerson = PersonSchema(req.params.profilePerson);
+        res.status(200).json({
+            Message: "login successful",
+          })
+        const profilePerson = Person(req.params.profilePerson);
 
         if (profilePerson === 1) {
             res.send("OK");
