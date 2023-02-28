@@ -54,4 +54,3 @@ const Person = require("../models/personsModel");
 //     loginPerson,
 //     getAllPersons
 // }
-
