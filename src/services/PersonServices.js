@@ -10,7 +10,14 @@ const getAllPersons = () => {
     return allPersons;
 }
 
+
+const formAnnouncement = () => {
+    const formScore = 0;
+    return formScore
+}
+
 module.exports = {
     loginPerson,
-    getAllPersons
+    getAllPersons,
+    formAnnouncement
 }
