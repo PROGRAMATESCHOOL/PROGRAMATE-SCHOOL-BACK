@@ -2,7 +2,7 @@ const personServices = require('../services/PersonServices');
 const Person = require('../models/personsModel');
 const bcrypt = require('bcrypt');
 
-const singUp = async (req, res) => {
+const SignUp = async (req, res) => {
     const {
         name1Person,
         name2Person,
@@ -52,4 +52,4 @@ const singUp = async (req, res) => {
     }
 }
 
-module.exports = {singUp}
+module.exports = {SignUp}

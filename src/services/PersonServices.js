@@ -10,8 +10,8 @@ const getAllPersons = () => {
     return allPersons;
 }
 
-const singUp = () => {
-    const register = Person.singUp();
+const SignUp = () => {
+    const register = Person.SignUp();
     return register
 }
 
@@ -19,5 +19,5 @@ const singUp = () => {
 module.exports = {
     loginPerson,
     getAllPersons,
-    singUp
+    SignUp
 }
