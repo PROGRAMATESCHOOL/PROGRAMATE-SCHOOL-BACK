@@ -6,36 +6,47 @@ const PersonSchema = new mongoose.Schema({
 
     name1Person: {
         type: String,
-        require: true,
+        require: true
+    },
+    name2Person: {
+        type: String,
+        require: false
+    },
+    lastname1Person: {
+        type: String,
+        require: true
+    },
+    lastname2Person: {
+        type: String,
+        require: false
     },
     documentPerson: {
         type: Number,
-        require: true,
+        require: true
     },
     emailPerson: {
         type: String,
-        require: true,
+        require: true
     },
     profilePerson: {
         type: Number,
-        require: true,
+        require: true
     },
     institutionPerson: {
         type: String,
-        require: false,
+        require: false
     },
     passwordPerson: {
         type: String,
-        require: true,
-        min:8
+        require: true
     },
     agePerson: {
         type: Number,
-        require: false,
+        require: false
     },
     positionPerson: {
         type: String,
-        require: false,
+        require: false
     }
 })
 

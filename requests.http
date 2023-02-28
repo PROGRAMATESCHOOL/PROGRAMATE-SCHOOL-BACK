@@ -1,11 +1,11 @@
 ###
-GET http://localhost:3000/api/login HTTP/1.1
+GET http://localhost:3000/api/persons HTTP/1.1
 
 ###
 POST http://localhost:3000/api/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "emailPerson": "manuel101284@gmail.com",
-    "passwordPerson": "asd"
+    "emailPerson": "yineth2paola2@gmail.com",
+    "passwordPerson": "ps*10005"
 }
