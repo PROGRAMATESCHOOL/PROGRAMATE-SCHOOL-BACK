@@ -34,4 +34,3 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD
 
 app.listen(PORT, () => { 
     console.log(`🌟Server listening on port ${PORT}`) });
-

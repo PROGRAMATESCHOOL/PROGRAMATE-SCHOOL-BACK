@@ -10,7 +10,14 @@ const getAllPersons = () => {
     return allPersons;
 }
 
+const singUp = () => {
+    const register = Person.singUp();
+    return register
+}
+
+
 module.exports = {
     loginPerson,
-    getAllPersons
+    getAllPersons,
+    singUp
 }
