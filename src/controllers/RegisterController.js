@@ -32,6 +32,7 @@ const SignUp = async (req, res) => {
     if(!existedDocumentUser && !existedEmailUser){
 
         const passwordPerson = name1Person + lastname1Person + documentPerson
+        //In next version should include email automation with Nodemailer lib 
 
         const newUser = new Person ({
             name1Person:name1Person,
