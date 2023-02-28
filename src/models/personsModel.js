@@ -11,7 +11,7 @@ const PersonSchema = new mongoose.Schema({
         type: String,
         require: false
     },
-documentPerson: {
+    documentPerson: {
         type: Number,
         require: true
     },
