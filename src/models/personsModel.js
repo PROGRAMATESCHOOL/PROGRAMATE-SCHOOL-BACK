@@ -46,7 +46,7 @@ const PersonSchema = new mongoose.Schema({
     },
     positionPerson: {
         type: String,
-        require: false
+        require: false
     }
 })
 
