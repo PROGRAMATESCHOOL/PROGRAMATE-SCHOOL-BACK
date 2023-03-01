@@ -15,7 +15,7 @@ router
     //.get("/getAdmins", //Insert controller here)
     .post("/login", LoginController.loginPerson) //Custom route for Log In 
     .post("/signUp", SignUp.SignUp) //Custom route for SignUp
-    //.post("/newAdmin", NewAdmin.NewAdmin)
+    .post("/newAdmin", NewAdmin.NewAdmin)
 
 
 module.exports = router;

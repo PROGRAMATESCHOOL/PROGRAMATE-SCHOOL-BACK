@@ -15,9 +15,14 @@ const SignUp = () => {
     return register
 }
 
+const CreateAdmin = () => {
+    const NewAdminCreated = NewAdmin();
+    return NewAdminCreated
+}
 
 module.exports = {
     loginPerson,
     getAllPersons,
-    SignUp
+    SignUp,
+    CreateAdmin
 }
