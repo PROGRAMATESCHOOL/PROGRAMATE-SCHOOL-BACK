@@ -7,13 +7,19 @@ const PersonSchema = new mongoose.Schema({
     name1Person: {
         type: String,
         require: true
-    },    
-    
+    },
+    name2Person: {
+        type: String,
+        require: false
+    },
+    lastname1Person: {
+        type: String,
+        require: true
+    },
     lastname2Person: {
         type: String,
         require: false
     },
-
     documentPerson: {
         type: Number,
         require: true
@@ -46,7 +52,7 @@ const PersonSchema = new mongoose.Schema({
 
     positionPerson: {
         type: String,
-        require: false,
+        require: false
     }
 })
 
