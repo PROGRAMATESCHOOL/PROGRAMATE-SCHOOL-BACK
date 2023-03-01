@@ -11,9 +11,9 @@ const getAllPersons = () => {
     return allPersons;
 }
 
-const signUp = () => {
-    const registerUser = Person.signUp();
-    return registerUser
+const SignUp = () => {
+    const register = Person.SignUp();
+    return register
 }
 
 const formAnnouncement = () => {
@@ -24,6 +24,6 @@ const formAnnouncement = () => {
 module.exports = {
     loginPerson,
     getAllPersons,
-    signUp,
+    SignUp,
     formAnnouncement
 }
