@@ -3,7 +3,7 @@ const LoginController = require("../../controllers/LoginController");
 const GetAllPersonsController = require("../../controllers/GetAllPersonsController");
 const SignUp = require ("../../controllers/RegisterController");
 const NewAdmin = require('../../controllers/NewAdminController')
-const 
+const ScoreAnnouncement = require("../../controllers/HandleDataController");
 
 const router = express.Router();
 
@@ -16,5 +16,6 @@ router
     //.get("/getAdmins", //Insert controller here)
     .post("/login", LoginController.loginPerson) //Custom route for Log In 
     .post("/SignUp", SignUp.SignUp) //Custom route for SignUp
+    .post("/scoreannouncement", ScoreAnnouncement.scoreForm);
 
 module.exports = router;
