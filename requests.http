@@ -11,12 +11,17 @@ Content-Type: application/json
 }
 
 ###
+<<<<<<< HEAD
 POST http://localhost:3000/api/register HTTP/1.1
+=======
+POST http://localhost:3000/api/signUp HTTP/1.1
+>>>>>>> ed99b81025c54666865a499f1365590dbd50faf1
 Content-Type: application/json
 
 {
     "name1Person": "Manuel",
     "lastname1Person": "Castellanos",
+<<<<<<< HEAD
     "documentPerson": 1000002,
     "emailPerson": "correooooo@gmail.com",
     "profilePerson": 3,
@@ -34,4 +39,11 @@ Content-Type: application/json
     "ScoreMotivation": 3,
     "ScoreLogic": 4,
     "ScoreTotal": 100
+=======
+    "documentPerson": 1234567,
+    "emailPerson": "Test_2@gmail.com",
+    "profilePerson": 3,
+    "institutionPerson": "Colegio 1",
+    "agePerson": 16
+>>>>>>> ed99b81025c54666865a499f1365590dbd50faf1
 }
