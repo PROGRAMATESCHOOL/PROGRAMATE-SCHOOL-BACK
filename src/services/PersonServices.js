@@ -1,4 +1,5 @@
 const Person = require("../models/personsModel");
+const ScoreAnnouncement = require("../models/scoreAnnouncementModel");
 
 const loginPerson = () => {
     const logPerson = Person.loginPerson();
@@ -10,14 +11,19 @@ const getAllPersons = () => {
     return allPersons;
 }
 
+const signUp = () => {
+    const registerUser = Person.signUp();
+    return registerUser
+}
 
 const formAnnouncement = () => {
-    const formScore = 0;
+    const formScore = ScoreAnnouncement.scoreForm();
     return formScore
 }
 
 module.exports = {
     loginPerson,
     getAllPersons,
+    signUp,
     formAnnouncement
 }
