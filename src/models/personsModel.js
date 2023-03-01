@@ -7,18 +7,23 @@ const PersonSchema = new mongoose.Schema({
     name1Person: {
         type: String,
         require: true
-    },    lastname2Person: {
+    },    
+    
+    lastname2Person: {
         type: String,
         require: false
     },
-documentPerson: {
+
+    documentPerson: {
         type: Number,
         require: true
     },
+
     emailPerson: {
         type: String,
         require: true
     },
+
     profilePerson: {
         type: Number,
         require: true
@@ -27,18 +32,22 @@ documentPerson: {
         type: String,
         require: false
     },
+
     passwordPerson: {
         type: String,
-        require: true
+        require: true,
+        pattern: "^[A-Z-a-z-0-9]{8,}$"
     },
+
     agePerson: {
         type: Number,
         require: false
     },
+
     positionPerson: {
         type: String,
         require: false,
     }
-}})
+})
 
 module.exports = mongoose.model("PersonModel", PersonSchema)
