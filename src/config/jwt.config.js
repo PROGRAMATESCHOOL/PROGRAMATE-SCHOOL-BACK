@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+/*const jwt = require('jsonwebtoken');
 
  // function to get a token from a payload
 const getToken = (payload) => {
@@ -24,4 +24,4 @@ const getTokenData = (token) => {
 module.exports = {
     getToken,
     getTokenData
-}
+}*/

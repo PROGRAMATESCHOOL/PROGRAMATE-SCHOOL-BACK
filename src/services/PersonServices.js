@@ -15,9 +15,15 @@ const SignUp = () => {
     return register
 }
 
+const getAllStudents = () => {
+    const allStudents = Person.getAllStudents();
+    return allStudents
+}
+
 
 module.exports = {
     loginPerson,
     getAllPersons,
-    SignUp
+    SignUp,
+    getAllStudents
 }
