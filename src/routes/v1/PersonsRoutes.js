@@ -3,8 +3,7 @@ const LoginController = require("../../controllers/LoginController");
 const GetAllPersonsController = require("../../controllers/GetAllPersonsController");
 const SignUp = require ("../../controllers/RegisterController");
 const NewAdmin = require('../../controllers/NewAdminController');
-const AdminListController = require("../../controllers/AdminListController");
-const NewAdmin = require('../../controllers/NewAdminController')
+const AdminListController = require("../../controllers/AdminListController"); 
 const ScoreAnnouncement = require("../../controllers/HandleDataController");
 
 const router = express.Router();
@@ -15,7 +14,7 @@ router
     .get("/persons", GetAllPersonsController.getAllPersons) //Custom route used to get all persons
     
     //.get("/getUsers", //Insert controller here)
-    .get("/getAdmins", AdminListController.getAdminList)
+    .get("/getAdmin", AdminListController.getAdminList)
     .post("/login", LoginController.loginPerson) //Custom route for Log In 
 
     .post("/signUp", SignUp.SignUp) //Custom route for SignUp
