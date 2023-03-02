@@ -21,13 +21,14 @@ const PersonSchema = new mongoose.Schema({
         require: false
     },
     documentPerson: {
-        type: Number,
+        type: String,
         require: true
     },
 
     emailPerson: {
         type: String,
-        require: true
+        require: true,
+        unique: true
     },
 
     profilePerson: {
@@ -42,7 +43,6 @@ const PersonSchema = new mongoose.Schema({
     passwordPerson: {
         type: String,
         require: true,
-        pattern: "^[A-Z-a-z-0-9]{8,}$"
     },
 
     agePerson: {
@@ -53,7 +53,20 @@ const PersonSchema = new mongoose.Schema({
     positionPerson: {
         type: String,
         require: false
-    }
+    },
+    //Review if code person is required in this model -AP
+    codePerson:{
+        type: String,
+        require: true,
+    },
+//This status is add for default because all the email have to verificated - AP
+    statusPerson:{
+        type: String,
+        require: true,
+        default: 'UNVERIFIED'
+    },
+
+    
 })
 
 module.exports = mongoose.model("PersonModel", PersonSchema)

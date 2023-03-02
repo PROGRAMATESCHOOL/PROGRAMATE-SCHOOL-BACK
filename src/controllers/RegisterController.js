@@ -1,8 +1,10 @@
 const personServices = require('../services/PersonServices');
 const Person = require('../models/personsModel');
 const bcrypt = require('bcrypt');
-
+const {getToken, getTokenData } = require('../config/jwtConfig');
 const SignUp = async (req, res) => {
+
+    //Get data for user -AP
     const {
         name1Person,
         name2Person,
@@ -12,9 +14,12 @@ const SignUp = async (req, res) => {
         emailPerson,
         profilePerson,
         institutionPerson,
-        agePerson
+        agePerson,
+        codePerson,
+        statusPerson,
     } = req.body
 
+    //Verify that the user Does Not exist -AP
     const existedDocumentUser= await Person.findOne ({documentPerson}).exec();
 
     const existedEmailUser = await Person.findOne ({emailPerson}).exec();
@@ -28,7 +33,7 @@ const SignUp = async (req, res) => {
         console.log('Email ya Registrado')
         return
     }
-
+ //Created new user
     if(!existedDocumentUser && !existedEmailUser){
 
         const passwordPerson = name1Person + lastname1Person + documentPerson
@@ -44,13 +49,18 @@ const SignUp = async (req, res) => {
             profilePerson:profilePerson,
             institutionPerson:institutionPerson,
             passwordPerson:passwordPerson,
-            agePerson:agePerson
+            agePerson:agePerson,
+            statusPerson: statusPerson,
+            codePerson: codePerson,
         }) 
 
         newUser.save(); 
         console.log ('Registro Exitoso')
         return
     }
+
+    //Get Token
+     const token = getToken();
 }
 
 module.exports = {SignUp}
