@@ -67,6 +67,5 @@ const PersonSchema = new mongoose.Schema({
     },
 
     
-})
 
 module.exports = mongoose.model("PersonModel", PersonSchema)

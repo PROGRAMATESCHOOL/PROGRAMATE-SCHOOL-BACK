@@ -25,15 +25,15 @@ const SignUp = async (req, res) => {
     //Verify that the user Does Not exist -AP
     const existedDocumentUser= await Person.findOne ({documentPerson}).exec();
 
-    const existedEmailUser = await Person.findOne ({emailPerson}).exec();
+    const existedEmailUser = await Person.findOne({ emailPerson }).exec();
 
     if(existedDocumentUser) {
-        console.log('Usuaro ya Existente')
+        console.log("Este usuario ya Existe")
         return
     }
 
     if(existedEmailUser){
-        console.log('Email ya Registrado')
+        console.log("Este email ya existe")
         return
     }
  //Created new user
@@ -58,8 +58,7 @@ const SignUp = async (req, res) => {
         }) 
 
         newUser.save(); 
-        console.log ('Registro Exitoso')
-        return
+        console.log("Registro Exitoso")
     }
 
     //Get Token
@@ -77,4 +76,6 @@ const SignUp = async (req, res) => {
     res.json();
 }
 
-module.exports = {SignUp}
+module.exports = {
+    SignUp
+}
