@@ -15,17 +15,17 @@ const SignUp = async (req, res) => {
         agePerson
     } = req.body
 
-    const existedDocumentUser= await Person.findOne ({documentPerson}).exec();
+    const existedDocumentUser= await Person.findOne({ documentPerson }).exec();
 
-    const existedEmailUser = await Person.findOne ({emailPerson}).exec();
+    const existedEmailUser = await Person.findOne({ emailPerson }).exec();
 
     if(existedDocumentUser) {
-        console.log('Usuaro ya Existente')
+        console.log("Este usuario ya Existe")
         return
     }
 
     if(existedEmailUser){
-        console.log('Email ya Registrado')
+        console.log("Este email ya existe")
         return
     }
 
@@ -48,9 +48,10 @@ const SignUp = async (req, res) => {
         }) 
 
         newUser.save(); 
-        console.log ('Registro Exitoso')
-        return
+        console.log("Registro Exitoso")
     }
 }
 
-module.exports = {SignUp}
+module.exports = {
+    SignUp
+}
