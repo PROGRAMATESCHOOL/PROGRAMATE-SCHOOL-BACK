@@ -33,7 +33,7 @@ const PersonSchema = new mongoose.Schema({
 
     profilePerson: {
         type: Number,
-        require: true
+        require: false
     },
     institutionPerson: {
         type: String,

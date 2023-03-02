@@ -4,10 +4,10 @@ const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const PersonRoutes = require("./routes/v1/PersonsRoutes");
-
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+const PersonRoutes = require("./routes/v1/PersonsRoutes");
 
 //Capture data User
 //app.use(bodyparser.urlencoded({extended: false}));
@@ -26,15 +26,15 @@ app.use('/api/', PersonRoutes);
 //   })
 //});
 
-
-//conection database MongoDB
-mongoose.set('strictQuery', true);
-
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
 
+app.use('api/user/', PersonRoutes);
 app.use("api/login/", PersonRoutes);
+
+//conection database MongoDB
+mongoose.set('strictQuery', true);
 
 //mongoose.connect(`mongodb://127.0.0.1:27017/PSchool`)
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@programateschool.ohubrss.mongodb.net/DBProgramateSchool`)

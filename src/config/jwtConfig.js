@@ -6,7 +6,8 @@ const getToken = (payLoad) => {
         }, 'SECRETWORD', { expiresIn: '1h'});
 }
 
-const getTokenData = (token) => {
+//Here, I can add "passwordPerson" because is the data that I need to serelized -AP
+const getTokenData = ({ passwordPerson}) => {
     let data = null;
     jwt.verify(token, 'SECRETWORD', (err, decoded)=> {
         if (err){
@@ -17,6 +18,8 @@ const getTokenData = (token) => {
     });
 
     return data;
+
+    //Get a template
 }
 
 module.exports = {

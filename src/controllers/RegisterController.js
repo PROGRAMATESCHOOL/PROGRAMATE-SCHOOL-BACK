@@ -2,6 +2,9 @@ const personServices = require('../services/PersonServices');
 const Person = require('../models/personsModel');
 const bcrypt = require('bcrypt');
 const {getToken, getTokenData } = require('../config/jwtConfig');
+const {getTemplate, sendEmail, } = require('../config/mailConfig');
+
+
 const SignUp = async (req, res) => {
 
     //Get data for user -AP
@@ -60,7 +63,18 @@ const SignUp = async (req, res) => {
     }
 
     //Get Token
-     const token = getToken();
+    const token = getToken({emailPerson, passwordPerson});
+
+     //Get Template
+
+    const template = getTemplate (name1Person, lastname1Person, token)
+
+     //Send Email
+
+    await sendEmail(emailPerson, 'Este es un email de prueba', template)
+    // await newUser.save();
+    
+    res.json();
 }
 
 module.exports = {SignUp}
