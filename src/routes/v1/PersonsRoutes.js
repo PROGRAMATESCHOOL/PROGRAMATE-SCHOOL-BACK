@@ -4,6 +4,7 @@ const GetAllPersonsController = require("../../controllers/GetAllPersonsControll
 const SignUp = require ("../../controllers/RegisterController");
 const NewAdmin = require('../../controllers/NewAdminController');
 const StudentListController = require("../../controllers/StudentListController")
+const ScoreAnnouncement = require("../../controllers/HandleDataController");
 
 const router = express.Router();
 
@@ -15,8 +16,12 @@ router
     .get("/getUsers", StudentListController.getAllStudents)//Custom route used to get all students
     //.get("/getAdmins", //Insert controller here)
     .post("/login", LoginController.loginPerson) //Custom route for Log In 
+
     .post("/signUp", SignUp.SignUp) //Custom route for SignUp
-    //.post("/newAdmin", NewAdmin.NewAdmin)
+    .post("/newAdmin", NewAdmin.NewAdmin)
+
+    .post("/SignUp", SignUp.SignUp) //Custom route for SignUp
+    .post("/scoreannouncement", ScoreAnnouncement.scoreForm);
 
 
 module.exports = router;
