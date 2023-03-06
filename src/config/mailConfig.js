@@ -1,20 +1,31 @@
 const nodemailer = require("nodemailer");
 require('dotenv').config( );
+// const Person = require('../models/personsModel');
 
 //Here, the constant "mail" store the user and password of the SUPERADMIN o the email definite for programate school.
 
 //For this test, I used "mailtrap" for nodemailer, so the data in the constant 'transport'is the mailtrap.
 
-const transport = nodemailer.createTransport({
+let transport = nodemailer.createTransport({
     host: "sandbox.smtp.mailtrap.io",
     port: 2525,
+    secure: false,
     auth: {
       user: process.env.userEmail,
       pass: process.env.passEmail
+    },
+    tls: {
+        rejectUnauthorized: false
     }
 });
 
-const sendEmail = async (emailPerson,  subject, html ) => {
+
+
+
+const sendEmail = async (emailPerson, subject, html ) => {
+    
+    // const email = await Person.findOne({ emailPerson }).exec();
+
     try {
         await transport.sendMail({
             from: ` ProgramateSchool <$( process.env.userEmail )>` ,// sender address
@@ -24,10 +35,14 @@ const sendEmail = async (emailPerson,  subject, html ) => {
             html,
         });
 
-    } catch (err){
-        console.log('Algo no va bien con el Email', err);
-
+    } catch (error) {
+        res
+            .status (401)
+            .send({status: 'Error con el email', data:sendEmail})        
     }
+        //console.log('Algo no va bien con el Email', err);
+
+    
 }
 
 const getTemplate = (name1Person, lastname1Person, token) => {
@@ -37,11 +52,11 @@ const getTemplate = (name1Person, lastname1Person, token) => {
       </head>
       
       <div id="email___content">
-          <img src="https://i.imgur.com/eboNR82.png" alt="">
-          <h2>Hola ${ name1Person + lastname1Person }</h2>
+          <img src="" alt="">
+          <h2>Hola ${ name1Person + " "+ lastname1Person }</h2>
           <p>Para verificar tu cuenta y continuar con el registro en la plataforma de  Programate School, ingresa al siguiente enlace:</p>
           <a
-              href="http://localhost:3000/api/user/confirm/${ token }"
+              href="http://localhost:3000/api/confirm/${ token }"
               target="_blank"
           >Confirmar Cuenta</a>
       </div>

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const LoginController = require("../../controllers/LoginController");
 const GetAllPersonsController = require("../../controllers/GetAllPersonsController");
-const RegisterController =require ('../../controllers/RegisterController');
+const SignUp =require ('../../controllers/RegisterController');
 const NewAdmin = require('../../controllers/NewAdminController')
 const ScoreAnnouncement = require("../../controllers/HandleDataController");
 
@@ -19,9 +19,8 @@ router
     .post("/signUp", SignUp.SignUp) //Custom route for SignUp
     .post("/newAdmin", NewAdmin.NewAdmin)
 
-    .post("/SignUp", [],RegisterController.SignUp) //Custom route for SignUp
-    .post("/scoreannouncement", ScoreAnnouncement.scoreForm);
-
-    // .get("/confirm/:token", [], RegisterController.confirm)
+    // .post("/SignUp", [],RegisterController.SignUp) //Custom route for SignUp
+    .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
+    .get("/confirm/:token",  SignUp.confirm)
 
 module.exports = router;

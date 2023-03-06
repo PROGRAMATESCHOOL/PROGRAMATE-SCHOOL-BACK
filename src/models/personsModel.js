@@ -28,7 +28,7 @@ const PersonSchema = new mongoose.Schema({
     emailPerson: {
         type: String,
         require: true,
-        unique: true
+        unique: true,
     },
 
     profilePerson: {
@@ -66,6 +66,6 @@ const PersonSchema = new mongoose.Schema({
         default: 'UNVERIFIED'
     },
 
-    
+});
 
-module.exports = mongoose.model("PersonModel", PersonSchema)
+module.exports = mongoose.model("PersonModel", PersonSchema);

@@ -7,7 +7,7 @@ const getToken = (payLoad) => {
 }
 
 //Here, I can add "passwordPerson" because is the data that I need to serelized -AP
-const getTokenData = ({ passwordPerson}) => {
+const getTokenData = ({ token }) => {
     let data = null;
     jwt.verify(token, 'SECRETWORD', (err, decoded)=> {
         if (err){
