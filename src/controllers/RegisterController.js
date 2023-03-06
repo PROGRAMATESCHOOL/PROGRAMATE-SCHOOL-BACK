@@ -19,13 +19,13 @@ const SignUp = async (req, res) => {
 
     const existedEmailUser = await Person.findOne({ emailPerson }).exec();
 
-    if(existedDocumentUser) {
+    if (existedDocumentUser) {
+        res.status(409).send({ status: "Ya existe un usuario con este documento"})
         console.log("Este usuario ya Existe")
         return
-    }
-
-    if(existedEmailUser){
-        console.log("Este email ya existe")
+    } else if (existedEmailUser) {
+        res.status(408).send({ status: "Ya existe un usuario con este Correo"})
+        console.log("Este usuario ya Existe")
         return
     }
 
