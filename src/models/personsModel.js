@@ -7,12 +7,21 @@ const PersonSchema = new mongoose.Schema({
     name1Person: {
         type: String,
         require: true
-    },    lastname2Person: {
+    },
+    name2Person: {
         type: String,
         require: false
     },
-documentPerson: {
-        type: Number,
+    lastname1Person: {
+        type: String,
+        require: true
+    },
+    lastname2Person: {
+        type: String,
+        require: false
+    },
+    documentPerson: {
+        type: String,
         require: true
     },
     emailPerson: {
@@ -37,7 +46,7 @@ documentPerson: {
     },
     positionPerson: {
         type: String,
-        require: false
+        require: false
     }
 })
 
