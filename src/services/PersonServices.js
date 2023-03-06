@@ -21,6 +21,7 @@ const CreateAdmin = () => {
     const NewAdminCreated = NewAdmin();
     return NewAdminCreated
 }
+
 const formAnnouncement = () => {
     const formScore = ScoreAnnouncement.scoreForm();
     return formScore
