@@ -13,15 +13,17 @@ const ScoreAnnouncement = require("../../controllers/HandleDataController");
 
 router
     .get("/persons", GetAllPersonsController.getAllPersons) //Custom route used to get all persons
-    
+    .get("/confirm/:token",  SignUp.confirm)
     .get("/getAdmin", AdminListController.getAdminList) // Custom route used to get all Admins
     .get("/getUsers", StudentListController.getAllStudents) //Custom route used to get all students
+    
     .post("/login", LoginController.loginPerson) //Custom route for Log In 
-
     .post("/signUp", SignUp.SignUp) //Custom route for SignUp
     .post("/newAdmin", NewAdmin.NewAdmin)
-
     .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
-    .get("/confirm/:token",  SignUp.confirm)
+    .post("/SignUp", SignUp.SignUp) //Custom route for SignUp
+    .post("/scoreannouncement", ScoreAnnouncement.scoreForm);
+
+
 
 module.exports = router;

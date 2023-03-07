@@ -47,4 +47,5 @@ module.exports = {
     formAnnouncement,
     getAdminList,
     getAllStudents
+
 }
