@@ -4,7 +4,11 @@ const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
+const PersonRoutes = require("./routes/v1/PersonsRoutes");
+
+mongoose.set('strictQuery', true);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -37,8 +41,18 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use(bodyParser.json());
+app.use(express.json());
+
+app.use('/api/', PersonRoutes);
+
+//Review if this is necesary -AP
+app.use(express.static('../public'));
+app.use(express.urlencoded({ extended: false}));
+
 //mongoose.connect(`mongodb://127.0.0.1:27017/PSchool`)
 
+//Conection db in MongoAtlas
 //Conection db in MongoAtlas
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@programateschool.ohubrss.mongodb.net/DBProgramateSchool`)
     .then(() => console.log ("Connected successfully"))

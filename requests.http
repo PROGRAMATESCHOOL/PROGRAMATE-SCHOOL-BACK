@@ -12,6 +12,7 @@ Content-Type: application/json
 
 ###
 POST http://localhost:3000/api/signUp HTTP/1.1
+<<<<<<< HEAD
 Content-Type: application/json
 
 {
@@ -21,6 +22,29 @@ Content-Type: application/json
     "emailPerson": "aspicu11@gmail.com",
     "profilePerson": 3,
     "institutionPerson": "Colegio 1",
+=======
+Content-Type: application/json
+
+{
+    "name1Person": "Adriana",
+    "lastname1Person": "Prueba",
+    "documentPerson": 8882332392,
+    "emailPerson": "manuel101284@outlook.com",
+    "profilePerson": 3,
+    "institutionPerson": "Colegio 1",
+    "agePerson": 16
+}
+
+###
+POST http://localhost:3000/api/newAdmin HTTP/1.1
+Content-Type: application/json
+
+{
+    "name1Person": "Manuel",
+    "lastname1Person": "Castellanos",
+    "documentPerson": 12345678,
+    "emailPerson": "Test_3@gmail.com",
+>>>>>>> 7906c49f63c2b0cc28f1960df1dd1c7b123e740d
     "agePerson": 16
 }
 

@@ -6,8 +6,28 @@ const {getTemplate, sendEmail, } = require('../config/mailConfig');
 const { v4: uuidv4 } = require('uuid');
 const { clearScreenDown } = require('readline');
 
+const {getToken, getTokenData } = require('../config/jwtConfig');
+const {getTemplate, sendEmail, } = require('../config/mailConfig');
+const { v4: uuidv4 } = require('uuid');
+const { clearScreenDown } = require('readline');
+
 
 const SignUp = async (req, res) => {
+    
+        //Get data for user -AP
+        const {
+            name1Person,
+            name2Person,
+            lastname1Person,
+            lastname2Person,
+            documentPerson,
+            emailPerson,
+            profilePerson,
+            institutionPerson,
+            agePerson,
+            codePerson,
+            statusPerson,
+        } = req.body
     
         //Get data for user -AP
         const {
@@ -26,7 +46,10 @@ const SignUp = async (req, res) => {
 
         //Verify that the user Does Not exist -AP
         const existedDocumentUser= await Person.findOne ({documentPerson}).exec();
+        //Verify that the user Does Not exist -AP
+        const existedDocumentUser= await Person.findOne ({documentPerson}).exec();
 
+        const existedEmailUser = await Person.findOne({ emailPerson }).exec();
         const existedEmailUser = await Person.findOne({ emailPerson }).exec();
 
     if (existedDocumentUser) {
@@ -43,7 +66,23 @@ const SignUp = async (req, res) => {
 
             const passwordPerson = name1Person + lastname1Person + documentPerson
             //In next version should include email automation with Nodemailer lib 
+            const passwordPerson = name1Person + lastname1Person + documentPerson
+            //In next version should include email automation with Nodemailer lib 
 
+            const newUser = new Person ({
+                name1Person:name1Person,
+                name2Person:name2Person,
+                lastname1Person:lastname1Person,
+                lastname2Person:lastname2Person,
+                documentPerson:documentPerson,
+                emailPerson:emailPerson,
+                profilePerson:profilePerson,
+                institutionPerson:institutionPerson,
+                passwordPerson:passwordPerson,
+                agePerson:agePerson,
+                statusPerson: statusPerson,
+                codePerson: codePerson,
+            });
             const newUser = new Person ({
                 name1Person:name1Person,
                 name2Person:name2Person,
