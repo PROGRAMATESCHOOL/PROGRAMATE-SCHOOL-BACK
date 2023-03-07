@@ -26,16 +26,26 @@ const CreateAdmin = () => {
     const NewAdminCreated = NewAdmin();
     return NewAdminCreated
 }
+
+
 const formAnnouncement = () => {
     const formScore = ScoreAnnouncement.scoreForm();
     return formScore
 
 }
 
+const getAdminList = () => {
+    const AdminList = Person.getAdminList();
+    return AdminList;
+}
+
 module.exports = {
     loginPerson,
     getAllPersons,
     SignUp,
+    CreateAdmin,
+    formAnnouncement,
+    getAdminList,
     getAllStudents,
     CreateAdmin,
     formAnnouncement,
