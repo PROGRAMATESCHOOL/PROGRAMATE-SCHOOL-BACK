@@ -9,7 +9,6 @@ const NewAdmin = async (req, res) => {
     lastname1Person,
     lastname2Person,
     documentPerson,
-    emailPerson,
     profilePerson,
     agePerson,
   } = req.body; //Parse the request for using data
@@ -21,6 +20,7 @@ const NewAdmin = async (req, res) => {
     res.status(409).send({ status: "Admin already exists" }); //Compares in case already exists and return error code 
     return;
   } else {
+    const profilePerson = 2;
     if (profilePerson == 2) {
       const passwordPerson = uniqid(undefined, lastname1Person);
       

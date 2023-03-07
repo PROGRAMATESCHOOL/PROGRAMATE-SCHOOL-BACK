@@ -13,10 +13,6 @@ const PersonRoutes = require("./routes/v1/PersonsRoutes");
 
 app.use(bodyParser.json());
 
-//Import routes
-//const authRoutes = require('./routes/rout')
-
-//Route middlewwares(validation)
 app.use('/api/', PersonRoutes);
 app.use(express.json());
 app.use(cors());
