@@ -3,7 +3,10 @@ const Person = require("../models/personsModel");
 const bcrypt = require("bcrypt");
 
 const loginPerson = async (req, res) => {
-  const { emailPerson, passwordPerson, profilePerson } = req.body;
+  const { 
+    emailPerson,
+    passwordPerson,
+    profilePerson } = req.body;
 
   const existingUserByEmail = await Person.findOne({ emailPerson }).exec();
   if (!existingUserByEmail) {
@@ -14,13 +17,12 @@ const loginPerson = async (req, res) => {
   const checkPassword = await Person.findOne({ passwordPerson }).exec();
 
   if (!checkPassword) {
-    //alert("Contraseña errónea. Inténtelo de nuevo")
-    return res.status(401).send({ errors: ["Contraseña incorrecta"] });
+    //window.alert("Contraseña errónea. Inténtelo de nuevo")
+    return res.status(403).send({ errors: ["Contraseña incorrecta"] });
   } else {
     res.status(200).json({
       Message: "login successful",
     }); //Success status created for password
-    const profilePerson = Person(req.params.profilePerson);
 
     if (profilePerson === 1) {
       res.send("OK");

@@ -33,14 +33,19 @@ const getAdminList = () => {
     return AdminList;
 }
 
+const getAllStudents = () => {
+    const allStudents = Person.getAllStudents();
+    return allStudents
+}
+
+
 module.exports = {
     loginPerson,
     getAllPersons,
     SignUp,
-
     CreateAdmin,
-
     formAnnouncement,
-    getAdminList
+    getAdminList,
+    getAllStudents
 
 }
