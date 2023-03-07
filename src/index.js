@@ -9,34 +9,21 @@ const PersonRoutes = require("./routes/v1/PersonsRoutes");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-//Capture data User
-//app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-
-//Import routes
-//const authRoutes = require('./routes/rout')
-//const PersonRoutes = require("./routes/PersonsRoutes");
-
-//Route middlewwares(validation)
 app.use('/api/', PersonRoutes);
-//app.get('/', (req, res) =>{
-//   res.json({
-//      estado:true,
-//      mensaje:'funcional'
-//   })
-//});
 
-
-//conection database MongoDB
 mongoose.set('strictQuery', true);
 
-app.use(bodyParser.json());
 app.use(express.json());
-app.use(cors());
+app.use(cors())
 
-app.use("api/login/", PersonRoutes);
-
+app.use((req, res, next) => {
+    res.append('Access-Control-Allow-Origin', ['*']);
+    res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.append('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 //mongoose.connect(`mongodb://127.0.0.1:27017/PSchool`)
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@programateschool.ohubrss.mongodb.net/DBProgramateSchool`)
     .then(() => console.log ("Connected successfully"))

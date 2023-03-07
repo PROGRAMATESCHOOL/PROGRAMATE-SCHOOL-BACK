@@ -15,23 +15,24 @@ const SignUp = async (req, res) => {
         agePerson
     } = req.body
 
-    const existedDocumentUser= await Person.findOne ({documentPerson}).exec();
+    const existedDocumentUser= await Person.findOne({ documentPerson }).exec();
 
-    const existedEmailUser = await Person.findOne ({emailPerson}).exec();
+    const existedEmailUser = await Person.findOne({ emailPerson }).exec();
 
-    if(existedDocumentUser) {
-        console.log('Usuaro ya Existente')
+    if (existedDocumentUser) {
+        res.status(409).send({ status: "Ya existe un usuario con este documento"})
+        console.log("Este usuario ya Existe")
         return
-    }
-
-    if(existedEmailUser){
-        console.log('Email ya Registrado')
+    } else if (existedEmailUser) {
+        res.status(408).send({ status: "Ya existe un usuario con este Correo"})
+        console.log("Este usuario ya Existe")
         return
     }
 
     if(!existedDocumentUser && !existedEmailUser){
 
         const passwordPerson = name1Person + lastname1Person + documentPerson
+        //In next version should include email automation with Nodemailer lib 
 
         const newUser = new Person ({
             name1Person:name1Person,
@@ -47,9 +48,10 @@ const SignUp = async (req, res) => {
         }) 
 
         newUser.save(); 
-        console.log ('Registro Exitoso')
-        return
+        console.log("Registro Exitoso")
     }
 }
 
-module.exports = {SignUp}
+module.exports = {
+    SignUp
+}
