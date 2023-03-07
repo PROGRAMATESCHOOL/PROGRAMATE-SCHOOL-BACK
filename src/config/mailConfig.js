@@ -7,9 +7,9 @@ require('dotenv').config( );
 //For this test, I used "mailtrap" for nodemailer, so the data in the constant 'transport'is the mailtrap.
 
 let transport = nodemailer.createTransport({
-    host: "sandbox.smtp.mailtrap.io",
-    port: 2525,
-    secure: false,
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true,
     auth: {
       user: process.env.userEmail,
       pass: process.env.passEmail
@@ -36,11 +36,13 @@ const sendEmail = async (emailPerson, subject, html ) => {
         });
 
     } catch (error) {
-        res
-            .status (401)
-            .send({status: 'Error con el email', data:sendEmail})        
+        console.log('Algo no va bien con el Email', error);
+        // res
+        // .status (401)
+        // .send({status: 'Error con el email', data:sendEmail})     
+          
     }
-        //console.log('Algo no va bien con el Email', err);
+        
 
     
 }
