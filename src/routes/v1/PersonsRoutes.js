@@ -24,6 +24,9 @@ router
     .post("/SignUp", SignUp.SignUp) //Custom route for SignUp
     .post("/scoreannouncement", ScoreAnnouncement.scoreForm);
 
+  // .post("/SignUp", [],RegisterController.SignUp) //Custom route for SignUp
+  .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
+  .get("/confirm/:token", SignUp.confirm);
 
 
 module.exports = router;

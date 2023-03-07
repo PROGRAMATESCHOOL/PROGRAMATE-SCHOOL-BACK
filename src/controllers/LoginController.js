@@ -3,10 +3,7 @@ const Person = require("../models/personsModel");
 const bcrypt = require("bcrypt");
 
 const loginPerson = async (req, res) => {
-  const { 
-    emailPerson,
-    passwordPerson,
-    profilePerson } = req.body;
+  const { emailPerson, passwordPerson, profilePerson } = req.body;
 
   const existingUserByEmail = await Person.findOne({ emailPerson }).exec();
   if (!existingUserByEmail) {
