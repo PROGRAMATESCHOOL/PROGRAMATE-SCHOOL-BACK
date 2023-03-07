@@ -14,12 +14,12 @@ const AnnouncementSchema = new mongoose.Schema({
   },
   students: {
     type: String,
-    require: true,
+    require: false,
     // Referenced from Document Person (One or Many)
   },
   conditionStudent: {
     type: Boolean,
-    require: true,
+    require: false,
   },
   createdBySuperAdmin: {
     type: String,
