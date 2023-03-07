@@ -6,14 +6,14 @@ const bcrypt = require("bcrypt");
 
 const getAllStudents = async (req, res) => {
     try {
-      const students = await Person.find({ profilePerson : 3 });
-      res.json(students);
+        const students = await Person.find({ profilePerson : 3 });
+        res.json(students);
     } catch (err) {
-      //return res.status(200).json({ msg: err.message });
-      res.json({ message: err.message });
+    //return res.status(200).json({ msg: err.message });
+    res.json({ message: err.message });
     }
 };
 
 module.exports = {
     getAllStudents,
-  };
+};
