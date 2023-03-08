@@ -126,8 +126,6 @@ const confirm = async (req, res) => {
         // Update an user 
 
         Person.statusPerson = "VERIFIED";
-        const { newUser } = req.params;
-
         await newUser.save();
 
         //Redirect confirmation
