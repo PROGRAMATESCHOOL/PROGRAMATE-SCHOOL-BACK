@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const nodemailer = require('nodemailer');
-const nodemailer = require('nodemailer');
 
 const PersonRoutes = require("./routes/v1/PersonsRoutes");
 
@@ -13,7 +12,7 @@ mongoose.set('strictQuery', true);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const PersonRoutes = require("./routes/v1/PersonsRoutes");
+
 
 app.use(bodyParser.json());
 

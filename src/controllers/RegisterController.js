@@ -6,14 +6,10 @@ const {getTemplate, sendEmail, } = require('../config/mailConfig');
 const { v4: uuidv4 } = require('uuid');
 const { clearScreenDown } = require('readline');
 
-const {getToken, getTokenData } = require('../config/jwtConfig');
-const {getTemplate, sendEmail, } = require('../config/mailConfig');
-const { v4: uuidv4 } = require('uuid');
-const { clearScreenDown } = require('readline');
 
 
 const SignUp = async (req, res) => {
-    
+     
         //Get data for user -AP
         const {
             name1Person,
@@ -25,31 +21,12 @@ const SignUp = async (req, res) => {
             profilePerson,
             institutionPerson,
             agePerson,
-            codePerson,
-            statusPerson,
-        } = req.body
-    
-        //Get data for user -AP
-        const {
-            name1Person,
-            name2Person,
-            lastname1Person,
-            lastname2Person,
-            documentPerson,
-            emailPerson,
-            profilePerson,
-            institutionPerson,
-            agePerson,
-            codePerson,
-            statusPerson,
         } = req.body
 
-        //Verify that the user Does Not exist -AP
-        const existedDocumentUser= await Person.findOne ({documentPerson}).exec();
+ 
         //Verify that the user Does Not exist -AP
         const existedDocumentUser= await Person.findOne ({documentPerson}).exec();
 
-        const existedEmailUser = await Person.findOne({ emailPerson }).exec();
         const existedEmailUser = await Person.findOne({ emailPerson }).exec();
 
     if (existedDocumentUser) {
@@ -65,10 +42,11 @@ const SignUp = async (req, res) => {
     if(!existedDocumentUser && !existedEmailUser){
 
             const passwordPerson = name1Person + lastname1Person + documentPerson
-            //In next version should include email automation with Nodemailer lib 
-            const passwordPerson = name1Person + lastname1Person + documentPerson
-            //In next version should include email automation with Nodemailer lib 
 
+           //Get code
+            const codePerson = uuidv4(); 
+
+            //Creted a new user or student
             const newUser = new Person ({
                 name1Person:name1Person,
                 name2Person:name2Person,
@@ -80,68 +58,58 @@ const SignUp = async (req, res) => {
                 institutionPerson:institutionPerson,
                 passwordPerson:passwordPerson,
                 agePerson:agePerson,
-                statusPerson: statusPerson,
-                codePerson: codePerson,
-            });
-            const newUser = new Person ({
-                name1Person:name1Person,
-                name2Person:name2Person,
-                lastname1Person:lastname1Person,
-                lastname2Person:lastname2Person,
-                documentPerson:documentPerson,
-                emailPerson:emailPerson,
-                profilePerson:profilePerson,
-                institutionPerson:institutionPerson,
-                passwordPerson:passwordPerson,
-                agePerson:agePerson,
-                statusPerson: statusPerson,
                 codePerson: codePerson,
             });
 
-            newUser.save(); 
-            console.log("Registro Exitoso")
-        }
+             //Get Token
+            const token = getToken({emailPerson, codePerson });
 
-        //Get code
-        const code = uuidv4(); 
+             //Get Template
+            const template = getTemplate (name1Person, lastname1Person, token);
 
-        //Get Token
-        const token = getToken({emailPerson, codePerson });
-                
-        //Get Template
-        const template = getTemplate (name1Person, lastname1Person, token)
+            //Send Email
+            await sendEmail(emailPerson, 'Este es un email de prueba', template)
+
+       
+            await newUser.save(); 
+            res.json({
+                success: true,
+                msg: "Registro Exitoso"
+            }); 
+
+            // console.log("Registro Exitoso")
+        }          
+       
   
-        //Send Email
-        await sendEmail(emailPerson, 'Este es un email de prueba', template)
         
-        // await newUser.save(); 
-        res.json(); 
+        
+       
         
 } 
 
 const confirm = async (req, res) => {
     try {
-
         //Get token
         const { token } = req.params;
 
         //Verificated data of the token
         const data = await getTokenData( token );
+        
         if(data === null) {
             return res.json({
                 success: false,
                 msg: 'Error al obtener data'
             });
         }
-        console.log(data);
+        console.log(data, "este");
 
         const { emailPerson, codePerson} = data.data
 
         //Verificated if user exist
         //This is the const definied in the personModel
-        const Person = await Person.findOne({ emailPerson}) || null;
+        const Persona = await Person.findOne({ emailPerson}) || null;
         
-        if (Person === null){
+        if (Persona === null){
             return res.json({
                 success: false,
                 msg: 'Usuario NO Existe -AP'
@@ -151,12 +119,15 @@ const confirm = async (req, res) => {
 
         //Vericated code
 
-        if(codePerson !== Person.codePerson){
+        if(codePerson !== Persona.codePerson){
             return res.redirect('/error.html');
         }
 
         // Update an user 
+
         Person.statusPerson = "VERIFIED";
+        const { newUser } = req.params;
+
         await newUser.save();
 
         //Redirect confirmation

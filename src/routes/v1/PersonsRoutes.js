@@ -2,7 +2,6 @@ const router = require('express').Router();
 const LoginController = require("../../controllers/LoginController");
 const GetAllPersonsController = require("../../controllers/GetAllPersonsController");
 const SignUp =require ('../../controllers/RegisterController');
-const SignUp =require ('../../controllers/RegisterController');
 const NewAdmin = require('../../controllers/NewAdminController')
 const AdminListController = require("../../controllers/AdminListController");
 const StudentListController = require("../../controllers/StudentListController") 
