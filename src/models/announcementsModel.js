@@ -14,18 +14,18 @@ const AnnouncementSchema = new mongoose.Schema({
     },
     students: {
         type: String,
-        require: true
+        require: false
         // Referenced from Document Person (One or Many)
     },
     conditionStudent: {
         type: Boolean,
-        require: true
+        require: false
     },
-    createdBySuperAdmin: {
-        type: String,
-        require: true
+    createdBySuperAdmin: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'PersonSchema'
         // Referenced from Document Person (Only One)
-    }
+    }]
 })
 
 module.exports = mongoose.model("AnnouncementModel", AnnouncementSchema)

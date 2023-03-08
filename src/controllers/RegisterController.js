@@ -41,42 +41,42 @@ const SignUp = async (req, res) => {
 
     if(!existedDocumentUser && !existedEmailUser){
 
-            const passwordPerson = name1Person + lastname1Person + documentPerson
-            //In next version should include email automation with Nodemailer lib 
+        const passwordPerson = name1Person + lastname1Person + documentPerson
+        //In next version should include email automation with Nodemailer lib 
 
-            const newUser = new Person ({
-                name1Person:name1Person,
-                name2Person:name2Person,
-                lastname1Person:lastname1Person,
-                lastname2Person:lastname2Person,
-                documentPerson:documentPerson,
-                emailPerson:emailPerson,
-                profilePerson:profilePerson,
-                institutionPerson:institutionPerson,
-                passwordPerson:passwordPerson,
-                agePerson:agePerson,
-                statusPerson: statusPerson,
-                codePerson: codePerson,
-            });
+        const newUser = new Person ({
+            name1Person:name1Person,
+            name2Person:name2Person,
+            lastname1Person:lastname1Person,
+            lastname2Person:lastname2Person,
+            documentPerson:documentPerson,
+            emailPerson:emailPerson,
+            profilePerson:profilePerson,
+            institutionPerson:institutionPerson,
+            passwordPerson:passwordPerson,
+            agePerson:agePerson,
+            statusPerson: statusPerson,
+            codePerson: codePerson,
+        });
 
-            newUser.save(); 
-            console.log("Registro Exitoso")
-        }
+        newUser.save(); 
+        console.log("Registro Exitoso")
+    }
 
-        //Get code
-        const code = uuidv4(); 
+    //Get code
+    const code = uuidv4(); 
 
-        //Get Token
-        const token = getToken({emailPerson, codePerson });
+    //Get Token
+    const token = getToken({emailPerson, codePerson});
                 
-        //Get Template
-        const template = getTemplate (name1Person, lastname1Person, token)
+    //Get Template
+    const template = getTemplate (name1Person, lastname1Person, token)
 
-        //Send Email
-        await sendEmail(emailPerson, 'Este es un email de prueba', template)
+    //Send Email
+    await sendEmail(emailPerson, 'Este es un email de prueba', template)
         
-        // await newUser.save(); 
-        res.json(); 
+    // await newUser.save(); 
+    res.json(); 
         
 } 
 

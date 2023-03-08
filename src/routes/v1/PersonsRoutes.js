@@ -7,7 +7,8 @@ const AdminListController = require("../../controllers/AdminListController");
 const StudentListController = require("../../controllers/StudentListController") 
 const ScoreAnnouncement = require("../../controllers/HandleDataController");
 
-
+const NewAnnouncement = require("../../controllers/NewAnnouncementController")
+const ObjectId = require("mongoose").ObjectId
 
 //This is an inicial version of the router, might change due to Functionality & new features
 
@@ -22,8 +23,10 @@ router
     .post("/newAdmin", NewAdmin.NewAdmin)
     .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
     .post("/SignUp", SignUp.SignUp) //Custom route for SignUp
-    .post("/scoreannouncement", ScoreAnnouncement.scoreForm);
-
-
+    
+    .post("/addnewannouncement", NewAnnouncement.AddAnnouncement); // Custom route for create announcement
 
 module.exports = router;
+
+
+
