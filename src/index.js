@@ -12,8 +12,6 @@ mongoose.set('strictQuery', true);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-
-
 app.use(bodyParser.json());
 
 //Import routes
@@ -28,10 +26,6 @@ app.use(cors());
 app.use(express.static('../public'));
 app.use(express.urlencoded({ extended: false}));
 
-mongoose.set('strictQuery', true);
-
-app.use(express.json());
-app.use(cors())
 
 app.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin', ['*']);
@@ -40,18 +34,14 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(bodyParser.json());
-app.use(express.json());
 
-app.use('/api/', PersonRoutes);
 
-//Review if this is necesary -AP
-app.use(express.static('../public'));
-app.use(express.urlencoded({ extended: false}));
+
+
+
 
 //mongoose.connect(`mongodb://127.0.0.1:27017/PSchool`)
 
-//Conection db in MongoAtlas
 //Conection db in MongoAtlas
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@programateschool.ohubrss.mongodb.net/DBProgramateSchool`)
     .then(() => console.log ("Connected successfully"))
