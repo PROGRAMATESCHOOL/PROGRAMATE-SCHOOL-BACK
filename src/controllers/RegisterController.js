@@ -137,5 +137,5 @@ const confirm = async (req, res) => {
 
 module.exports = {
     SignUp, 
-    confirm,
+    confirm
 }
