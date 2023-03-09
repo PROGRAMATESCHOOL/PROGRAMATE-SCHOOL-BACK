@@ -9,7 +9,7 @@ const { clearScreenDown } = require('readline');
 
 
 const SignUp = async (req, res) => {
-     
+    try {
         //Get data for user -AP
         const {
             name1Person,
@@ -25,29 +25,22 @@ const SignUp = async (req, res) => {
 
  
         //Verify that the user Does Not exist -AP
-        const existedDocumentUser= await Person.findOne ({documentPerson}).exec();
+        let person =await Person.findOne({documentPerson, emailPerson,}) || null;
+       
+        if(person !== null){
+            return res.json({
+                success:false,
+                msg: 'Este usuario ya existe'
+            });
+        }
 
-        const existedEmailUser = await Person.findOne({ emailPerson }).exec();
+        //Get code
+        const codePerson = uuidv4(); 
 
-    if (existedDocumentUser) {
-        res.status(409).send({ status: "Ya existe un usuario con este documento"})
-        console.log("Este usuario ya Existe")
-        return
-    } else if (existedEmailUser) {
-        res.status(408).send({ status: "Ya existe un usuario con este Correo"})
-        console.log("Este usuario ya Existe")
-        return
-    }
+        //Creted a new user or student
+        const passwordPerson = name1Person + lastname1Person + documentPerson
 
-    if(!existedDocumentUser && !existedEmailUser){
-
-            const passwordPerson = name1Person + lastname1Person + documentPerson
-
-           //Get code
-            const codePerson = uuidv4(); 
-
-            //Creted a new user or student
-            const newUser = new Person ({
+        person = new Person ({
                 name1Person:name1Person,
                 name2Person:name2Person,
                 lastname1Person:lastname1Person,
@@ -59,32 +52,31 @@ const SignUp = async (req, res) => {
                 passwordPerson:passwordPerson,
                 agePerson:agePerson,
                 codePerson: codePerson,
-            });
+        });
 
-             //Get Token
-            const token = getToken({emailPerson, codePerson });
+        //Get Token
+        const token = getToken({emailPerson, codePerson });
 
-             //Get Template
-            const template = getTemplate (name1Person, lastname1Person, token);
+        //Get Template
+        const template = getTemplate (name1Person, lastname1Person, token);
 
-            //Send Email
-            await sendEmail(emailPerson, 'Este es un email de prueba', template)
+        //Send Email
+        await sendEmail(emailPerson, 'Este es un email de prueba', template)
 
-       
-            await newUser.save(); 
-            res.json({
-                success: true,
-                msg: "Registro Exitoso"
-            }); 
+        //Save the user/student
+        await person.save(); 
 
-            // console.log("Registro Exitoso")
-        }          
-       
-  
-        
-        
-       
-        
+        res.json({
+            success: true,
+            msg: "Registro Exitoso"
+        }); 
+    } catch (error){
+        console.log(error);
+        return res.json({
+            success: false,
+            msg: 'Error al registrar usuario'
+        });
+    }      
 } 
 
 const confirm = async (req, res) => {
@@ -101,15 +93,15 @@ const confirm = async (req, res) => {
                 msg: 'Error al obtener data'
             });
         }
-        console.log(data, "este");
+        // console.log(data, "esta es la data del token");
 
         const { emailPerson, codePerson} = data.data
 
         //Verificated if user exist
         //This is the const definied in the personModel
-        const Persona = await Person.findOne({ emailPerson}) || null;
+        const person = await Person.findOne({ emailPerson}) || null;
         
-        if (Persona === null){
+        if (person === null){
             return res.json({
                 success: false,
                 msg: 'Usuario NO Existe -AP'
@@ -119,17 +111,20 @@ const confirm = async (req, res) => {
 
         //Vericated code
 
-        if(codePerson !== Persona.codePerson){
+        if(codePerson !== person.codePerson){
             return res.redirect('/error.html');
         }
 
-        // Update an user 
+        // Update user 
 
-        Person.statusPerson = "VERIFIED";
-        await newUser.save();
+        person.statusPerson = "VERIFIED";
+       
+        await person.save();
+
+        console.log('El estatus del usuario ', person.emailPerson, 'ahora es: ', person.statusPerson)
 
         //Redirect confirmation
-        return res.redirect('/confirm.html')
+        return res.redirect('../../public/confirm.html')
 
 
 
@@ -140,11 +135,8 @@ const confirm = async (req, res) => {
             msg: 'Error al confirmar usuario'
         })
     }
-
 }
       
-
-
 module.exports = {
     SignUp, 
     confirm,

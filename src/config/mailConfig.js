@@ -4,7 +4,7 @@ require('dotenv').config( );
 
 //Here, the constant "mail" store the user and password of the SUPERADMIN o the email definite for programate school.
 
-//For this test, I used "mailtrap" for nodemailer, so the data in the constant 'transport'is the mailtrap.
+//For this test, I used a google mail that is save in the .env, also the data in the constant 'transport'is the mailtrap.
 
 let transport = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -19,13 +19,7 @@ let transport = nodemailer.createTransport({
     }
 });
 
-
-
-
 const sendEmail = async (emailPerson, subject, html ) => {
-    
-    // const email = await Person.findOne({ emailPerson }).exec();
-
     try {
         await transport.sendMail({
             from: ` ProgramateSchool <$( process.env.userEmail )>` ,// sender address
@@ -41,10 +35,7 @@ const sendEmail = async (emailPerson, subject, html ) => {
         // .status (401)
         // .send({status: 'Error con el email', data:sendEmail})     
           
-    }
-        
-
-    
+    }     
 }
 
 const getTemplate = (name1Person, lastname1Person, token) => {
@@ -64,6 +55,8 @@ const getTemplate = (name1Person, lastname1Person, token) => {
       </div>
     `;
 }
+
+
 
 module.exports={
     sendEmail,

@@ -18,8 +18,6 @@ const getTokenData = ( token ) => {
     });
 
     return data;
-
-    //Get a template
 }
 
 module.exports = {

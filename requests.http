@@ -17,7 +17,7 @@ Content-Type: application/json
 {
     "name1Person": "Adriana",
     "lastname1Person": "Prueba",
-    "documentPerson": 82332392,
+    "documentPerson": 8233392,
     "emailPerson": "namab89409@gpipes.com",
     "profilePerson": 3,
     "institutionPerson": "Colegio 1",

@@ -3,7 +3,6 @@ const express =require('express');
 const mongoose = require('mongoose'); 
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const nodemailer = require('nodemailer');
 
 const PersonRoutes = require("./routes/v1/PersonsRoutes");
 
@@ -18,12 +17,15 @@ app.use(bodyParser.json());
 //const authRoutes = require('./routes/rout')
 
 //Route middlewwares(validation)
+//With this middleware, we can map the route-AP
 app.use('/api/', PersonRoutes);
-app.use(express.json());
 app.use(cors());
 
-//Review if this is necesary -AP
-app.use(express.static('../public'));
+//Middleware for the moment that I want open the index.html of the folder 'public'
+// app.use(express.static('../public'));
+
+//Middleware for accept the json data
+app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 
 
@@ -33,12 +35,6 @@ app.use((req, res, next) => {
     res.append('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
-
-
-
-
-
-
 
 //mongoose.connect(`mongodb://127.0.0.1:27017/PSchool`)
 

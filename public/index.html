@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+</head>
+<body>
+
+    <script>
+         const sendData = async (person) => {
+            try {
+                console.log(JSON.stringify(person));
+                btnForm.setAttribute('disabled', true);
+                const response = await fetch('http://localhost:3000/api/signUp', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(person)
+                });
+
+                
+
+                const data = await response.json();
+
+                console.log(data)
+
+                if(data.success === true) {
+                    success.classList.add('active');
+                } else {
+                    error.classList.add('active');
+                }
+
+                setTimeout(() => {
+                    success.classList.remove('active');
+                    error.classList.remove('active');
+                }, 2500);
+
+                btnForm.setAttribute('disabled', false);
+
+            } catch (error) {
+                console.log(error);
+                btnForm.setAttribute('disabled', false);
+            }
+        }
+
+
+    </script>
+    
+</body>
+</html>
