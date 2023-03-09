@@ -22,7 +22,6 @@ router
     .post("/newAdmin", NewAdmin.NewAdmin)
     .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
     .post("/SignUp", SignUp.SignUp) //Custom route for SignUp
-    .post("/scoreannouncement", ScoreAnnouncement.scoreForm);
 
   // .post("/SignUp", [],RegisterController.SignUp) //Custom route for SignUp
   .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
