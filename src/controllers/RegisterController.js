@@ -2,8 +2,8 @@ const personServices = require('../services/PersonServices');
 const Person = require('../models/personsModel');
 const bcrypt = require('bcrypt');
 const {getToken, getTokenData } = require('../config/jwtConfig');
-const {getTemplate, sendEmail, } = require('../config/mailConfig');
-const { sendPassword, getTemplatePassword}= require('../config/mailPassword')
+const {getTemplate, sendEmail, getTemplatePassword } = require('../config/mailConfig');
+// const { sendPassword, getTemplatePassword}= require('../config/mailPassword')
 const { v4: uuidv4 } = require('uuid');
 const { clearScreenDown } = require('readline');
 
