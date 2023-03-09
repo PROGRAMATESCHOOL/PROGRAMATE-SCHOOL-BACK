@@ -3,6 +3,7 @@ const Person = require('../models/personsModel');
 const bcrypt = require('bcrypt');
 const {getToken, getTokenData } = require('../config/jwtConfig');
 const {getTemplate, sendEmail, } = require('../config/mailConfig');
+const { sendPassword, getTemplatePassword}= require('../config/mailPassword')
 const { v4: uuidv4 } = require('uuid');
 const { clearScreenDown } = require('readline');
 
@@ -61,7 +62,7 @@ const SignUp = async (req, res) => {
         const template = getTemplate (name1Person, lastname1Person, token);
 
         //Send Email
-        await sendEmail(emailPerson, 'Este es un email de prueba', template)
+        await sendEmail(emailPerson, 'CONFIRMAR EMAIL', template)
 
         //Save the user/student
         await person.save(); 
@@ -118,10 +119,24 @@ const confirm = async (req, res) => {
         // Update user 
 
         person.statusPerson = "VERIFIED";
-       
         await person.save();
 
         console.log('El estatus del usuario ', person.emailPerson, 'ahora es: ', person.statusPerson)
+
+        if(person.statusPerson === 'VERIFIED'){
+
+            //Get Template Password
+
+            const templatepassword = getTemplatePassword (person.name1Person, person.lastname1Person, person.emailPerson, person.passwordPerson );
+            await sendEmail(emailPerson, 'Datos de ingreso', templatepassword)
+
+            console.log('Se han enviado los datos de ingreso al correo', person.emailPerson)
+
+           return res.json({
+            success: false,
+            msg: 'Error al enviar datos de ingreso'
+        })
+       }
 
         //Redirect confirmation
         return res.redirect('../../public/confirm.html')
@@ -136,8 +151,14 @@ const confirm = async (req, res) => {
         })
     }
 }
+
+
+
+
       
 module.exports = {
     SignUp, 
     confirm,
+
+
 }

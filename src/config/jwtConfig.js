@@ -6,7 +6,6 @@ const getToken = (payload) => {
         }, 'SECRET', { expiresIn: '1h'});
 }
 
-//Here, I can add "passwordPerson" because is the data that I need to serelized -AP
 const getTokenData = ( token ) => {
     let data = null;
     jwt.verify(token, 'SECRET', (err, decoded)=> {

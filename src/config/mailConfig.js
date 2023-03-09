@@ -25,7 +25,7 @@ const sendEmail = async (emailPerson, subject, html ) => {
             from: ` ProgramateSchool <$( process.env.userEmail )>` ,// sender address
             to: emailPerson, // list of receivers
             subject,// Subject line
-            text: "Holaaaa, vamos a verificar tu correo", // plain text body
+            // text: "Holaaaa, vamos a verificar tu correo", // plain text body
             html,
         });
 
