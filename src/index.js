@@ -3,30 +3,41 @@ const express =require('express');
 const mongoose = require('mongoose'); 
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const nodemailer = require('nodemailer');
 
+const PersonRoutes = require("./routes/v1/PersonsRoutes");
+
+mongoose.set('strictQuery', true);
 
 mongoose.set('strictQuery', true);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(bodyParser.json());
+app.use(express.json());
+
+//Import routes
+//const authRoutes = require('./routes/rout')
+
+//Route middlewwares(validation)
+//With this middleware, we can map the route-AP
+app.use('/api/', PersonRoutes);
 app.use(cors());
+
+//Middleware for the moment that I want open the index.html of the folder 'public'
+// app.use(express.static('../public'));
+
+//Middleware for accept the json data
+app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
+
+
 app.use((req, res, next) => {
     res.append('Access-Control-Allow-Origin', ['*']);
     res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.append('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
-
-app.use(bodyParser.json());
-app.use(express.json());
-
-app.use('/api/', PersonRoutes);
-
-//Review if this is necesary -AP
-app.use(express.static('../public'));
-app.use(express.urlencoded({ extended: false}));
 
 //mongoose.connect(`mongodb://127.0.0.1:27017/PSchool`)
 //Conection db in MongoAtlas
