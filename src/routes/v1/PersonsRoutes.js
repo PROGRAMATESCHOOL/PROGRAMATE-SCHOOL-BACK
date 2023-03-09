@@ -6,6 +6,7 @@ const NewAdmin = require('../../controllers/NewAdminController')
 const AdminListController = require("../../controllers/AdminListController");
 const StudentListController = require("../../controllers/StudentListController") 
 const ScoreAnnouncement = require("../../controllers/HandleDataController");
+const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 
 
 
@@ -16,13 +17,16 @@ router
     .get("/confirm/:token",  SignUp.confirm)
     .get("/getAdmin", AdminListController.getAdminList) // Custom route used to get all Admins
     .get("/getUsers", StudentListController.getAllStudents) //Custom route used to get all students
+    .get("/confirm/:token",  SignUp.confirm)
     
     .post("/login", LoginController.loginPerson) //Custom route for Log In 
     .post("/signUp", SignUp.SignUp) //Custom route for SignUp
     .post("/newAdmin", NewAdmin.NewAdmin)
     .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
     .post("/SignUp", SignUp.SignUp) //Custom route for SignUp
-    .post("/scoreannouncement", ScoreAnnouncement.scoreForm);
+    
+    .post("/addNewAnnouncement", NewAnnouncement.addAnnouncement) // Custom route for create announcement
+    
 
 
 
