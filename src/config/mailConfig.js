@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-require('dotenv').config( );
+require("dotenv").config();
 // const Person = require('../models/personsModel');
 
 //Here, the constant "mail" store the user and password of the SUPERADMIN o the email definite for programate school.
@@ -39,22 +39,22 @@ const sendEmail = async (emailPerson, subject, html ) => {
 }
 
 const getTemplate = (name1Person, lastname1Person, token) => {
-    return `
+  return `
       <head>
           <link rel="stylesheet" href="./style.css">
       </head>
       
       <div id="email___content">
           <img src="" alt="">
-          <h2>Hola ${ name1Person + " "+ lastname1Person }</h2>
+          <h2>Hola ${name1Person + " " + lastname1Person}</h2>
           <p>Para verificar tu cuenta y continuar con el registro en la plataforma de  Programate School, ingresa al siguiente enlace:</p>
           <a
-              href="http://localhost:3000/api/confirm/${ token }"
+              href="http://localhost:3000/api/confirm/${token}"
               target="_blank"
           >Confirmar Cuenta</a>
       </div>
     `;
-}
+};
 
 const getTemplatePassword = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
     return `

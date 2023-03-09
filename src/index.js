@@ -8,10 +8,13 @@ const PersonRoutes = require("./routes/v1/PersonsRoutes");
 
 mongoose.set('strictQuery', true);
 
+mongoose.set('strictQuery', true);
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+app.use(express.json());
 
 //Import routes
 //const authRoutes = require('./routes/rout')
@@ -37,7 +40,6 @@ app.use((req, res, next) => {
 });
 
 //mongoose.connect(`mongodb://127.0.0.1:27017/PSchool`)
-
 //Conection db in MongoAtlas
 mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@programateschool.ohubrss.mongodb.net/DBProgramateSchool`)
     .then(() => console.log ("Connected successfully"))

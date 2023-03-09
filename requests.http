@@ -61,3 +61,8 @@ Content-Type: application/json
     "ScoreTotal": 100
 
 }
+
+###
+GET http://localhost:3000/api/getAdmin HTTP/1.1
+
+

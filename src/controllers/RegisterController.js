@@ -7,8 +7,6 @@ const {getTemplate, sendEmail, getTemplatePassword } = require('../config/mailCo
 const { v4: uuidv4 } = require('uuid');
 const { clearScreenDown } = require('readline');
 
-
-
 const SignUp = async (req, res) => {
     try {
         //Get data for user -AP
@@ -151,14 +149,9 @@ const confirm = async (req, res) => {
         })
     }
 }
-
-
-
-
-      
+    
 module.exports = {
     SignUp, 
     confirm,
-
-
 }
+

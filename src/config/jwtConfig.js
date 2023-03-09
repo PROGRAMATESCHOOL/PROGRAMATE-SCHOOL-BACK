@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 const getToken = (payload) => {
     return jwt.sign({
@@ -20,6 +20,6 @@ const getTokenData = ( token ) => {
 }
 
 module.exports = {
-    getToken,
-    getTokenData
-}
+  getToken,
+  getTokenData,
+};

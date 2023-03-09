@@ -23,7 +23,4 @@ router
     .get("/confirm/:token",  SignUp.confirm)
     // .get("/public/confirm.html", SignUp. confirm)
    
-    
-
-
 module.exports = router;
