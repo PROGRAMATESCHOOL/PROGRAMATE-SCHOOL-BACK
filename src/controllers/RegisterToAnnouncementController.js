@@ -62,6 +62,28 @@ const RegisterToAnnouncement = async (req, res) => {
     NewQuestionaryOK.save();
     console.log("Se ha registrado a la convocatoria con exito")
     res.send(NewQuestionaryOK)
+
+    // THE NEXT CALCULATES SCORES BY THE STUDENT
+    var form_ScoreProfile = 0
+    var form_ScoreVocation = 0
+    var form_ScoreMotivation = 0
+    var form_ScoreLogic = 0
+    var form_ScoreTotal = 0
+    var form_statusAnnouncement = "ABLED"
+
+    if (NewQuestionaryOK.q11_course == "11") {
+        form_ScoreProfile += 1
+    }
+    if (NewQuestionaryOK.q12_sena == "NO") {
+        form_ScoreProfile += 1
+    } else {
+            form_statusAnnouncement = "DISABLED"
+        }
+    if (NewQuestionaryOK.q13_availability == "SI") {
+        form_ScoreProfile += 1
+    }
+
+    console.log(form_ScoreProfile)
 }
 
 module.exports = {
