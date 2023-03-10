@@ -7,6 +7,7 @@ const AdminListController = require("../../controllers/AdminListController");
 const StudentListController = require("../../controllers/StudentListController") 
 const ScoreAnnouncement = require("../../controllers/HandleDataController");
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
+const NewAnnouncement = require('../../controllers/NewAnnouncementController');
 
 
 //This is an inicial version of the router, might change due to Functionality & new features
@@ -22,7 +23,8 @@ router
   .post("/signUp", SignUp.SignUp) //Custom route for RegisterController -AP
   .post("/newAdmin", NewAdmin.NewAdmin)
   .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
+  .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
     
   .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
-   
+  
 module.exports = router;

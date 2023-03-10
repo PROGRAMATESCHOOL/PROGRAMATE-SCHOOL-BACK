@@ -72,11 +72,10 @@ POST http://localhost:3000/api/addnewannouncement HTTP/1.1
 Content-Type: application/json
 
 {
-    "documentPerson": "10004",
-    "nameAnnouncement": "Convocatoria 2027",
+    "documentPerson": "10011",
+    "nameAnnouncement": "Convocatoria 2030",
     "descriptionAnnouncement": "Estudiante grado 11 de colegios aliados"
 }
-
 
 ###
 DELETE http://localhost:3000/api/deleteannouncement HTTP/1.1
