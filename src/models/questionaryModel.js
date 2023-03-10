@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const  { Schema, ObjectId, model } = require("mongoose")
 
-const ScoreAnnouncementSchema = new mongoose.Schema({
+const QuestionarySchema = new mongoose.Schema({
     idAnnouncement: {
         type: Schema.Types.ObjectId,
         ref: 'AnnouncementSchema' // Referenced from announcementModel
@@ -16,7 +16,7 @@ const ScoreAnnouncementSchema = new mongoose.Schema({
     },
     q2_name2Person: {
         type: String,
-        require: true
+        require: false
     },
     q3_lastname1Person: {
         type: String,
@@ -24,7 +24,7 @@ const ScoreAnnouncementSchema = new mongoose.Schema({
     },
     q4_lastname2Person: {
         type: String,
-        require: true
+        require: false
     },
     q5_birthdate: {
         type: String,
@@ -64,7 +64,7 @@ const ScoreAnnouncementSchema = new mongoose.Schema({
     },
     q14_emailPerson: {
         type: String,
-        require; false
+        require: false
     }, 
     q15_phone: {
         type: Number,
@@ -72,4 +72,4 @@ const ScoreAnnouncementSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("ScoreForm", ScoreAnnouncementSchema);
+module.exports = mongoose.model("questionaryModel", QuestionarySchema);

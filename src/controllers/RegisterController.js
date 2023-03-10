@@ -22,53 +22,67 @@ const SignUp = async (req, res) => {
             agePerson,
         } = req.body
 
-
         //Verify that the user Does Not exist -AP
-        let person =await Person.findOne({documentPerson, emailPerson,}) || null;
-    
-        if(person !== null){
-            return res.json({
-                success:false,
-                msg: 'Este usuario ya existe'
-            });
+        //let person =await Person.findOne({documentPerson, emailPerson,}) || null;
+                
+        // if(person !== null){
+        //     return res.json({
+        //         success:false,
+        //         msg: 'Este usuario ya existe'
+        //     });
+        // }
+
+        const existedDocumentUser = await Person.findOne({ documentPerson }).exec()
+        const existedEmailUser = await Person.findOne({ emailPerson }).exec()
+
+        if(existedDocumentUser) {
+            res.send("Ya existe un usuario registrado con este documento")
+        }
+        else {
+            if(existedEmailUser) {
+                res.send("Ya existe un usuario registrado con este correo")
+            }
+            else {
+                //Get code
+                const codePerson = uuidv4(); 
+
+                //Creted a new user or student
+                const passwordPerson = name1Person + lastname1Person + documentPerson
+
+                let person = new Person ({
+                    name1Person:name1Person,
+                    name2Person:name2Person,
+                    lastname1Person:lastname1Person,
+                    lastname2Person:lastname2Person,
+                    documentPerson:documentPerson,
+                    emailPerson:emailPerson,
+                    profilePerson:profilePerson,
+                    institutionPerson:institutionPerson,
+                    passwordPerson:passwordPerson,
+                    agePerson:agePerson,
+                    codePerson: codePerson,
+                });
+
+                //Get Token
+                const token = getToken({emailPerson, codePerson });
+
+                //Get Template
+                const template = getTemplate (name1Person, lastname1Person, token);
+
+                //Send Email
+                await sendEmail(emailPerson, 'CONFIRMAR EMAIL', template)
+
+                //Save the user/student
+                await person.save(); 
+
+                res.json({
+                    success: true,
+                    msg: "Registro Exitoso"
+                }); 
+            }
         }
 
-        //Get code
-        const codePerson = uuidv4(); 
-
-        //Creted a new user or student
-        const passwordPerson = name1Person + lastname1Person + documentPerson
-
-        person = new Person ({
-                name1Person:name1Person,
-                name2Person:name2Person,
-                lastname1Person:lastname1Person,
-                lastname2Person:lastname2Person,
-                documentPerson:documentPerson,
-                emailPerson:emailPerson,
-                profilePerson:profilePerson,
-                institutionPerson:institutionPerson,
-                passwordPerson:passwordPerson,
-                agePerson:agePerson,
-                codePerson: codePerson,
-        });
-
-        //Get Token
-        const token = getToken({emailPerson, codePerson });
-
-        //Get Template
-        const template = getTemplate (name1Person, lastname1Person, token);
-
-        //Send Email
-        await sendEmail(emailPerson, 'CONFIRMAR EMAIL', template)
-
-        //Save the user/student
-        await person.save(); 
-
-        res.json({
-            success: true,
-            msg: "Registro Exitoso"
-        }); 
+        
     } catch (error){
         console.log(error);
         return res.json({
