@@ -5,7 +5,7 @@ const Announcement = require("../models/announcementsModel");
 const { ObjectId }= require("mongoose");
 
 const AddAnnouncement = async (req, res) => {
-    //const documentPerson = req.params.documentPerson
+    
     const {
         documentPerson,
         nameAnnouncement,

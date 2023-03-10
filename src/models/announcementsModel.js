@@ -22,6 +22,14 @@ const AnnouncementSchema = new mongoose.Schema({
         type: Boolean,
         require: false
     },
+    dateStartAnnouncement: {
+        type: Date,
+        require: false
+    },
+    dateFinishAnnouncement: {
+        type: Date,
+        require: false
+    },
     createdBySuperAdmin: {
         type: Schema.Types.ObjectId,
         ref: 'PersonSchema' // Referenced from Document Person (Only One)

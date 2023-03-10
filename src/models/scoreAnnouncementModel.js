@@ -43,4 +43,4 @@ const ScoreAnnouncementSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model("ScoreForm", ScoreAnnouncementSchema)
+module.exports = mongoose.model("ScoreForm", ScoreAnnouncementSchema);
