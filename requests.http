@@ -10,15 +10,15 @@ Content-Type: application/json
     "passwordPerson": "Manuelg2pcfay0leq5q092Castellanos"
 }
 
-###
+###Create new student & send email of verification
 POST http://localhost:3000/api/signUp HTTP/1.1
 Content-Type: application/json
 
 {
     "name1Person": "Adriana",
     "lastname1Person": "Prueba",
-    "documentPerson": 8882332392,
-    "emailPerson": "manuel101284@outlook.com",
+    "documentPerson": 8233392,
+    "emailPerson": "namab89409@gpipes.com",
     "profilePerson": 3,
     "institutionPerson": "Colegio 1",
     "agePerson": 16
