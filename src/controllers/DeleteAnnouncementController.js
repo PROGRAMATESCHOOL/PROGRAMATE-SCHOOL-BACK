@@ -4,14 +4,14 @@ const bcrypt = require("bcrypt");
 const Announcement = require('../models/announcementsModel');
 
 
-async function deleteCall(req, res) {
-  const { Announcement } = req.params; 
+async function deleteAnnouncement(req, res) {
+  const { nameAnnouncement } = req.params; 
   try {
-    const Announcement = await Announcement.findByPk(AnnouncementId);
-    if (!Announcement) {
+    const nameAnnouncement = await Announcement.findById({where: {id: Announcement._id}});
+    if (!nameAnnouncement) {
       return res.status(404).json({ message: 'Call not found' }); 
     }
-    await Announcement.destroy(); 
+    await nameAnnouncement.destroy(); 
     return res.status(204).send(); 
   } catch (error) {
     console.error(error);
