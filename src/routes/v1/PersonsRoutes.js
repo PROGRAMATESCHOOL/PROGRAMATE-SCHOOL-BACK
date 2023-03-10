@@ -28,6 +28,6 @@ router
   .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
   .get("/confirm/:token", SignUp.confirm)
 
-  .put("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
+  .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
 
 module.exports = router;
