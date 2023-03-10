@@ -136,7 +136,7 @@ Content-Type: application/json
     "birthdate": "01-02-2005",
     "gender": "Femenino",
     "document": "Cedula de Ciudadanía",
-    "course": "11",
+    "course": "11°",
     "sena": "NO",
     "availability": "SI",
     "phone": 3101200300

@@ -10,6 +10,7 @@ const RegisterToAnnouncement = async (req, res) => {
     } = req.body
 
     const StudentRegistered = await Person.findOne({documentPerson}).exec()
+
     //res.send(StudentRegistered)
     //console.log(StudentRegistered)
 
@@ -30,7 +31,45 @@ const RegisterToAnnouncement = async (req, res) => {
         course,
         sena,
         availability,
-        phone
+        phone,
+        phoneTwo,
+        sisben,
+        ethnicGroup,
+        nationality,
+        disability,
+        typeDisability,
+        addressStudent,
+        departmentStudent,
+        rural,
+        bogota,
+        stratum,
+        nameGuardian,
+        relationship,
+        documentTypeGuardian,
+        numberIdGuardian,
+        emailGuardian,
+        phoneGuardian,
+        phoneGuardianTwo,
+        addressGuardian,
+        departmentGuardian,
+        educationLevelGuardian,
+        economic,
+        family,
+        computer,
+        internet,
+        interests,
+        activity,
+        reportage,
+        stake,
+        webMotivation,
+        why,
+        methodology,
+        want,
+        withdrawal,
+        logic1,
+        logic2,
+        logic3,
+        logic4
     } = req.body
 
     const idAnn = await Announcement.findOne({nameAnnouncement: nameAnnouncement}, {_id:1})
@@ -38,6 +77,11 @@ const RegisterToAnnouncement = async (req, res) => {
 
     const idStu = await Person.findOne({documentPerson: documentPerson}, {_id:1})
     //console.log(idStu)
+
+    // // THIS TRY TO SEND ID'S STUDENTS INTO ANNOUNCEMENT MODEL
+    // Announcement.updateOne({_id: idAnn}), {
+    //     ...students: [idStu]
+    // }
     
     const NewQuestionaryOK = new Questionary({
         idAnnouncement: idAnn,
@@ -56,7 +100,10 @@ const RegisterToAnnouncement = async (req, res) => {
         q12_sena: sena,
         q13_availability: availability,
         q14_emailPerson: form_emailPerson,
-        q15_phone: phone 
+        q15_phone: phone,
+        q16_phoneTwo: phoneTwo,
+        q17_sisben: sisben,
+        
     })
 
     NewQuestionaryOK.save();
@@ -69,9 +116,9 @@ const RegisterToAnnouncement = async (req, res) => {
     var form_ScoreMotivation = 0
     var form_ScoreLogic = 0
     var form_ScoreTotal = 0
-    var form_statusAnnouncement = "ABLED"
+    var form_statusAnnouncement = "ENABLED"
 
-    if (NewQuestionaryOK.q11_course == "11") {
+    if (NewQuestionaryOK.q11_course == "11°") {
         form_ScoreProfile += 1
     }
     if (NewQuestionaryOK.q12_sena == "NO") {
