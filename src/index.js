@@ -2,11 +2,6 @@ require('dotenv').config();
 const PersonRoutes = require("./routes/v1/PersonsRoutes");
 const express =require('express');
 const mongoose = require('mongoose'); 
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const cors = require("cors");
 //const corsOptions = require("./config/corsConfig").default;
 
 mongoose.set('strictQuery', true);
