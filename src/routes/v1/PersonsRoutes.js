@@ -9,6 +9,8 @@ const ScoreAnnouncement = require("../../controllers/HandleDataController");
 
 const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
+const NewAnnouncement = require('../../controllers/NewAnnouncementController');
+const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController")
 
 
 
@@ -33,7 +35,12 @@ router
   .post("/signUp", SignUp.SignUp) //Custom route for RegisterController -AP
   .post("/newAdmin", NewAdmin.NewAdmin)
   .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
-    
+  .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
+  
+  .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
+  
   .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
-   
+
+  
+  
 module.exports = router;

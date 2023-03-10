@@ -46,4 +46,3 @@ async function deleteAnnouncement(req, res) {
 
   
   module.exports = {deleteAnnouncement};
-    
