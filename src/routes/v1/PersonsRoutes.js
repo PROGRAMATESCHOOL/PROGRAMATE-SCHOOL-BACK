@@ -17,6 +17,7 @@ router
     .post("/signUp", SignUp.SignUp) //Custom route for RegisterController -AP
     .post("/newAdmin", NewAdmin.NewAdmin)
     .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
+    .post("/addNewAnnouncement", NewAnnouncement.AddAnnouncement) //Custom routr for create annuncement
 
     .get("/persons", GetAllPersonsController.getAllPersons) //Custom route used to get all persons
     .get("/getAdmin", AdminListController.getAdminList) // Custom route used to get all Admins

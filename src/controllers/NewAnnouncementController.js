@@ -3,7 +3,7 @@ const personServices = require("../services/PersonServices") ;
 const Announcement = require("../models/announcementsModel");
 const ObjectId = require("mongoose").ObjectId
 
-const addAnnouncement = async (req, res) => {
+const AddAnnouncement = async (req, res) => {
   //const documentPerson = req.params.documentPerson
   const {
       documentPerson,
@@ -48,5 +48,5 @@ const addAnnouncement = async (req, res) => {
 
 
 module.exports = {
-    addAnnouncement,
+    AddAnnouncement,
 }
