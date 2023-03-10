@@ -22,7 +22,7 @@ const addAnnouncement = async (req, res) => {
   //.then(createdBySuperAdmin => console.log(createdBySuperAdmin))
   //console.log(ID)
 
-  const createdBySuperAdmin = await Person.findOne({where: {id: Person._id}})
+  const createdBySuperAdmin = await Person.findOne({where: {id: Person._id}}, {_id: 1})
   console.log(createdBySuperAdmin.id)
   //res.send(createdBySuperAdmin)
 
