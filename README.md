@@ -71,9 +71,9 @@ This app is aimed to be for testing only and is NOT meant to be deployed to prod
 
 ## Authors✒
 
-- [@27Paola]
-- [@adrianapico]
-- [@Alexis1326]
-- [@H4r0l]
-- [@Ladyriv]
-- [@manuel101284]
+- [@27Paola]-[https://github.com/27Paola]
+- [@adrianapico]-[https://github.com/adrianapico]
+- [@Alexis1326]-[https://github.com/Alexis1326]
+- [@H4r0l]-[https://github.com/H4r0l]
+- [@Ladyriv]-[https://github.com/Ladyriv]
+- [@manuel101284]-[https://github.com/manuel101284]

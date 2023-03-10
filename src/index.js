@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 //const corsOptions = require("./config/corsConfig").default;
 
+mongoose.set('strictQuery', true);
 const PersonRoutes = require("./routes/v1/PersonsRoutes");
 const { corsOptions } = require("./config/corsConfig");
 
