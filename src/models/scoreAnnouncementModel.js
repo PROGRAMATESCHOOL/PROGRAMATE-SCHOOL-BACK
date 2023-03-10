@@ -36,6 +36,10 @@ const ScoreAnnouncementSchema = new mongoose.Schema({
     ScoreTotal: {
         type: Number,
         require: false
+    },
+    stateAnnouncementStudent: {
+        type: Number,
+        require: false
     }
 })
 

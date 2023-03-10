@@ -22,7 +22,8 @@ const PersonSchema = new mongoose.Schema({
     },
     documentPerson: {
         type: String,
-        require: true
+        require: true,
+        unique: true
     },
 
     emailPerson: {
