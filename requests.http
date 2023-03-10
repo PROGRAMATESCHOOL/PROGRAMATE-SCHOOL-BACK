@@ -11,10 +11,17 @@ GET http://localhost:3000/api/getUsers HTTP/1.1
 POST http://localhost:3000/api/login HTTP/1.1
 Content-Type: application/json
 
+###
+GET http://localhost:3000/api/getUsers HTTP/1.1
+
 {
-    "emailPerson": "Test_3@gmail.com",
-    "passwordPerson": "Manuelg2pcfay0leq5q092Castellanos"
+    "emailPerson": "leidy.riveraf@outlook.com",
+    "passwordPerson": "lr*10006"
 }
+###
+POST http://localhost:3000/api/addNewAnnouncement HTTP/1.1
+Content-Type: application/json
+
 
 ### // CREATE NEW STUDENT AND SEND EMAIL OF VERIFICATION
 POST http://localhost:3000/api/signUp HTTP/1.1
