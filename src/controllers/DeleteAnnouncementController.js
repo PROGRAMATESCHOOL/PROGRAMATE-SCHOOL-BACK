@@ -5,9 +5,11 @@ const Announcement = require('../models/announcementsModel');
 
 
 async function deleteAnnouncement(req, res) {
-  const { nameAnnouncement } = req.params; 
+  const { nameAnnouncement } = req.params;
+  const AnnouncementID = await Announcement.findOne({nameAnnouncement:nameAnnouncement},{_id:1});
+  console.log(AnnouncementID)
   try {
-    const nameAnnouncement = await Announcement.findById({where: {id: Announcement._id}});
+//    const nameAnnouncement = await Announcement.findOne({where: {id: Announcement._id}});
     if (!nameAnnouncement) {
       return res.status(404).json({ message: 'Call not found' }); 
     }
@@ -18,32 +20,6 @@ async function deleteAnnouncement(req, res) {
     return res.status(500).json({ message: 'An error occurred while deleting the call' }); 
   }
 }
-
-
-//class deleteAnnouncement{
-
-//    async deleteCall(req, res, next) {
-//      try {
-//        const callId = req.params.id;
-        
-//        const call = await Announcement.findById(callId);
-//        if (!call) {
-//          return res.status(404).json({ message: 'Call not found' });
-//        }
-        
-//        if (call.creator.toString() !== req.user.id) {
-//          return res.status(401).json({ message: 'User not authorized' });
-//        }
-        
-//        await call.remove();
-        
-//        res.json({ message: 'Call deleted' });
-//      } catch (error) {
-//        next(error);
-//      }
-//    }
-//  }
-
   
-  module.exports = {deleteAnnouncement};
+ module.exports = {deleteAnnouncement};
     

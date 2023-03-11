@@ -4,7 +4,7 @@ const GetAllPersonsController = require("../../controllers/GetAllPersonsControll
 const SignUp =require ('../../controllers/RegisterController');
 const NewAdmin = require('../../controllers/NewAdminController')
 const AdminListController = require("../../controllers/AdminListController");
-const StudentListController = require("../../controllers/StudentListController") 
+const StudentListController = require("../../controllers/StudentListController"); 
 const ScoreAnnouncement = require("../../controllers/HandleDataController");
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
 
