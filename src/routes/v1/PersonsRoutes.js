@@ -10,7 +10,6 @@ const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementControll
 const NewAnnouncement = require('../../controllers/NewAnnouncementController');
 const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController")
 
-
 //This is an inicial version of the router, might change due to Functionality & new features
 
 router
@@ -27,7 +26,7 @@ router
   .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
   
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
-  
+
   .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
 
   

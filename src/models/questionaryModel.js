@@ -111,7 +111,7 @@ const QuestionarySchema = new mongoose.Schema({
         require: false
     },
     q26_stratum: {
-        type: String,
+        type: Number,
         require: false
     },
     q27_nameGuardian: {
@@ -131,7 +131,7 @@ const QuestionarySchema = new mongoose.Schema({
         require: false
     },
     q31_emailGuardian: {
-        type: Number,
+        type: String,
         require: false
     },
     q32_phoneGuardian: {
