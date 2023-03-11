@@ -132,6 +132,11 @@ Content-Type: application/json
 
 ### // THIS DELETE ONE ANNOUNCEMENT
 DELETE http://localhost:3000/api/deleteannouncement HTTP/1.1
+Content-Type: application/json
+
+{
+    "nameAnnouncement": "Convocatoria 2026"
+}
 
 ### // THIS REGISTER IN ONE ANNOUNCEMENT
 POST http://localhost:3000/api/registertoannouncement HTTP/1.1

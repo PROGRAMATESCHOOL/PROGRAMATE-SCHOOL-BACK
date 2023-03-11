@@ -8,7 +8,7 @@ const ScoreAnnouncementSchema = new mongoose.Schema({
     },
     nameAnnouncement: {
         type: String,
-        ref: 'AnnouncementSchema'
+        ref: 'AnnouncementSchema' // Referenced from announcementModel
     },
     idStudent: {
         type: Schema.Types.ObjectId,
