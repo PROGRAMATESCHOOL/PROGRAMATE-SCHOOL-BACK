@@ -9,10 +9,7 @@ const ScoreAnnouncement = require("../../controllers/HandleDataController");
 
 const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
-const NewAnnouncement = require('../../controllers/NewAnnouncementController');
 const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController")
-
-
 
 //This is an inicial version of the router, might change due to Functionality & new features
 

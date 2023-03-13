@@ -22,29 +22,30 @@ const ScoreAnnouncementSchema = new mongoose.Schema({
         type: String,
         ref: 'PersonSchema' //Referenced from personModel
     },
+        // THE NEXT FIELDS SHOWS US THS STUDENT'S SCORE
     ScoreProfile: {
         type: Number,
-        require: false
+        ref: 'Questionarychema'
     },
     ScoreVocation: {
         type: Number,
-        require: false
+        ref: 'Questionarychema'
     },
     ScoreMotivation: {
         type: Number,
-        require: false
+        ref: 'Questionarychema'
     },
     ScoreLogic: {
         type: Number,
-        require: false
+        ref: 'Questionarychema'
     },
     ScoreTotal: {
         type: Number,
-        require: false
+        ref: 'Questionarychema'
     },
     stateAnnouncementStudent: {
-        type: Number,
-        require: false
+        type: String,
+        ref: 'Questionarychema'
     }
 })
 

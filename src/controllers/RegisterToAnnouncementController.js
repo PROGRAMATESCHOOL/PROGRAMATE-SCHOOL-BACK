@@ -2,14 +2,22 @@ const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const Announcement = require("../models/announcementsModel");
 const Questionary = require("../models/questionaryModel");
+const ScoreForm = require("../models/scoreAnnouncementModel");
+const bcrypt = require("bcrypt");
+
+//let dPerson = req.body.documentPerson
+//let nAnnouncement = req.body.nameAnnouncement
 
 const RegisterToAnnouncement = async (req, res) => {
-    const {
-        documentPerson,
-        nameAnnouncement
-    } = req.body
+    // const {
+    //     documentPerson,
+    //     nameAnnouncement
+    // } = req.body
 
-    const StudentRegistered = await Person.findOne({documentPerson}).exec()
+    const documentPerson = "70800900"
+    const nameAnnouncement = "Convocatoria 2023"
+
+    const StudentRegistered = await Person.findOne({documentPerson: documentPerson}).exec()
 
     //res.send(StudentRegistered)
     //console.log(StudentRegistered)
@@ -138,12 +146,8 @@ const RegisterToAnnouncement = async (req, res) => {
         q50_logic1: logic1,
         q51_logic2: logic2,
         q52_logic3: logic3,
-        q54_logic4: logic4
+        q53_logic4: logic4
     })
-
-    NewQuestionaryOK.save();
-    console.log("Se ha registrado a la convocatoria con exito")
-    res.send(NewQuestionaryOK)
 
     // THE NEXT CALCULATES SCORES BY THE STUDENT
     var form_ScoreProfile = 0
@@ -151,7 +155,7 @@ const RegisterToAnnouncement = async (req, res) => {
     var form_ScoreMotivation = 0
     var form_ScoreLogic = 0
     var form_ScoreTotal = 0
-    var form_statusAnnouncement = "ENABLED"
+    var form_stateAnnouncementStudent = "ENABLED"
 
     // SCORE FOR SECTION PROFILE
     if (NewQuestionaryOK.q7_gender == "Femenino") {
@@ -163,12 +167,12 @@ const RegisterToAnnouncement = async (req, res) => {
     if (NewQuestionaryOK.q12_sena == "NO") {
         form_ScoreProfile += 1
     } else {
-            form_statusAnnouncement = "DISABLED"
+            form_stateAnnouncementStudent = "DISABLED"
         }
     if (NewQuestionaryOK.q13_availability == "SI") {
         form_ScoreProfile += 1
     } else {
-            form_statusAnnouncement = "DISABLED"
+            form_stateAnnouncementStudent= "DISABLED"
         }
     if ( (NewQuestionaryOK.q26_stratum <= 3) ) {
         form_ScoreProfile +=1
@@ -176,7 +180,7 @@ const RegisterToAnnouncement = async (req, res) => {
     if ( NewQuestionaryOK.q37_economic != "Desempleado/a" ) {
         form_ScoreProfile += 1
     } else {
-            form_statusAnnouncement = "DISABLED"
+            form_stateAnnouncementStudent = "DISABLED"
     }
     //console.log(form_ScoreProfile)
     
@@ -286,13 +290,30 @@ const RegisterToAnnouncement = async (req, res) => {
     form_ScoreTotal = (form_ScoreProfile*0.40) + (form_ScoreVocation*0.30) + (form_ScoreMotivation*0.15) + (form_ScoreLogic*0.15)
     console.log("Puntaje Total: ",+form_ScoreTotal)
 
-    if (form_statusAnnouncement == "DISABLED" || (fomr_ScoreTotal < 2.5)){
-        form_statusAnnouncement = "DISABLED"
+    if (form_stateAnnouncementStudent == "DISABLED" || (form_ScoreTotal < 2.5)){
+        form_stateAnnouncementStudent = "DISABLED"
     }
     
-    if ((form_statusAnnouncement == "ENABLED ") && (form_ScoreTotal >= 3.0)) {
-        form_statusAnnouncement = "ENABLED"
+    if ((form_stateAnnouncementStudent == "ENABLED ") && (form_ScoreTotal >= 3.0)) {
+        form_stateAnnouncementStudent = "ENABLED"
     }
+    
+    NewQuestionaryOK.save();
+    console.log("Se ha registrado a la convocatoria con exito")
+    res.send(NewQuestionaryOK)
+
+    Questionary.updateOne({documentPerson, nameAnnouncement},
+        {
+            $set:{
+                ScoreProfile: form_ScoreProfile,
+                ScoreVocation: form_ScoreVocation,
+                ScoreMotivation: form_ScoreMotivation,
+                ScoreLogic: form_ScoreLogic,
+                ScoreTotal: form_ScoreTotal,
+                stateAnnouncementStudent: form_stateAnnouncementStudent
+            }
+        }
+    )
     
 }
 

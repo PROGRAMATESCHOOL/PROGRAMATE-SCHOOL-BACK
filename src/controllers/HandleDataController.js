@@ -8,18 +8,18 @@ const Announcement = require("../models/announcementsModel");
 const scoreForm = async (req, res) => {
   const {
     documentPerson,
-    nameAnnouncement, // This fileld will be export to the object ScoreForm
+    nameAnnouncement, // This field will be export to the object ScoreForm
   } = req.body
 
     const StundentReg = await Person.findOne({ documentPerson }).exec();
 
     const AnnouncementReg = await Announcement.findOne({nameAnnouncement}).exec();
 
-    const StudentQuestionary = await Questionary.findone({documentPerson, nameAnnouncement}).exec();
+    const StudentQuestionary = await Questionary.findOne({ documentPerson }).exec();
 
     const idAnnouncement = AnnouncementReg._id
     // constt nameannouncement = already exist
-    const idStudent = Person._id
+    const idStudent = StundentReg._id
     const name1Student = StundentReg.name1Person
     const lastname1Student = StundentReg.lastname1Person
     const ScoreProfile = StudentQuestionary.form_ScoreProfile
@@ -27,11 +27,12 @@ const scoreForm = async (req, res) => {
     const ScoreMotivation = StudentQuestionary.form_ScoreMotivation
     const ScoreLogic = StudentQuestionary.form_ScoreLogic
     const ScoreTotal = StudentQuestionary.form_ScoreTotal
-    const stateAnnouncementStudent = StudentQuestionary.form_statusAnnouncement
+    const stateAnnouncementStudent = StudentQuestionary.form_stateAnnouncementStudent
 
     const NewScoreStudent = new Score({
       idAnnouncement: idAnnouncement,
       nameAnnouncement: nameAnnouncement,
+      idStudent: idStudent,
       name1Student: name1Student,
       lastname1Student: lastname1Student,
       ScoreProfile: ScoreProfile,

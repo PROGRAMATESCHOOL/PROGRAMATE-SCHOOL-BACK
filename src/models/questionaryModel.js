@@ -159,7 +159,7 @@ const QuestionarySchema = new mongoose.Schema({
         require: false
     },
     q38_family: {
-        type: Number,
+        type: String,
         require: false
     },
     q39_computer: {
@@ -221,8 +221,31 @@ const QuestionarySchema = new mongoose.Schema({
     q53_logic4: {
         type: String,
         require: false
+    },
+    ScoreProfile: {
+        type: Number,
+        require: false
+    },
+    ScoreVocation: {
+        type: Number,
+        require: false
+    },
+    ScoreMotivation: {
+        type: Number,
+        require: false
+    },
+    ScoreLogic: {
+        type: Number,
+        require: false
+    },
+    ScoreTotal: {
+        type: Number,
+        require: false
+    },
+    stateAnnouncementStudent: {
+        type: String,
+        require: false
     }
-
 })
 
 module.exports = mongoose.model("questionaryModel", QuestionarySchema);
