@@ -6,17 +6,19 @@ const loginPerson = async (req, res) => {
   const { emailPerson, passwordPerson, profilePerson } = req.body;
 
   const existingUserByEmail = await Person.findOne({ emailPerson }).exec();
+  
+  const checkPassword = await Person.findOne({ passwordPerson }).exec();
+
   if (!existingUserByEmail) {
     //alert("Correo no registrado. Por favor registrese si es estudiante, si es administrador, contacte a la mesa de ayuda")
     return res.status(401).send({ errors: ["Usuario no encontrado"] });
-  }
-
-  const checkPassword = await Person.findOne({ passwordPerson }).exec();
+  } 
 
   if (!checkPassword) {
     //window.alert("Contraseña errónea. Inténtelo de nuevo")
     return res.status(403).send({ errors: ["Contraseña incorrecta"] });
-  } else {
+  }
+  if (existingUserByEmail && checkPassword){
     res.status(200).json({
       Message: "login successful",
     }); //Success status created for password

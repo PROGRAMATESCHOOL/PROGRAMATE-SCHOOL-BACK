@@ -14,7 +14,7 @@ const RegisterToAnnouncement = async (req, res) => {
     //     nameAnnouncement
     // } = req.body
 
-    const documentPerson = "70800900"
+    const documentPerson = "123"
     const nameAnnouncement = "Convocatoria 2023"
 
     const StudentRegistered = await Person.findOne({documentPerson: documentPerson}).exec()
@@ -146,7 +146,14 @@ const RegisterToAnnouncement = async (req, res) => {
         q50_logic1: logic1,
         q51_logic2: logic2,
         q52_logic3: logic3,
-        q53_logic4: logic4
+        q53_logic4: logic4,
+        ScoreProfile: 0,
+        ScoreVocation: 0,
+        ScoreMotivation: 0,
+        ScoreLogic: 0,
+        ScoreTotal: 0,
+        stateAnnouncementStudent: "ENABLED"
+
     })
 
     // THE NEXT CALCULATES SCORES BY THE STUDENT
@@ -298,24 +305,34 @@ const RegisterToAnnouncement = async (req, res) => {
         form_stateAnnouncementStudent = "ENABLED"
     }
     
+    
+
+    const idRegister = NewQuestionaryOK._id
+    console.log(idRegister)
+
+    Questionary.findOneAndUpdate({
+        _id: idRegister
+    },
+    {
+        $set: {
+            ScoreProfile: form_ScoreProfile,
+            ScoreVocation: form_ScoreVocation,
+            ScoreMotivation: form_ScoreMotivation,
+            ScoreLogic: form_ScoreLogic,
+            ScoreTotal: form_ScoreTotal,
+            stateAnnouncementStudent: form_stateAnnouncementStudent
+        }
+    })
+
     NewQuestionaryOK.save();
     console.log("Se ha registrado a la convocatoria con exito")
     res.send(NewQuestionaryOK)
-
-    Questionary.updateOne({documentPerson, nameAnnouncement},
-        {
-            $set:{
-                ScoreProfile: form_ScoreProfile,
-                ScoreVocation: form_ScoreVocation,
-                ScoreMotivation: form_ScoreMotivation,
-                ScoreLogic: form_ScoreLogic,
-                ScoreTotal: form_ScoreTotal,
-                stateAnnouncementStudent: form_stateAnnouncementStudent
-            }
-        }
-    )
-    
 }
+
+
+    
+    
+
 
 module.exports = {
     RegisterToAnnouncement
