@@ -17,13 +17,7 @@ const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementCo
 //This is an inicial version of the router, might change due to Functionality & new features
 
 router
-
-    .post("/login", LoginController.loginPerson) //Custom route for Log In 
-    .post("/signUp", SignUp.SignUp) //Custom route for RegisterController -AP
-    .post("/newAdmin", NewAdmin.NewAdmin)
-    .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
-    .post("/addNewAnnouncement", NewAnnouncement.AddAnnouncement) //Custom routr for create annuncement
-
+  
   .get("/persons", GetAllPersonsController.getAllPersons) //Custom route used to get all persons
   .get("/getAdmin", AdminListController.getAdminList) // Custom route used to get all Admins
   .get("/getUsers", StudentListController.getAllStudents) //Custom route used to get all students
@@ -36,7 +30,6 @@ router
   .post("/newAdmin", NewAdmin.NewAdmin)
   .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
   .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
-  
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
   
   .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
