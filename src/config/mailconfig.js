@@ -25,16 +25,12 @@ const sendEmail = async (emailPerson, subject, html ) => {
             from: ` ProgramateSchool <$( process.env.userEmail )>` ,// sender address
             to: emailPerson, // list of receivers
             subject,// Subject line
-            // text: "Holaaaa, vamos a verificar tu correo", // plain text body
             html,
         });
 
     } catch (error) {
         console.log('Algo no va bien con el Email', error);
-        // res
-        // .status (401)
-        // .send({status: 'Error con el email', data:sendEmail})     
-          
+        
     }     
 }
 
