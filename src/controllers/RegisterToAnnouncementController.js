@@ -241,6 +241,24 @@ const RegisterToAnnouncement = async (req, res) => {
         form_stateAnnouncementStudent = "ENABLED"
     }
 
+    // THIS SECTION VALIDATE THE STUDENT AND GUARDIAN'S INFORMATION
+    let validations = false
+
+    while (validations == false){
+        if (emailPerson == emailGuardian){
+            alert("Este email ya está registrado por un estudiante. Por favor ingrese un correo diferente")
+            // SEND A CODE TO FRONT 
+            
+            if (phone == phoneGuardian){
+                alert("Este teléfono es el mismo del estudiante. Por favor ingrese un teléfono diferente")
+                // SEND A CODE TO FRONT
+            }
+        }
+        else{
+            validations = true
+        }
+    }
+
     const NewQuestionaryOK = new Questionary({
         idAnnouncement: idAnn,
         idStudent: idStu,
@@ -312,22 +330,7 @@ const RegisterToAnnouncement = async (req, res) => {
         
     const idRegister = NewQuestionaryOK._id
     console.log(idRegister)
-    
-    // Questionary.findOneAndUpdate({
-    //     _id: idRegister
-    // },
-    // {
-    //     $set: {
-    //         ScoreProfile: form_ScoreProfile,
-    //         ScoreVocation: form_ScoreVocation,
-    //         ScoreMotivation: form_ScoreMotivation,
-    //         ScoreLogic: form_ScoreLogic,
-    //         ScoreTotal: form_ScoreTotal,
-    //         stateAnnouncementStudent: form_stateAnnouncementStudent
-    //     }
-    // })
 
-    
 }
 
 module.exports = {
