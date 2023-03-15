@@ -91,6 +91,156 @@ const RegisterToAnnouncement = async (req, res) => {
     //     ...students: [idStu]
     // }
     
+
+     // THE NEXT CALCULATES SCORES BY THE STUDENT
+    var form_ScoreProfile = 0
+    var form_ScoreVocation = 0
+    var form_ScoreMotivation = 0
+    var form_ScoreLogic = 0
+    var form_ScoreTotal = 0
+    var form_stateAnnouncementStudent = "ENABLED"
+
+    // SCORE FOR SECTION PROFILE
+    if (gender == "Femenino") {
+        form_ScoreProfile += 1
+    }
+    if (course == "11°") {
+        form_ScoreProfile += 1
+    }
+    if (sena == "NO") {
+        form_ScoreProfile += 1
+    } else {
+            form_stateAnnouncementStudent = "DISABLED"
+        }
+    if (availability == "SI") {
+        form_ScoreProfile += 1
+    } else {
+            form_stateAnnouncementStudent= "DISABLED"
+        }
+    if ( (stratum <= 3) ) {
+        form_ScoreProfile +=1
+    }
+    if ( economic != "Desempleado/a" ) {
+        form_ScoreProfile += 1
+    } else {
+            form_stateAnnouncementStudent = "DISABLED"
+    }
+    //console.log(form_ScoreProfile)
+    
+    if (form_ScoreProfile < 3) {
+        form_ScoreProfile = 1
+    }
+    if (form_ScoreProfile == 4){
+        form_ScoreProfile = 3
+    }
+    if (form_ScoreProfile == 5){
+        form_ScoreProfile = 4
+    }
+    if (form_ScoreProfile == 6){
+        form_ScoreProfile = 5
+    }
+    console.log("Puntaje Perfil: ", +form_ScoreProfile)
+    //res.send({message: "Puntaje Perfil: "+form_ScoreProfile})
+    
+
+    // SCORE FOR SECTION VOCATION
+    if (interests == "D" ) {
+        form_ScoreVocation += 1
+    }
+    if (activity == "C" ){
+        form_ScoreVocation += 1
+    }
+    if (activity == "A" ){
+        form_ScoreVocation += 1
+    }
+    if (activity == "B" ){
+        form_ScoreVocation += 1
+    }
+    if (activity == "C" ){
+        form_ScoreVocation += 1
+    }
+    //console.log(form_ScoreVocation)
+    if (form_ScoreVocation <3){
+        form_ScoreVocation = 1
+        console.log("Su vocación está enfocada en otra área diferente a la tecnología")
+        // form_statusAnnouncement = "DISABLED"
+    }
+    if (form_ScoreVocation == 5){
+        console.log("Cumple con todos los requisitos")
+    }
+    console.log("Puntaje Vocación: ",+form_ScoreVocation)
+    //res.send({message: "Puntaje Vocación: "+form_ScoreVocation })
+
+
+    // SCORE FOR SECTION MOTIVATION
+    if (why == "A" ){
+        form_ScoreMotivation += 1
+    }
+    if (methodology == "B" ){
+        form_ScoreMotivation += 1
+    }
+    if (want == "A") {
+        form_ScoreMotivation += 1
+    }
+    //console.log(form_ScoreMotivation)
+    if (form_ScoreMotivation == 1) {
+        form_ScoreMotivation = 1
+        console.log("No sabe nada sobre la escuela o porqué quiere ser parte")
+        // form_statusAnnouncement = "DISABLED"
+    }
+    if (form_ScoreMotivation == 2) {
+        form_ScoreMotivation = 3
+        console.log("Conoce algo de la escuela y sus razones están alineadas con lo que ofrece la escuela")
+    }
+    if (form_ScoreMotivation == 3) {
+        form_ScoreMotivation = 5
+        console.log("Explica con detalles qué es la escuela y sus razones están alineadas con lo que ofrecemos")
+    }
+    console.log("Puntaje Motivación: ",+form_ScoreMotivation)
+    //res.send({message: "Puntaje Profile: "+form_ScoreMotivation })
+
+
+    // SCORE FOR SECTION LOGIC
+    if (logic1 == "El orden de llegada es B, C, D, A" ){
+        form_ScoreLogic += 1
+    }
+    if (logic2 == "Seis tiburones no son completamente ciegos y tres son completamente ciego" ){
+        form_ScoreLogic += 1
+    }
+    if (logic3 == "E") {
+        form_ScoreLogic += 1
+    }
+    if (logic4 == "D") {
+        form_ScoreLogic += 1
+    }
+    //console.log(form_ScoreLogic)
+    if (form_ScoreLogic == 1) {
+        form_ScoreLogic = 1
+        console.log("Su vocación está enfocada en otra área diferente a la tecnología")
+        // form_statusAnnouncement = "DISABLED"
+    }
+    if (form_ScoreLogic == 2) {
+        form_ScoreLogic = 3
+    }
+    if (form_ScoreLogic == 3) {
+        form_ScoreLogic = 5
+        console.log("Cumple con todos los requisitos")
+    }
+    console.log("Puntaje Lógica: ",+form_ScoreLogic)
+    //res.send({message: "Puntaje Profile: "+form_ScoreLogic })
+
+    // TOTAL SCORE
+    form_ScoreTotal = (form_ScoreProfile*0.40) + (form_ScoreVocation*0.30) + (form_ScoreMotivation*0.15) + (form_ScoreLogic*0.15)
+    console.log("Puntaje Total: ",+form_ScoreTotal)
+
+    if (form_stateAnnouncementStudent == "DISABLED" || (form_ScoreTotal < 2.5)){
+        form_stateAnnouncementStudent = "DISABLED"
+    }
+    
+    if ((form_stateAnnouncementStudent == "ENABLED ") && (form_ScoreTotal >= 3.0)) {
+        form_stateAnnouncementStudent = "ENABLED"
+    }
+
     const NewQuestionaryOK = new Questionary({
         idAnnouncement: idAnn,
         idStudent: idStu,
@@ -147,192 +297,38 @@ const RegisterToAnnouncement = async (req, res) => {
         q51_logic2: logic2,
         q52_logic3: logic3,
         q53_logic4: logic4,
-        ScoreProfile: 0,
-        ScoreVocation: 0,
-        ScoreMotivation: 0,
-        ScoreLogic: 0,
-        ScoreTotal: 0,
+        ScoreProfile: form_ScoreProfile,
+        ScoreVocation: form_ScoreVocation,
+        ScoreMotivation: form_ScoreMotivation,
+        ScoreLogic: form_ScoreLogic,
+        ScoreTotal: form_ScoreTotal,
         stateAnnouncementStudent: "ENABLED"
 
-    })
-
-    // THE NEXT CALCULATES SCORES BY THE STUDENT
-    var form_ScoreProfile = 0
-    var form_ScoreVocation = 0
-    var form_ScoreMotivation = 0
-    var form_ScoreLogic = 0
-    var form_ScoreTotal = 0
-    var form_stateAnnouncementStudent = "ENABLED"
-
-    // SCORE FOR SECTION PROFILE
-    if (NewQuestionaryOK.q7_gender == "Femenino") {
-        form_ScoreProfile += 1
-    }
-    if (NewQuestionaryOK.q11_course == "11°") {
-        form_ScoreProfile += 1
-    }
-    if (NewQuestionaryOK.q12_sena == "NO") {
-        form_ScoreProfile += 1
-    } else {
-            form_stateAnnouncementStudent = "DISABLED"
-        }
-    if (NewQuestionaryOK.q13_availability == "SI") {
-        form_ScoreProfile += 1
-    } else {
-            form_stateAnnouncementStudent= "DISABLED"
-        }
-    if ( (NewQuestionaryOK.q26_stratum <= 3) ) {
-        form_ScoreProfile +=1
-    }
-    if ( NewQuestionaryOK.q37_economic != "Desempleado/a" ) {
-        form_ScoreProfile += 1
-    } else {
-            form_stateAnnouncementStudent = "DISABLED"
-    }
-    //console.log(form_ScoreProfile)
-    
-    if (form_ScoreProfile < 3) {
-        form_ScoreProfile = 1
-    }
-    if (form_ScoreProfile == 4){
-        form_ScoreProfile = 3
-    }
-    if (form_ScoreProfile == 5){
-        form_ScoreProfile = 4
-    }
-    if (form_ScoreProfile == 6){
-        form_ScoreProfile = 5
-    }
-    console.log("Puntaje Perfil: ", +form_ScoreProfile)
-    //res.send({message: "Puntaje Perfil: "+form_ScoreProfile})
-    
-
-    // SCORE FOR SECTION VOCATION
-    if (NewQuestionaryOK.q41_interests == "D" ) {
-        form_ScoreVocation += 1
-    }
-    if (NewQuestionaryOK.q42_activity == "C" ){
-        form_ScoreVocation += 1
-    }
-    if (NewQuestionaryOK.q43_activity == "A" ){
-        form_ScoreVocation += 1
-    }
-    if (NewQuestionaryOK.q44_activity == "B" ){
-        form_ScoreVocation += 1
-    }
-    if (NewQuestionaryOK.q45_activity == "C" ){
-        form_ScoreVocation += 1
-    }
-    //console.log(form_ScoreVocation)
-    if (form_ScoreVocation <3){
-        form_ScoreVocation = 1
-        console.log("Su vocación está enfocada en otra área diferente a la tecnología")
-        // form_statusAnnouncement = "DISABLED"
-    }
-    if (form_ScoreVocation == 5){
-        console.log("Cumple con todos los requisitos")
-    }
-    console.log("Puntaje Vocación: ",+form_ScoreVocation)
-    //res.send({message: "Puntaje Vocación: "+form_ScoreVocation })
-
-
-    // SCORE FOR SECTION MOTIVATION
-    if (NewQuestionaryOK.q46_why == "A" ){
-        form_ScoreMotivation += 1
-    }
-    if (NewQuestionaryOK.q47_methodology == "B" ){
-        form_ScoreMotivation += 1
-    }
-    if (NewQuestionaryOK.q48_want == "A") {
-        form_ScoreMotivation += 1
-    }
-    //console.log(form_ScoreMotivation)
-    if (form_ScoreMotivation == 1) {
-        form_ScoreMotivation = 1
-        console.log("No sabe nada sobre la escuela o porqué quiere ser parte")
-        // form_statusAnnouncement = "DISABLED"
-    }
-    if (form_ScoreMotivation == 2) {
-        form_ScoreMotivation = 3
-        console.log("Conoce algo de la escuela y sus razones están alineadas con lo que ofrece la escuela")
-    }
-    if (form_ScoreMotivation == 3) {
-        form_ScoreMotivation = 5
-        console.log("Explica con detalles qué es la escuela y sus razones están alineadas con lo que ofrecemos")
-    }
-    console.log("Puntaje Motivación: ",+form_ScoreMotivation)
-    //res.send({message: "Puntaje Profile: "+form_ScoreMotivation })
-
-
-    // SCORE FOR SECTION LOGIC
-    if (NewQuestionaryOK.q50_logic1 == "El orden de llegada es B, C, D, A" ){
-        form_ScoreLogic += 1
-    }
-    if (NewQuestionaryOK.q51_logic2 == "Seis tiburones no son completamente ciegos y tres son completamente ciego" ){
-        form_ScoreLogic += 1
-    }
-    if (NewQuestionaryOK.q52_logic3 == "E") {
-        form_ScoreLogic += 1
-    }
-    if (NewQuestionaryOK.q53_logic4 == "D") {
-        form_ScoreLogic += 1
-    }
-    //console.log(form_ScoreLogic)
-    if (form_ScoreLogic == 1) {
-        form_ScoreLogic = 1
-        console.log("Su vocación está enfocada en otra área diferente a la tecnología")
-        // form_statusAnnouncement = "DISABLED"
-    }
-    if (form_ScoreLogic == 2) {
-        form_ScoreLogic = 3
-    }
-    if (form_ScoreLogic == 3) {
-        form_ScoreLogic = 5
-        console.log("Cumple con todos los requisitos")
-    }
-    console.log("Puntaje Lógica: ",+form_ScoreLogic)
-    //res.send({message: "Puntaje Profile: "+form_ScoreLogic })
-
-    // TOTAL SCORE
-    form_ScoreTotal = (form_ScoreProfile*0.40) + (form_ScoreVocation*0.30) + (form_ScoreMotivation*0.15) + (form_ScoreLogic*0.15)
-    console.log("Puntaje Total: ",+form_ScoreTotal)
-
-    if (form_stateAnnouncementStudent == "DISABLED" || (form_ScoreTotal < 2.5)){
-        form_stateAnnouncementStudent = "DISABLED"
-    }
-    
-    if ((form_stateAnnouncementStudent == "ENABLED ") && (form_ScoreTotal >= 3.0)) {
-        form_stateAnnouncementStudent = "ENABLED"
-    }
-    
-    
-
-    const idRegister = NewQuestionaryOK._id
-    console.log(idRegister)
-
-    Questionary.findOneAndUpdate({
-        _id: idRegister
-    },
-    {
-        $set: {
-            ScoreProfile: form_ScoreProfile,
-            ScoreVocation: form_ScoreVocation,
-            ScoreMotivation: form_ScoreMotivation,
-            ScoreLogic: form_ScoreLogic,
-            ScoreTotal: form_ScoreTotal,
-            stateAnnouncementStudent: form_stateAnnouncementStudent
-        }
     })
 
     NewQuestionaryOK.save();
     console.log("Se ha registrado a la convocatoria con exito")
     res.send(NewQuestionaryOK)
+        
+    const idRegister = NewQuestionaryOK._id
+    console.log(idRegister)
+    
+    // Questionary.findOneAndUpdate({
+    //     _id: idRegister
+    // },
+    // {
+    //     $set: {
+    //         ScoreProfile: form_ScoreProfile,
+    //         ScoreVocation: form_ScoreVocation,
+    //         ScoreMotivation: form_ScoreMotivation,
+    //         ScoreLogic: form_ScoreLogic,
+    //         ScoreTotal: form_ScoreTotal,
+    //         stateAnnouncementStudent: form_stateAnnouncementStudent
+    //     }
+    // })
+
+    
 }
-
-
-    
-    
-
 
 module.exports = {
     RegisterToAnnouncement
