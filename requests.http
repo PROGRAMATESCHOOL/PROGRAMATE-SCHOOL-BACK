@@ -125,13 +125,18 @@ POST http://localhost:3000/api/addnewannouncement HTTP/1.1
 Content-Type: application/json
 
 {
-    "documentPerson": "10004",
-    "nameAnnouncement": "Convocatoria 2026",
+    "documentPerson": "10008",
+    "nameAnnouncement": "Convocatoria 2020",
     "descriptionAnnouncement": "Estudiante grado 11 de colegios aliados"
 }
 
 ### // THIS DELETE ONE ANNOUNCEMENT
 DELETE http://localhost:3000/api/deleteannouncement HTTP/1.1
+Content-Type: application/json
+
+{
+    "nameAnnouncement": "Convocatoria 2026"
+}
 
 ### // THIS REGISTER IN ONE ANNOUNCEMENT
 POST http://localhost:3000/api/registertoannouncement HTTP/1.1
@@ -146,5 +151,52 @@ Content-Type: application/json
     "course": "11°",
     "sena": "NO",
     "availability": "SI",
-    "phone": 3101200300
+    "phone": 3101200300,
+    "phoneTwo": 3001200009,
+    "sisben": "SI",
+    "ethnicGroup": "NO",
+    "nationality": "Colombiana",
+    "disability": "NO",
+    "typeDisability": "Ninguna",
+    "addressStudent": "Carrera 96 J # 23A - 64",
+    "departmentStudent": "Cundinamarca",
+    "rural": "NO",
+    "bogota": "SI",
+    "stratum": "3",
+    "nameGuardian": "Andres Arias",
+    "relationship": "Padre",
+    "documentTypeGuardian": "Cedula de Ciudadanía",
+    "numberIdGuardian": "120001132",
+    "emailGuardian": "andarias@hotmail.com",
+    "phoneGuardian": 3009999999,
+    "phoneGuardianTwo": 3007654321,
+    "addressGuardian": "Carrea 96J # 23A - 64",
+    "departmentGuardian": "Cundinamarca",
+    "educationLevelGuardian": "Bachillerato - completo",
+    "economic": "Empleado tiempo completo",
+    "family": 4,
+    "computer": "SI",
+    "internet": "Si",
+    "interests": "A",
+    "activity": "C",
+    "reportage": "A",
+    "stake": "B",
+    "webMotivation": "B",
+    "why": "A",
+    "methodology": "B",
+    "want": "B",
+    "withdrawal": "Por razones de salud",
+    "logic1": "El orden de llegada es B, C, D, A",
+    "logic2": "Seis tiburones no son completamente ciegos y tres son completamente ciegos",
+    "logic3": "E",
+    "logic4": "D"
+}
+
+### // THIS REGISTER STUDENT'S SCORES IN OTHER DOCUMENT
+POST http://localhost:3000/api/scoreannouncement HTTP/1.1
+Content-Type: application/json
+
+{
+    "documentPerson": "70800900",
+    "nameAnnouncement": "Convocatoria 2030"
 }
