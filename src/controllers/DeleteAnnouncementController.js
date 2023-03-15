@@ -4,9 +4,7 @@ const deleteAnnouncement = async (req, res) => {
   const { nameAnnouncement } = req.body;
   try {
   const Announcementbydelete = await Announcement.findOne({nameAnnouncement:nameAnnouncement}).exec();
-//const AnnouncementID = await Announcement.findOne({nameAnnouncement:nameAnnouncement},{_id:1});
   console.log(Announcementbydelete)
-//    const nameAnnouncement = await Announcement.findOne({where: {id: Announcement._id}});
     if (!Announcementbydelete) {
       return res.status(404).json({ message: 'Call not found' }); 
     }
