@@ -3,7 +3,7 @@
 </div>
 
 <div id="header" >
-<img width="95" align="left" src="https://github.com/MariaHerrera03/ImageBank/blob/main/Progr%C3%A1mateSchool/%C3%A1-amarilla.png?raw=true"/>
+<img width="100" align="left" src="https://github.com/MariaHerrera03/ImageBank/blob/main/Progr%C3%A1mateSchool/%C3%A1-amarilla.png?raw=true"/>
 <h1 align="left">Proyecto Backend <img width="50" aling="left" src="https://media2.giphy.com/media/rsUGLKwgSvSxmq1VrZ/giphy.gif?cid=ecf05e47emzqd55kv774vlrnn4cu7ypz1wk7bpgtz3agd2fr&rid=giphy.gif&ct=s"></h1>
 <p>This is a Backend project which we focused on creating a platform for some students. In this project, we used MongoDB and applied an extension called Mongoose among others. We will see more about this project.</p>
 </div>
