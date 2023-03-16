@@ -197,6 +197,6 @@ POST http://localhost:3000/api/scoreannouncement HTTP/1.1
 Content-Type: application/json
 
 {
-    "documentPerson": "70800900",
+    "documentPerson": "123",
     "nameAnnouncement": "Convocatoria 2030"
 }

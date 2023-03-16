@@ -10,6 +10,9 @@ const AddAnnouncement = async (req, res) => {
         documentPerson,
         nameAnnouncement,
         descriptionAnnouncement,
+        placesAnnouncement,
+        dateStartAnnouncement,
+        dateFinishAnnouncement
     } = req.body
 
     
@@ -24,6 +27,10 @@ const AddAnnouncement = async (req, res) => {
     const NewAnnouncement = new Announcement({
         nameAnnouncement: nameAnnouncement,
         descriptionAnnouncement: descriptionAnnouncement,
+        placesAnnouncement: placesAnnouncement,
+        conditionAnnouncement: true,
+        dateStartAnnouncement: dateStartAnnouncement,
+        dateFinishAnnouncement: dateFinishAnnouncement,
         createdBySuperAdmin: createdBySuperAdmin
     })
 

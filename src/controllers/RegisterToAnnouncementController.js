@@ -2,7 +2,6 @@ const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const Announcement = require("../models/announcementsModel");
 const Questionary = require("../models/questionaryModel");
-const ScoreForm = require("../models/scoreAnnouncementModel");
 const bcrypt = require("bcrypt");
 
 //let dPerson = req.body.documentPerson
@@ -53,6 +52,7 @@ const RegisterToAnnouncement = async (req, res) => {
         stratum,
         nameGuardian,
         relationship,
+        relationshipO,
         documentTypeGuardian,
         numberIdGuardian,
         emailGuardian,
@@ -204,7 +204,7 @@ const RegisterToAnnouncement = async (req, res) => {
     if (logic1 == "El orden de llegada es B, C, D, A" ){
         form_ScoreLogic += 1
     }
-    if (logic2 == "Seis tiburones no son completamente ciegos y tres son completamente ciego" ){
+    if (logic2 == "Seis tiburones no son completamente ciegos y tres son completamente ciegos" ){
         form_ScoreLogic += 1
     }
     if (logic3 == "E") {
@@ -245,7 +245,7 @@ const RegisterToAnnouncement = async (req, res) => {
     let validations = false
 
     while (validations == false){
-        if (emailPerson == emailGuardian){
+        if (form_emailPerson == emailGuardian){
             alert("Este email ya está registrado por un estudiante. Por favor ingrese un correo diferente")
             // SEND A CODE TO FRONT 
             
@@ -290,6 +290,7 @@ const RegisterToAnnouncement = async (req, res) => {
         q26_stratum: stratum,
         q27_nameGuardian: nameGuardian,
         q28_relationship: relationship,
+        q28_1_relationshipO: relationshipO,
         q29_documentTypeGuardian: documentTypeGuardian,
         q30_numberIdGuardian: numberIdGuardian,
         q31_emailGuardian: emailGuardian,
