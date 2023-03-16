@@ -1,53 +1,42 @@
 ### // THIS BRING US ALL PERSONS
 GET http://localhost:3000/api/persons HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDEyMjhjNjgzMzdhMTc1N2NiNzk0OWUiLCJwcm9maWxlUGVyc29uIjoiU3R1ZGVudCIsImlhdCI6MTY3ODkxMTcwMiwiZXhwIjoxNjc4OTE4OTAyfQ.wZM2LUmAzq1BYLschArlVxUJMB0KiKMsfgPjZw7WF7E
+### // THIS IS BY LOGIN FOR ALL PEOPLE
+POST http://localhost:3000/api/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "emailPerson": "default@correo.com",
+    "passwordPerson": "AndreaArias710231941"
+}
+### // THIS CREATE NEW STUDENT
+POST http://localhost:3000/api/auth/signUp HTTP/1.1
+Content-Type: application/json
+
+{
+    "name1Person": "Manuel",
+    "lastname1Person": "Ricardo",
+    "documentPerson": "19733791",
+    "emailPerson": "default1@correo.com",
+    "profilePerson": "Admin",
+    "agePerson": 17,
+    "institutionPerson": "Colegio Integrada La Candelaria",
+    "statusPerson": "VERIFIED"
+}
 
 ### // THIS BRING US ADMINS FROM PERSONS
 GET http://localhost:3000/api/getAdmin HTTP/1.1
 
-### // THIS BRING US STUDENTS FROM PERSONS
-GET http://localhost:3000/api/getUsers HTTP/1.1
-
-### // THIS IS BY LOGIN FOR ALL PEOPLE
-POST http://localhost:3000/api/login HTTP/1.1
-Content-Type: application/json
 
 ###
 GET http://localhost:3000/api/getUsers HTTP/1.1
 
-{
-    "emailPerson": "leidy.riveraf@outlook.com",
-    "passwordPerson": "lr*10006"
-}
 ###
 POST http://localhost:3000/api/addNewAnnouncement HTTP/1.1
 Content-Type: application/json
 
 
-### // CREATE NEW STUDENT AND SEND EMAIL OF VERIFICATION
-POST http://localhost:3000/api/signUp HTTP/1.1
-Content-Type: application/json
-
-{
-    "name1Person": "Adriana",
-    "lastname1Person": "Prueba",
-    "documentPerson": 8233392,
-    "emailPerson": "namab89409@gpipes.com",
-    "profilePerson": 3,
-    "institutionPerson": "Colegio 1",
-    "agePerson": 16
-}
-
-### //  CREATE NEW ADMINS
-POST http://localhost:3000/api/newAdmin HTTP/1.1
-Content-Type: application/json
-
-{
-    "name1Person": "Manuel",
-    "lastname1Person": "Castellanos",
-    "documentPerson": 12345678,
-    "emailPerson": "Test_3@gmail.com",
-    "agePerson": 16
-}
 
 ###  // CREATE NEW ADMINS
 POST http://localhost:3000/api/newAdmin HTTP/1.1
@@ -61,50 +50,8 @@ Content-Type: application/json
     "agePerson": 16
 }
 
-### // THIS CREATE NEW STUDENT
-POST http://localhost:3000/api/signUp HTTP/1.1
-Content-Type: application/json
 
-{
-    "name1Person": "Andrea",
-    "lastname1Person": "Arias",
-    "documentPerson": "70800900",
-    "emailPerson": "andreaa@correo.com",
-    "profilePerson": 3,
-    "agePerson": 17,
-    "institutionPerson": "Colegio Integrada La Candelaria",
-    "statusPerson": "VERIFIED"
-}
 
-### // THIS CREATE NEW STUDENT
-POST http://localhost:3000/api/signUp HTTP/1.1
-Content-Type: application/json
-
-{
-    "name1Person": "Bianca",
-    "lastname1Person": "Berrio",
-    "documentPerson": "80900100",
-    "emailPerson": "biancab@correo.com",
-    "profilePerson": 3,
-    "agePerson": 15,
-    "institutionPerson": "Colegio Integrada La Candelaria",
-    "statusPerson": "VERIFIED"
-}
-
-### // THIS CREATE NEW STUDENT
-POST http://localhost:3000/api/signUp HTTP/1.1
-Content-Type: application/json
-
-{
-    "name1Person": "Carlos",
-    "lastname1Person": "Caicedo",
-    "documentPerson": "10200300",
-    "emailPerson": "carlosc@correo.com",
-    "profilePerson": 3,
-    "agePerson": 18,
-    "institutionPerson": "Colegio Integrada La Candelaria",
-    "statusPerson": "VERIFIED"
-}
 
 
 ### // THIS REGISTER SCORE FOR ONE STUDENT
