@@ -5,7 +5,7 @@
 <div id="header" >
 <img width="95" align="left" src="https://github.com/MariaHerrera03/ImageBank/blob/main/Progr%C3%A1mateSchool/%C3%A1-amarilla.png?raw=true"/>
 <h1 align="left">Proyecto Backend <img width="50" aling="left" src="https://media2.giphy.com/media/rsUGLKwgSvSxmq1VrZ/giphy.gif?cid=ecf05e47emzqd55kv774vlrnn4cu7ypz1wk7bpgtz3agd2fr&rid=giphy.gif&ct=s"></h1>
-<p>This is a Backend project which we focus on making a platform for some students, in this project we use mongoo DB and apply an extension called mongoose among others, let's see more about this project.</p>
+<p>This is a Backend project which we focused on creating a platform for some students. In this project, we used MongoDB and applied an extension called Mongoose among others. We will see more about this project.</p>
 </div>
 
 <h2>Starting <img width="70" src="https://media1.giphy.com/media/WQmF6K8GwacYvR6yfC/giphy.gif?cid=ecf05e47jzymxzzu4qg1wtqetwnxrg26kaz8ocx8dgsbzka1&rid=giphy.gif&ct=s" /></h2>
