@@ -19,9 +19,6 @@ See Deployment to learn how to deploy the project.
 What things do you need to install the software and how to see it on the local device.
 
 - Create a Folder from Git Bash
-
-bash
-
   -cd "name of the place where you want the folder"
    -mk "folder name"
    -git clone https://github.com/programateacademy/PROGRAMATE-SCHOOL-BACK.git
@@ -31,7 +28,6 @@ bash
 
 - Back-End Installation
 
-bash
 1. `cd backend`
 2. `npm install`
 3. `node index`
@@ -61,7 +57,6 @@ The tools that were used to create this project are:
 - Node
 - Front-End Installation
 
-bash
 1. `cd app`
 2. `npm install`
 3. `npm start`
@@ -69,7 +64,6 @@ bash
 
 - Back-End Installation
 
-bash
 1. `cd backend`
 2. `npm install`
 3. `node index`
