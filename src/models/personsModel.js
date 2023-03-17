@@ -25,13 +25,11 @@ const PersonSchema = new mongoose.Schema({
         require: true,
         unique: true,
     },
-
     emailPerson: {
         type: String,
         require: true,
         unique: true,
     },
-
     profilePerson: {
         type: Number,
         require: false
@@ -40,27 +38,24 @@ const PersonSchema = new mongoose.Schema({
         type: String,
         require: false
     },
-
     passwordPerson: {
         type: String,
         require: true,
     },
-
     agePerson: {
         type: Number,
         require: false
     },
-
     positionPerson: {
         type: String,
-        require: false
+        require: false
     },
     //Review if code person is required in this model -AP
     codePerson:{
         type: String,
         require: true,
     },
-//This status is add for default because all the email have to verificated - AP
+    //This status is add for default because all the email have to verificated - AP
     statusPerson:{
         type: String,
         require: true,

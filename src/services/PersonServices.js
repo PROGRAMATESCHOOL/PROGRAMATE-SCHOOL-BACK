@@ -16,11 +16,17 @@ const SignUp = () => {
     return register
 }
 
+const getAllStudents = () => {
+    const allStudents = Person.getAllStudents();
+    return allStudents
+}
+
 
 const CreateAdmin = () => {
     const NewAdminCreated = NewAdmin();
     return NewAdminCreated
 }
+
 
 const formAnnouncement = () => {
     const formScore = ScoreAnnouncement.scoreForm();
@@ -40,6 +46,7 @@ const getAllStudents = () => {
 
 
 
+
 module.exports = {
     loginPerson,
     getAllPersons,
@@ -47,5 +54,8 @@ module.exports = {
     CreateAdmin,
     formAnnouncement,
     getAdminList,
-    getAllStudents
+    getAllStudents,
+    CreateAdmin,
+    formAnnouncement,
+
 }
