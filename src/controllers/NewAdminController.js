@@ -10,7 +10,7 @@ const NewAdmin = async (req, res) => {
         lastname2Person,
         documentPerson,
         emailPerson,
-        agePerson,
+        positionPerson
     } = req.body; //Parse the request for using data
 
     const existentAdmin = await Person.findOne({ emailPerson }).exec();
@@ -35,7 +35,7 @@ const NewAdmin = async (req, res) => {
                 emailPerson: emailPerson,
                 profilePerson: profilePerson,
                 passwordPerson: passwordPerson,
-                agePerson: agePerson,
+                positionPerson: positionPerson
             });
 
             createNewAdmin.save();

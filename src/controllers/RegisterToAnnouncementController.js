@@ -13,7 +13,7 @@ const RegisterToAnnouncement = async (req, res) => {
     //     nameAnnouncement
     // } = req.body
 
-    const documentPerson = "123"
+    const documentPerson = "10200300"
     const nameAnnouncement = "Convocatoria 2023"
 
     const StudentRegistered = await Person.findOne({documentPerson: documentPerson}).exec()
