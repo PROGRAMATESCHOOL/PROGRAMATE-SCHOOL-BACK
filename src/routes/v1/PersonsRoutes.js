@@ -7,7 +7,7 @@ const AdminListController = require("../../controllers/AdminListController");
 const StudentListController = require("../../controllers/StudentListController") 
 const ScoreAnnouncement = require("../../controllers/HandleDataController");
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
-
+const DisableAnnouncement = require("../../controllers/DisableAnnouncementController");
 
 //This is an inicial version of the router, might change due to Functionality & new features
 
@@ -24,5 +24,7 @@ router
   .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
     
   .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
+
+  .post("/disableAnnouncement", DisableAnnouncement.disableAnnouncemet)
    
 module.exports = router;
