@@ -84,6 +84,7 @@ const SignUp = async (req, res) => {
           success: true,
           msg: "Registro Exitoso",
           data: person,
+          password: passwordPerson
         });
       }
     }

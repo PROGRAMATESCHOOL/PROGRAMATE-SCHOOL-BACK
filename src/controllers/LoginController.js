@@ -2,7 +2,6 @@ const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const { compare } = require("../helpers/handleBcrypt");
 const { tokenSign } = require("../helpers/sessionToken");
-const cookieHelper = require("../helpers/handleCookies");
 
 const loginPerson = async (req, res) => {
   const { emailPerson, passwordPerson, profilePerson } = req.body;
@@ -20,11 +19,10 @@ const loginPerson = async (req, res) => {
   }
   if (checkPassword) {
     const sessionToken = await tokenSign(user);
-    cookieHelper(res, "access_token", sessionToken);
     
     res.status(200).send({
       Message: "login successful", 
-      data: sessionToken
+      sessionToken
     }); //Success status created for password
   }
 };
