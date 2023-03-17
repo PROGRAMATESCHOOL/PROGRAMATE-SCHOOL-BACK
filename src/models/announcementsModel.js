@@ -11,6 +11,10 @@ const AnnouncementSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    stateAnnouncement:{
+        type: String,
+        require: true    
+    },
     placesAnnouncement: {
         type: Number,
         require: true
@@ -37,7 +41,7 @@ const AnnouncementSchema = new mongoose.Schema({
     }
 })
 
-  nameAnnouncement: {
+  /*nameAnnouncement: {
     type: String,
     require: true,
   },
@@ -59,6 +63,6 @@ const AnnouncementSchema = new mongoose.Schema({
     require: 'PersonSchema'
     // Referenced from Document Person (Only One)
   },
-});
+});*/
 
 module.exports = mongoose.model("AnnouncementModel", AnnouncementSchema)

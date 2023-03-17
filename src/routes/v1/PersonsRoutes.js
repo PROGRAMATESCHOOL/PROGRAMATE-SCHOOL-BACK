@@ -5,12 +5,10 @@ const SignUp =require ('../../controllers/RegisterController');
 const NewAdmin = require('../../controllers/NewAdminController')
 const AdminListController = require("../../controllers/AdminListController");
 const StudentListController = require("../../controllers/StudentListController") 
-const ScoreAnnouncement = require("../../controllers/HandleDataController");
-
 const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
-const NewAnnouncement = require('../../controllers/NewAnnouncementController');
 const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController")
+const disableAnnouncement = require("../../controllers/DisabledAnnouncementController")
 
 
 
@@ -21,7 +19,7 @@ router
     .post("/login", LoginController.loginPerson) //Custom route for Log In 
     .post("/signUp", SignUp.SignUp) //Custom route for RegisterController -AP
     .post("/newAdmin", NewAdmin.NewAdmin)
-    .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
+    //.post("/scoreannouncement", ScoreAnnouncement.scoreForm)
     .post("/addNewAnnouncement", NewAnnouncement.AddAnnouncement) //Custom routr for create annuncement
 
   .get("/persons", GetAllPersonsController.getAllPersons) //Custom route used to get all persons
@@ -34,12 +32,13 @@ router
   .post("/login", LoginController.loginPerson) //Custom route for Log In
   .post("/signUp", SignUp.SignUp) //Custom route for RegisterController -AP
   .post("/newAdmin", NewAdmin.NewAdmin)
-  .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
+  //.post("/scoreannouncement", ScoreAnnouncement.scoreForm)
   .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
   
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
   
   .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
+  .patch("/disabledAnnouncement/:id", disableAnnouncement.disableAnnouncement)
 
   
   

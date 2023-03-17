@@ -19,7 +19,6 @@ async function deleteAnnouncement(req, res) {
   }
 }
 
-
 //class deleteAnnouncement{
 
 //    async deleteCall(req, res, next) {
