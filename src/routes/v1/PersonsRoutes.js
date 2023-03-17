@@ -5,11 +5,10 @@ const SignUp =require ('../../controllers/RegisterController');
 const NewAdmin = require('../../controllers/NewAdminController')
 const AdminListController = require("../../controllers/AdminListController");
 const StudentListController = require("../../controllers/StudentListController") 
-const ScoreAnnouncement = require("../../controllers/HandleDataController");
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
 const NewAnnouncement = require('../../controllers/NewAnnouncementController');
 const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController");
-const { DisableAnnouncemet } = require('../../controllers/disableAnnouncementController');
+const  modifyStudent = require('../../controllers/deleteStudentController');
 
 
 //This is an inicial version of the router, might change due to Functionality & new features
@@ -24,11 +23,10 @@ router
   .post("/login", LoginController.loginPerson) //Custom route for Log In
   .post("/signUp", SignUp.SignUp) //Custom route for RegisterController -AP
   .post("/newAdmin", NewAdmin.NewAdmin)
-  .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
   .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
   
   .delete("/deleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
-  .post("/disableAnnouncement", DisableAnnouncemet.disableAnnouncemet)
+  .post("/deleteStudent",  modifyStudent. modifyStudent)
   
-module.exports = router;
+module.exports = router

@@ -221,8 +221,31 @@ const QuestionarySchema = new mongoose.Schema({
     q53_logic4: {
         type: String,
         require: false
-    }
-
+    },
+    ScoreProfile: {
+        type: Number,
+        require: false
+    },
+    ScoreVocation: {
+        type: Number,
+        require: false
+    },
+    ScoreMotivation: {
+        type: Number,
+        require: false
+    },
+    ScoreLogic: {
+        type: Number,
+        require: false
+    },
+    ScoreTotal: {
+        type: Number,
+        require: false
+    },
+    stateAnnouncementStudent: { // THIS FIELD LET US CHANGE THE STATE OF STUDENT (ENABLED OR DISABLED)
+        type: String,
+        require: false
+    }
 })
 
 module.exports = mongoose.model("questionaryModel", QuestionarySchema);

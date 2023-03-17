@@ -1,5 +1,4 @@
 const Person = require("../models/personsModel");
-const ScoreAnnouncement = require("../models/scoreAnnouncementModel");
 
 const loginPerson = () => {
     const logPerson = Person.loginPerson();
@@ -49,5 +48,4 @@ module.exports = {
     getAllStudents,
     CreateAdmin,
     formAnnouncement,
-
 }
