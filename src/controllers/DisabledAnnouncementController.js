@@ -11,7 +11,7 @@ const disableAnnouncement = async (req, res) => {
   } = req.body
   try{
     const idAnnouncement = Announcement.findOne({nameAnnouncement}, {_id:1})
-    const modAnnouncement = await Announcement.findOneAndUpdate({idAnnouncement: idAnnouncement}, {stateAnnouncement: "DISABLED"})
+    const modAnnouncement = await Announcement.findOneAndUpdate({idAnnouncement: idAnnouncement}, {stateAnnouncement: "DISABLED"}, {new: "ENABLED"})
     res.send(modAnnouncement)
 
     const updateAnnouncement =  Announcement({
@@ -23,7 +23,7 @@ const disableAnnouncement = async (req, res) => {
     console.log("Convocatoria deshabilitada")
     res.send(updateAnnouncement)
   } catch (err){
-     res.json({message: err.message});
+     //res.json({message: err.message});
   }
 };
 
