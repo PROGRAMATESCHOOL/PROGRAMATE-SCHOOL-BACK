@@ -24,13 +24,6 @@ const SignUp = async (req, res) => {
 
         //Verify that the user Does Not exist -AP
         //let person =await Person.findOne({documentPerson, emailPerson,}) || null;
-                
-        // if(person !== null){
-        //     return res.json({
-        //         success:false,
-        //         msg: 'Este usuario ya existe'
-        //     });
-        // }
 
         const existedDocumentUser = await Person.findOne({ documentPerson }).exec()
         const existedEmailUser = await Person.findOne({ emailPerson }).exec()
