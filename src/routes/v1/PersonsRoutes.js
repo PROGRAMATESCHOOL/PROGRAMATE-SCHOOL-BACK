@@ -33,12 +33,12 @@ router
   .post("/signUp", SignUp.SignUp) //Custom route for RegisterController -AP
   .post("/newAdmin", NewAdmin.NewAdmin)
   //.post("/scoreannouncement", ScoreAnnouncement.scoreForm)
-  .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
+  .post("/addnewannouncement", NewAnnouncement.AddAnnouncement) //Custom route used to create announcement
   
-  .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
+  .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement) //Custom route used to register announcement 
   
-  .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
-  .patch("/disabledAnnouncement/:id", disableAnnouncement.disableAnnouncement)
+  .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement) //Custom route used to delete announcement
+  .patch("/disabledAnnouncement/:id", disableAnnouncement.disableAnnouncement) //Custom route used to disable announcement
 
   
   

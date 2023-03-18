@@ -14,7 +14,7 @@ const AddAnnouncement = async (req, res) => {
     } = req.body
 
 
-    const createdBySuperAdmin = await Person.findOne({documentPerson: documentPerson}, {_id: 1})
+    const createdBySuperAdmin = await Person.findOne({documentPerson: documentPerson}, {_id: 1}) //searches for an existing user with the type profile and same document
     console.log(createdBySuperAdmin)
 
     console.log("Mensaje de Verificacion")

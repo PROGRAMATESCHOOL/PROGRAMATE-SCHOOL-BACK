@@ -10,8 +10,8 @@ const disableAnnouncement = async (req, res) => {
     stateAnnouncement
   } = req.body
   try{
-    const idAnnouncement = Announcement.findOne({nameAnnouncement}, {_id:1})
-    const modAnnouncement = await Announcement.findOneAndUpdate({idAnnouncement: idAnnouncement}, {stateAnnouncement: "DISABLED"}, {new: "ENABLED"})
+    const idAnnouncement = Announcement.findOne({nameAnnouncement}, {_id:1}) // Searches for a existing announcement
+    const modAnnouncement = await Announcement.findOneAndUpdate({idAnnouncement: idAnnouncement}, {stateAnnouncement: "DISABLED"}, {new: "ENABLED"}) //Update the state of the announcement
     res.send(modAnnouncement)
 
     const updateAnnouncement =  Announcement({
