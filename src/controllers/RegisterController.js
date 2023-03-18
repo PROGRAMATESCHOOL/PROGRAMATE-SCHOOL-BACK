@@ -22,7 +22,6 @@ const SignUp = async (req, res) => {
       lastname2Person,
       documentPerson,
       emailPerson,
-      profilePerson,
       institutionPerson,
       agePerson,
     } = req.body;
@@ -48,6 +47,8 @@ const SignUp = async (req, res) => {
       } else {
         //Get code
         const codePerson = uuidv4();
+
+        const profilePerson = "Student"
 
         //Creted a new user or student
         const passwordPerson = name1Person + lastname1Person + documentPerson;

@@ -15,17 +15,17 @@ const AnnouncementSchema = new mongoose.Schema({
         type: Number,
         require: true
     },
-    conditionAnnouncement: { // THIS FIELD LET US ENABLED OR DISABLED THE ANNOUNCEMENT
-        type: Boolean,
-        default: true,
+    stateAnnouncement: { // THIS FIELD LET US ENABLED OR DISABLED THE ANNOUNCEMENT
+        type: String,
+        default: "ENABLED",
         require: false
     },
     dateStartAnnouncement: { // FORMAT <YYYY - MM - DD>
-        type: Date,
+        type: String,
         require: false
     },
     dateFinishAnnouncement: { // FORMAT <YYYY - MM - DD>
-        type: Date,
+        type: String,
         require: false
     },
     createdBySuperAdmin: {

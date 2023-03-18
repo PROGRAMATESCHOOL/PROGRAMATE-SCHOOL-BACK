@@ -1,6 +1,7 @@
 const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const uniqid = require("uniqid");
+const { encrypt } = require("../helpers/handleBcrypt");
 
 const NewAdmin = async (req, res) => {
     const {
@@ -21,10 +22,13 @@ const NewAdmin = async (req, res) => {
         return;
     } else {
 
-        const profilePerson = 2
+        const profilePerson = "Admin"
 
-        if (profilePerson == 2) {
-            const passwordPerson = uniqid(undefined, lastname1Person);
+        if (profilePerson == "Admin") {
+
+            const passwordP = uniqid(undefined, lastname1Person);
+            //const passwordHash = encrypt(passwordP);
+            console.log(passwordP)
             
             const createNewAdmin = new Person({
                 name1Person: name1Person,
@@ -34,7 +38,7 @@ const NewAdmin = async (req, res) => {
                 documentPerson: documentPerson,
                 emailPerson: emailPerson,
                 profilePerson: profilePerson,
-                passwordPerson: passwordPerson,
+                passwordPerson: passwordP,
                 positionPerson: positionPerson
             });
 
