@@ -7,13 +7,20 @@ const Person = require("../models/personsModel");
 
 const modifyStudent = async (req, res) => {
     const {documentPerson} = req.body
-        const idStudent = await Person.findOne({documentPerson: documentPerson}, {_id:1})
-        
-        console.log (idStudent)
-        const QueS = await Questionary.findOne({idStudent:idStudent}, {_id:1})
+    try{
+        const QueS = await Questionary.findOne({q9_documentPerson: documentPerson}, {_id:1})
 
         console.log(QueS)
-        Questionary.findOneAndUpdate({_id:QueS}, {$set: {stateAnnouncementStudent: "DISABLED"}})
+        const ModStudent = await Questionary.findOneAndUpdate({q9_documentPerson: documentPerson}, {$set: {stateAnnouncementStudent: "DISABLED"}}, {new : true},
+        (err, ModStudent) => {
+            if(err) return res.json({success:false, err});
+            res.status(200).json(ModStudent)
+        }) 
+        console.log (ModStudent)
+
+} catch (err){
+    //res.json({message: err.message});
+ }
 }
 
 module.exports = {modifyStudent};

@@ -155,9 +155,9 @@ Content-Type: application/json
 }
 
 ###
-POST  http://localhost:3000/api/deleteStudent HTTP/1.1
+PATCH  http://localhost:3000/api/deleteStudent/:10200300 HTTP/1.1
 Content-Type: application/json
 
-{
-    "documentPerson": "10200300"
-}
+  {
+      "documentPerson": "10200300"
+ }

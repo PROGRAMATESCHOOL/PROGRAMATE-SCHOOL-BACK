@@ -27,6 +27,6 @@ router
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
   
   .delete("/deleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
-  .post("/deleteStudent",  modifyStudent. modifyStudent)
+  .patch("/deleteStudent/:documentPerson",  modifyStudent.modifyStudent)
   
 module.exports = router
