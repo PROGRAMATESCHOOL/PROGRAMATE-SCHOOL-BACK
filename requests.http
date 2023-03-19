@@ -19,14 +19,13 @@ POST http://localhost:3000/api/auth/signUp HTTP/1.1
 Content-Type: application/json
 
 {
-    "name1Person": "Michael",
-    "name2Person": "Ramon",
-    "lastname1Person": "Ordoñez",
-    "documentPerson": "999020",
-    "emailPerson": "mrordonez@correo.com",
+    "name1Person": "Juan",
+    "name2Person": "Salazar",
+    "documentPerson": "999023",
+    "emailPerson": "jsalazar@correo.com",
     "profilePerson": "Student",
     "agePerson": 16,
-    "institutionPerson": "Técnica Agropecuaria Luruaco - Atlantico",
+    "institutionPerson": "Colegio Campo de la Cruz - Atlantico",
     "statusPerson": "VERIFIED"
 }
 
@@ -35,8 +34,12 @@ Content-Type: application/json
 GET http://localhost:3000/api/getAdmin HTTP/1.1
 
 
-### // THIS BRING US STUDENTS FROMM MODEL DB
+### // THIS BRING US STUDENTS FROM MODEL DB
 GET http://localhost:3000/api/getUsers HTTP/1.1
+
+
+### // THIS BRING US THE LIST OF ANNOUNCEMENTS
+GET http://localhost:3000/api/getannouncements HTTP/1.1
 
 
 ###  // CREATE NEW ADMINS
@@ -78,51 +81,59 @@ POST http://localhost:3000/api/registertoannouncement HTTP/1.1
 Content-Type: application/json
 
 {
-    "documentPerson": "99902",
-    "nameAnnouncement": "Convocatoria 2023",
-    "birthdate": "01-02-2008",
-    "gender": "Femenino",
+    "documentPerson": "999015",
+    "nameAnnouncement": "",
+    "birthdate": "18-03-2006",
+    "gender": "Masculino",
     "document": "Cedula de Ciudadanía",
     "course": "11°",
     "sena": "NO",
-    "availability": "SI",
-    "phone": 3101200300,
-    "phoneTwo": 3001200009,
+    "availability": "NO",
+    "phone": 3014445774,
+    "phoneTwo": 3012525166,
     "sisben": "SI",
     "ethnicGroup": "NO",
     "nationality": "Colombiana",
     "disability": "NO",
     "typeDisability": "Ninguna",
-    "addressStudent": "Carrera 96 J # 23A - 64",
-    "departmentStudent": "Cundinamarca",
+    "addressStudent": "Carrera 32 # 22 - 22",
+    "departmentStudent": "Tolima",
     "rural": "NO",
-    "bogota": "SI",
-    "stratum": "3",
-    "nameGuardian": "Andres Arias",
-    "relationship": "Padre",
+    "bogota": "NO",
+    "stratum": "5",
+    "nameGuardian": "Elizabeth Pineda",
+    "relationship": "Madre",
     "documentTypeGuardian": "Cedula de Ciudadanía",
-    "numberIdGuardian": "120001132",
-    "emailGuardian": "andarias@hotmail.com",
-    "phoneGuardian": 3009999999,
-    "phoneGuardianTwo": 3007654321,
-    "addressGuardian": "Carrea 96J # 23A - 64",
-    "departmentGuardian": "Cundinamarca",
+    "numberIdGuardian": "900000012",
+    "emailGuardian": "epineda@hotmail.com",
+    "phoneGuardian": 3007482278,
+    "phoneGuardianTwo": 3024456387,
+    "addressGuardian": "Carrea 32 # 22 - 22",
+    "departmentGuardian": "Tolima",
     "educationLevelGuardian": "Bachillerato - completo",
     "economic": "Empleado tiempo completo",
-    "family": 4,
+    "family": "5 o más",
     "computer": "SI",
-    "internet": "Si",
-    "interests": "A",
+    "internet": "SI",
+    "interests": "D",
     "activity": "C",
     "reportage": "A",
-    "stake": "B",
-    "webMotivation": "B",
+    "stake": "C",
+    "webMotivation": "A",
     "why": "A",
-    "methodology": "B",
+    "methodology": "C",
     "want": "B",
-    "withdrawal": "Por razones de salud",
-    "logic1": "El orden de llegada es B, C, D, A",
+    "withdrawal": "Conectividad",
+    "logic1": "El orden de llegada es A, B, D, A",
     "logic2": "Seis tiburones no son completamente ciegos y tres son completamente ciegos",
-    "logic3": "E",
-    "logic4": "D"
+    "logic3": "B",
+    "logic4": "A"
 }
+
+
+### // THIS BRING US INFO ABOUT PROCESS STUDENT
+GET http://localhost:3000/api/getstagestudent HTTP/1.1
+
+
+### // THIS BRING US INFO ABOUT ALL ANNOUNCEMENTS
+GET http://localhost:3000/api/getStatistics HTTP/1.1

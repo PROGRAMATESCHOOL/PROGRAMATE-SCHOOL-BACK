@@ -12,6 +12,10 @@ const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
 const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController")
 
+const StageStudent = require("../../controllers/StudentStageAnnouncement")
+
+const AnnouncementsStats = require("../../controllers/StatsAnnouncementController")
+
 const checkAuth = require('../../middleware/authentication')
 const checkProfileAuth = require('../../middleware/RoleAuth')
 
@@ -23,8 +27,12 @@ router
   .get("/getAdmin", AdminListController.getAdminList) // Custom route used to get all Admins
   .get("/getUsers", StudentListController.getAllStudents) //Custom route used to get all students
   .get("/confirm/:token", SignUp.confirm)
-  .get("/getannouncement", AnnouncementListController.getAnnouncementList)
+  .get("/getannouncements", AnnouncementListController.getAnnouncementList) //Custom route used to get all announcements
   
+  .get("/getstagestudent", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
+
+  .get("/getStatistics", AnnouncementsStats.StatsAnnouncements) // Custom route used to get stats about all announcements
+
   // .get("/public/confirm.html", SignUp. confirm)
 
   .post("/newAdmin", NewAdmin.NewAdmin)
@@ -32,7 +40,5 @@ router
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
 
   .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement);
-
-  
-  
+ 
 module.exports = router;

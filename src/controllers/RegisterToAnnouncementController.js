@@ -13,15 +13,15 @@ const RegisterToAnnouncement = async (req, res) => {
     //     nameAnnouncement
     // } = req.body
 
-    const documentPerson = "99901"
-    const nameAnnouncement = "Convocatoria 2023"
+    const documentPerson = "999015"
+    const nameAnnouncement = "Convocatoria 2023 - Segundo semestre"
 
     const StudentRegistered = await Person.findOne({documentPerson: documentPerson}).exec()
 
     //res.send(StudentRegistered)
     //console.log(StudentRegistered)
 
-    const RegisterExist = await Questionary({q9_documentPerson: documentPerson}).exec()
+    const RegisterExist = await Questionary.findOne({q9_documentPerson: documentPerson}).exec()
 
     if(RegisterExist) {
         console.log("Estudiante registrado en esta convocatoria")
@@ -124,7 +124,7 @@ const RegisterToAnnouncement = async (req, res) => {
         if (availability == "SI") {
             form_ScoreProfile += 1
         } else {
-                form_stateAnnouncementStudent= "DISABLED"
+                form_stateAnnouncementStudent = "DISABLED"
             }
         if ( (stratum <= 3) ) {
             form_ScoreProfile +=1
@@ -159,13 +159,13 @@ const RegisterToAnnouncement = async (req, res) => {
         if (activity == "C" ){
             form_ScoreVocation += 1
         }
-        if (activity == "A" ){
+        if (reportage == "A" ){
             form_ScoreVocation += 1
         }
-        if (activity == "B" ){
+        if (stake == "B" ){
             form_ScoreVocation += 1
         }
-        if (activity == "C" ){
+        if (webMotivation == "C" ){
             form_ScoreVocation += 1
         }
         //console.log(form_ScoreVocation)
@@ -231,7 +231,7 @@ const RegisterToAnnouncement = async (req, res) => {
         if (form_ScoreLogic == 2) {
             form_ScoreLogic = 3
         }
-        if (form_ScoreLogic == 3) {
+        if (form_ScoreLogic >=3) {
             form_ScoreLogic = 5
             //console.log("Cumple con todos los requisitos")
         }
@@ -242,11 +242,11 @@ const RegisterToAnnouncement = async (req, res) => {
         form_ScoreTotal = (form_ScoreProfile*0.40) + (form_ScoreVocation*0.30) + (form_ScoreMotivation*0.15) + (form_ScoreLogic*0.15)
         console.log("Puntaje Total: ",+form_ScoreTotal)
 
-        if (form_stateAnnouncementStudent == "DISABLED" || (form_ScoreTotal < 2.0)){
+        if ((form_stateAnnouncementStudent == "DISABLED") || (form_ScoreTotal < 2.0)){
             form_stateAnnouncementStudent = "DISABLED"
         }
         
-        if ((form_stateAnnouncementStudent == "ENABLED ") && (form_ScoreTotal >= 2.0)) {
+        if ((form_stateAnnouncementStudent == "ENABLED ") && (form_ScoreTotal >= 3.0)) {
             form_stateAnnouncementStudent = "ENABLED"
         }
 
@@ -332,7 +332,7 @@ const RegisterToAnnouncement = async (req, res) => {
             ScoreMotivation: form_ScoreMotivation,
             ScoreLogic: form_ScoreLogic,
             ScoreTotal: form_ScoreTotal,
-            stateAnnouncementStudent: "ENABLED"
+            stateAnnouncementStudent: form_stateAnnouncementStudent
 
         })
 
