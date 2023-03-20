@@ -2,11 +2,13 @@ require('dotenv').config();
 const express =require('express');
 const mongoose = require('mongoose'); 
 const bodyParser = require("body-parser");
+const cookieParser = require('cookie-parser')
 const cors = require("cors");
 //const corsOptions = require("./config/corsConfig").default;
 
 mongoose.set('strictQuery', true);
 const PersonRoutes = require("./routes/v1/PersonsRoutes");
+const authRoutes = require("./routes/v2/auth")
 const { corsOptions } = require("./config/corsConfig");
 
 mongoose.set("strictQuery", true);
@@ -19,6 +21,7 @@ app.use(express.json());
 
 app.use(cors(corsOptions));
 
+app.use("/api/auth/", authRoutes)
 app.use("/api/", PersonRoutes);
 
 //Review if this is necesary -AP

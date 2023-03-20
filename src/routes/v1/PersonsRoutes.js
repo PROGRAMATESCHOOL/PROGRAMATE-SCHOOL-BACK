@@ -3,34 +3,42 @@ const LoginController = require("../../controllers/LoginController");
 const GetAllPersonsController = require("../../controllers/GetAllPersonsController");
 const SignUp =require ('../../controllers/RegisterController');
 const NewAdmin = require('../../controllers/NewAdminController')
+
 const AdminListController = require("../../controllers/AdminListController");
 const StudentListController = require("../../controllers/StudentListController") 
-const ScoreAnnouncement = require("../../controllers/HandleDataController");
+const AnnouncementListController = require("../../controllers/AnnouncementListController")
 
 const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
 const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController")
 
+const StageStudent = require("../../controllers/StudentStageAnnouncement")
+
+const AnnouncementsStats = require("../../controllers/StatsAnnouncementController")
+
+const checkAuth = require('../../middleware/authentication')
+const checkProfileAuth = require('../../middleware/RoleAuth')
+
+
 //This is an inicial version of the router, might change due to Functionality & new features
 
 router
-
-  .post("/login", LoginController.loginPerson) //Custom route for Log In 
-  .post("/signUp", SignUp.SignUp) //Custom route for RegisterController -AP
-  .post("/newAdmin", NewAdmin.NewAdmin)
-  .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
-  .post("/addNewAnnouncement", NewAnnouncement.AddAnnouncement) //Custom routr for create annuncement
-
-  .get("/persons", GetAllPersonsController.getAllPersons) //Custom route used to get all persons
+  .get("/persons", checkAuth, checkProfileAuth(['Admin','SuperAdmin']), GetAllPersonsController.getAllPersons) //Custom route used to get all persons
   .get("/getAdmin", AdminListController.getAdminList) // Custom route used to get all Admins
   .get("/getUsers", StudentListController.getAllStudents) //Custom route used to get all students
   .get("/confirm/:token", SignUp.confirm)
-  // .get("/public/confirm.html", SignUp. confirm)
+  .get("/getannouncements", AnnouncementListController.getAnnouncementList) //Custom route used to get all announcements
   
+  .get("/getstagestudent", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
+
+  .get("/getStatistics", AnnouncementsStats.StatsAnnouncements) // Custom route used to get stats about all announcements
+
+  // .get("/public/confirm.html", SignUp. confirm)
+
+  .post("/newAdmin", NewAdmin.NewAdmin)
+  .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
 
-  .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
-
-  
-  
+  .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement);
+ 
 module.exports = router;

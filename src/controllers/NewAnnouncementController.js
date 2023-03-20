@@ -7,12 +7,15 @@ const { ObjectId }= require("mongoose");
 const AddAnnouncement = async (req, res) => {
     
     const {
-        documentPerson,
+        //documentPerson,
         nameAnnouncement,
         descriptionAnnouncement,
+        placesAnnouncement,
+        dateStartAnnouncement,
+        dateFinishAnnouncement
     } = req.body
 
-    
+    const documentPerson = "10001" // THIS IS PROVISIONAL. THIS FIELD MUST BE BRING IT FROM FRONTEND    
 
     console.log(documentPerson)
 
@@ -24,6 +27,10 @@ const AddAnnouncement = async (req, res) => {
     const NewAnnouncement = new Announcement({
         nameAnnouncement: nameAnnouncement,
         descriptionAnnouncement: descriptionAnnouncement,
+        placesAnnouncement: placesAnnouncement,
+        stateAnnouncement: "ENABLED",
+        dateStartAnnouncement: dateStartAnnouncement,
+        dateFinishAnnouncement: dateFinishAnnouncement,
         createdBySuperAdmin: createdBySuperAdmin
     })
 
