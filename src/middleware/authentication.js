@@ -4,7 +4,7 @@ const checkAuth = async (req, res, next) => {
     try {
         const authHeader = req.headers.authorization;
         if (!authHeader || authHeader.length === 0) {
-          return res
+            return res
             .status(401)
             .json({ error: "No authorization header found" });
         }
