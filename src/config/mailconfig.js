@@ -43,7 +43,6 @@ const getTemplate = (name1Person, lastname1Person, token) => {
     <head>
         <link rel="stylesheet" href="./style.css">
     </head>
-
     <div id="email___content">
         <img src="" alt="">
         <h2>Hola ${name1Person + " " + lastname1Person}</h2>
