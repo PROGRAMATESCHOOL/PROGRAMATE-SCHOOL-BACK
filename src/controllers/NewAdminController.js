@@ -38,7 +38,7 @@ const NewAdmin = async (req, res) => {
                 documentPerson: documentPerson,
                 emailPerson: emailPerson,
                 profilePerson: profilePerson,
-                passwordPerson: passwordP,
+                passwordPerson: passwordPerson,
                 positionPerson: positionPerson
             });
 
