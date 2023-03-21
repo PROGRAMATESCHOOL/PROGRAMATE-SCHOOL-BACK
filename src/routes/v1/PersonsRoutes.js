@@ -4,10 +4,11 @@ const GetAllPersonsController = require("../../controllers/GetAllPersonsControll
 const SignUp = require("../../controllers/RegisterController");
 const NewAdmin = require("../../controllers/NewAdminController");
 const AdminListController = require("../../controllers/AdminListController");
-const StudentListController = require("../../controllers/StudentListController");
-const NewAnnouncement = require("../../controllers/NewAnnouncementController");
+const StudentListController = require("../../controllers/StudentListController") 
+const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
-const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController");
+const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController")
+const disableAnnouncement = require("../../controllers/DisabledAnnouncementController")
 
 const checkAuth = require("../../middleware/authentication");
 const checkProfileAuth = require("../../middleware/RoleAuth");
@@ -27,9 +28,14 @@ router
   // .get("/public/confirm.html", SignUp. confirm)
 
   .post("/newAdmin", NewAdmin.NewAdmin)
-  .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
-  .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
+  //.post("/scoreannouncement", ScoreAnnouncement.scoreForm)
+  .post("/addnewannouncement", NewAnnouncement.AddAnnouncement) //Custom route used to create announcement
+  
+  .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement) //Custom route used to register announcement 
+  
+  .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement) //Custom route used to delete announcement
+  .patch("/disabledAnnouncement/:id", disableAnnouncement.disableAnnouncement) //Custom route used to disable announcement
 
-  .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement);
-
+  
+  
 module.exports = router;

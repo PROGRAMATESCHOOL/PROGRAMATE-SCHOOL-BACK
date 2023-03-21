@@ -1,6 +1,7 @@
 const Person = require("../models/personsModel");
 const personServices = require("../services/PersonServices") ;
 const Announcement = require("../models/announcementsModel");
+const express = require('express');
 
 const { ObjectId }= require("mongoose");
 
@@ -12,11 +13,8 @@ const AddAnnouncement = async (req, res) => {
         descriptionAnnouncement,
     } = req.body
 
-    
 
-    console.log(documentPerson)
-
-    const createdBySuperAdmin = await Person.findOne({documentPerson: documentPerson}, {_id: 1})
+    const createdBySuperAdmin = await Person.findOne({documentPerson: documentPerson}, {_id: 1}) //searches for an existing user with the type profile and same document
     console.log(createdBySuperAdmin)
 
     console.log("Mensaje de Verificacion")
@@ -30,8 +28,12 @@ const AddAnnouncement = async (req, res) => {
     NewAnnouncement.save();
     console.log("Convocatoria creada con exito")
     res.send(NewAnnouncement)
-}
+};
+
+
+
+
 
 module.exports = {
-    AddAnnouncement
+    AddAnnouncement,
 }  
