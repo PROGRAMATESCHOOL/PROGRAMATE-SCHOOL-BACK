@@ -6,7 +6,7 @@ const {
   getTemplate,
   sendEmail,
   getTemplatePassword,
-} = require("../config/mailConfig");
+} = require("../config/mailconfig");
 // const { sendPassword, getTemplatePassword}= require('../config/mailPassword')
 const { v4: uuidv4 } = require("uuid");
 const { clearScreenDown } = require("readline");
