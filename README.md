@@ -3,7 +3,9 @@
 </div>
 
 <div id="header" >
-<img width="100" align="left" src="https://github.com/MariaHerrera03/ImageBank/blob/main/Progr%C3%A1mateSchool/%C3%A1-amarilla.png?raw=true"/>
+
+<img width="95" align="left" src="https://github.com/MariaHerrera03/ImageBank/blob/main/Progr%C3%A1mateSchool/%C3%A1-amarilla.png?raw=true"/>
+
 <h1 align="left">Proyecto Backend <img width="50" aling="left" src="https://media2.giphy.com/media/rsUGLKwgSvSxmq1VrZ/giphy.gif?cid=ecf05e47emzqd55kv774vlrnn4cu7ypz1wk7bpgtz3agd2fr&rid=giphy.gif&ct=s"></h1>
 <p>This is a Backend project which we focused on creating a platform for some students. In this project, we used MongoDB and applied an extension called Mongoose among others. We will see more about this project.</p>
 </div>
@@ -35,25 +37,30 @@ What things do you need to install the software and how to see it on the local d
 3. `node index`
 </div>
 
+</div>
+
 <div>
 <h2>Deployment <img width="50" src="https://media0.giphy.com/media/btKMl6A7hz99K2UdxU/200w.webp?cid=ecf05e47r578i7flklvgqvu6jwow7e7guk3echvpysuuqj1a&rid=200w.webp&ct=s"/></h2>
 
 The deployment is ready to run
 bash
-https://proyectxxxxxxxxxxxxxxxxxxxx
+<https://proyectxxxxxxxxxxxxxxxxxxxx>
+
 </div>
 
 <h2> Built with <img width="50" src="https://media4.giphy.com/media/BFcibA1iSocGQJKqGO/200w.webp?cid=ecf05e47aepb75aav47t08l20x9jk5rmb6efz8gaucq7ffl0&rid=200w.webp&ct=s"/></h2>
 
 The tools that were used to create this project are:
 
-### Frontend 
- - [React.Js] : Used for the content of the page that the user will observe.
- 
- - Framework
+### Frontend
+
+- [React.Js] : Used for the content of the page that the user will observe.
+
+- Framework
   Tailwind
   
 ### Backend
+
 - [Mongo Atlas] - Used to store the information of the database.
 - Express
 - Node
@@ -62,7 +69,6 @@ The tools that were used to create this project are:
 1. `cd app`
 2. `npm install`
 3. `npm start`
-
 
 - Back-End Installation
 
@@ -73,7 +79,8 @@ The tools that were used to create this project are:
 <div id="header">
 <h2> Authors <img width="30" src="https://media0.giphy.com/media/JQja49eU7gySw66gvS/giphy.gif?cid=ecf05e47riyyavsfuas2gpa915q4pidw7hcezedpx2is5lhh&rid=giphy.gif&ct=s"/></h2>
 
-<img width="350" align="right" src="https://github.com/MariaHerrera03/ImageBank/blob/main/Progr%C3%A1mateSchool/educamas-color.png?raw=true"/> 
+<img width="350" align="right" src="https://github.com/MariaHerrera03/ImageBank/blob/main/Progr%C3%A1mateSchool/educamas-color.png?raw=true"/>
+
 - [@27Paola](https://github.com/27Paola)</br>
 - [@adrianapico](https://github.com/adrianapico)</br>
 - [@Alexis1326](https://github.com/Alexis1326)</br>
