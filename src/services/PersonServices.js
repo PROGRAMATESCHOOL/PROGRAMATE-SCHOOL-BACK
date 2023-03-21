@@ -16,11 +16,6 @@ const SignUp = () => {
     return register
 }
 
-const getAllStudents = () => {
-    const allStudents = Person.getAllStudents();
-    return allStudents
-}
-
 
 const CreateAdmin = () => {
     const NewAdminCreated = NewAdmin();
