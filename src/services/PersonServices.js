@@ -1,5 +1,5 @@
 const Person = require("../models/personsModel");
-const ScoreAnnouncement = require("../models/scoreAnnouncementModel");
+//const ScoreAnnouncement = require("../models/scoreAnnouncementModel");
 
 const loginPerson = () => {
     const logPerson = Person.loginPerson();
@@ -22,13 +22,6 @@ const CreateAdmin = () => {
     return NewAdminCreated
 }
 
-
-const formAnnouncement = () => {
-    const formScore = ScoreAnnouncement.scoreForm();
-    return formScore
-
-}
-
 const getAdminList = () => {
     const AdminList = Person.getAdminList();
     return AdminList;
@@ -47,10 +40,7 @@ module.exports = {
     getAllPersons,
     SignUp,
     CreateAdmin,
-    formAnnouncement,
     getAdminList,
     getAllStudents,
     CreateAdmin,
-    formAnnouncement,
-
 }

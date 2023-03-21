@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 
 const getAllStudents = async (req, res) => {
     try {
-        const students = await Person.find({ profilePerson : 3 });
+        const students = await Person.find({ profilePerson : "Student" });
         res.json(students);
     } catch (err) {
     //return res.status(200).json({ msg: err.message });

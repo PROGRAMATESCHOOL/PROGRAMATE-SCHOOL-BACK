@@ -31,8 +31,8 @@ const PersonSchema = new mongoose.Schema({
         unique: true,
     },
     profilePerson: {
-        type: Number,
-        require: false
+        type: String,
+        require: true
     },
     institutionPerson: {
         type: String,
