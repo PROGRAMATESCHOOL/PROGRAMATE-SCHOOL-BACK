@@ -59,4 +59,3 @@ const NewAdmin = async (req, res) => {
 module.exports = {
     NewAdmin
 };
-

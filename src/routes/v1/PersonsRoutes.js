@@ -11,6 +11,7 @@ const AnnouncementListController = require("../../controllers/AnnouncementListCo
 const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
 const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController")
+const disableAnnouncement = require("../../controllers/DisabledAnnouncementController")
 
 const StageStudent = require("../../controllers/StudentStageAnnouncement")
 
@@ -36,9 +37,13 @@ router
   // .get("/public/confirm.html", SignUp. confirm)
 
   .post("/newAdmin", NewAdmin.NewAdmin)
+  .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
   .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
+  
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
+  
+  .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
 
-  .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement);
- 
+  
+  
 module.exports = router;
