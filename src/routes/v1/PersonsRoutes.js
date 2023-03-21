@@ -13,9 +13,13 @@ const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementControll
 const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController")
 const disableAnnouncement = require("../../controllers/DisabledAnnouncementController")
 
+const  ModifyStudent = require('../../controllers/DisabledStudentController');
+
 const StageStudent = require("../../controllers/StudentStageAnnouncement")
 
 const AnnouncementsStats = require("../../controllers/StatsAnnouncementController")
+
+
 
 const checkAuth = require('../../middleware/authentication')
 const checkProfileAuth = require('../../middleware/RoleAuth')
@@ -37,13 +41,14 @@ router
   // .get("/public/confirm.html", SignUp. confirm)
 
   .post("/newAdmin", NewAdmin.NewAdmin)
-  .post("/scoreannouncement", ScoreAnnouncement.scoreForm)
+  
   .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
   
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
   
-  .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement)
+  .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement) //Custom route used to delete announcement
+  .patch("/disabledAnnouncement/:nameAnnouncement", disableAnnouncement.disableAnnouncement) //Custom route used to disable announcement
 
-  
+  .patch("/deleteStudent/:documentPerson",  ModifyStudent.modifyStudent) // Custom route used to disabled student
   
 module.exports = router;

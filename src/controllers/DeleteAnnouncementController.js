@@ -3,7 +3,7 @@ const Person = require("../models/personsModel");
 const bcrypt = require("bcrypt");
 const Announcement = require('../models/announcementsModel');
 
-//function to delete the announcement
+// Function to disabled the announcement
 async function deleteAnnouncement(req, res) {
   const { nameAnnouncement } = req.params; 
   try {
