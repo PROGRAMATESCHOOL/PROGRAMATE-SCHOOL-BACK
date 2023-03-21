@@ -15,20 +15,17 @@ const AnnouncementSchema = new mongoose.Schema({
         type: Number,
         require: true
     },
-    students: [{
-        type: Schema.Types.ObjectId,
-        ref: 'PersonSchema' // Referenced from Document Person (One or Many)
-    }],
-    conditionStudent: {
-        type: Boolean,
+    stateAnnouncement: { // THIS FIELD LET US ENABLED OR DISABLED THE ANNOUNCEMENT
+        type: String,
+        default: "ENABLED",
         require: false
     },
-    dateStartAnnouncement: {
-        type: Date,
+    dateStartAnnouncement: { // FORMAT <YYYY - MM - DD>
+        type: String,
         require: false
     },
-    dateFinishAnnouncement: {
-        type: Date,
+    dateFinishAnnouncement: { // FORMAT <YYYY - MM - DD>
+        type: String,
         require: false
     },
     createdBySuperAdmin: {
