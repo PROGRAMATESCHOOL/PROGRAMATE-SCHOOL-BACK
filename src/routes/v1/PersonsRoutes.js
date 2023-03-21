@@ -1,17 +1,16 @@
-const router = require('express').Router();
+const router = require("express").Router();
 const LoginController = require("../../controllers/LoginController");
 const GetAllPersonsController = require("../../controllers/GetAllPersonsController");
-const SignUp =require ('../../controllers/RegisterController');
-const NewAdmin = require('../../controllers/NewAdminController')
-
+const SignUp = require("../../controllers/RegisterController");
+const NewAdmin = require("../../controllers/NewAdminController");
 const AdminListController = require("../../controllers/AdminListController");
 const StudentListController = require("../../controllers/StudentListController") 
 const AnnouncementListController = require("../../controllers/AnnouncementListController")
 
 const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
-const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController")
-const disableAnnouncement = require("../../controllers/DisabledAnnouncementController")
+const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController");
+const disableAnnouncement = require("../../controllers/DisabledAnnouncementController");
 
 const  ModifyStudent = require('../../controllers/DisabledStudentController');
 
@@ -21,9 +20,8 @@ const AnnouncementsStats = require("../../controllers/StatsAnnouncementControlle
 
 
 
-const checkAuth = require('../../middleware/authentication')
-const checkProfileAuth = require('../../middleware/RoleAuth')
-
+const checkAuth = require("../../middleware/authentication");
+const checkProfileAuth = require("../../middleware/RoleAuth");
 
 //This is an inicial version of the router, might change due to Functionality & new features
 

@@ -40,19 +40,19 @@ const sendEmail = async (emailPerson, subject, html ) => {
 
 const getTemplate = (name1Person, lastname1Person, token) => {
     return `
-    <head>
-        <link rel="stylesheet" href="./style.css">
-    </head>
+        <head>
+            <link rel="stylesheet" href="./style.css">
+            </head>
 
-    <div id="email___content">
-        <img src="" alt="">
-        <h2>Hola ${name1Person + " " + lastname1Person}</h2>
-        <p>Para verificar tu cuenta y continuar con el registro en la plataforma de  Programate School, ingresa al siguiente enlace:</p>
-        <a
-            href="http://localhost:3000/api/confirm/${token}"
-            target="_blank"
-        >Confirmar Cuenta</a>
-    </div>
+            <div id="email___content">
+            <img src="" alt="">
+            <h2>Hola ${name1Person + " " + lastname1Person}</h2>
+            <p>Para verificar tu cuenta y continuar con el registro en la plataforma de  Programate School, ingresa al siguiente enlace:</p>
+            <a
+                href="http://localhost:3000/api/confirm/${token}"
+                target="_blank"
+            >Confirmar Cuenta</a>
+        </div>
     `;
 };
 
@@ -61,16 +61,17 @@ const getTemplatePassword = (name1Person, lastname1Person, emailPerson, password
         <head>
             <link rel="stylesheet" href="./style.css">
         </head>
-
-    <div id="email___content">
-        <img src="" alt="">
-        <h2>Hola ${ name1Person + " "+ lastname1Person }</h2>
-        <p>Tu cuenta de correo ha sido verificada con exito. A continuación en contraras tu usuario y contraseña para acceder a la pagina de Programte School donde podras conocer e inscribirte a nuestras convocatorias.
-        </p>
-        <h6> Usuario: ${emailPerson} </h6>
-        <h6> Contraseña: ${passwordPerson} </h6>
-
-    </div>
+        
+        <div id="email___content">
+            <img src="" alt="">
+            <h2>Hola ${ name1Person + " "+ lastname1Person }</h2>
+            <p>Tu cuenta de correo ha sido verificada con exito. A continuación en contraras tu usuario y contraseña para acceder a la pagina de Programte School donde podras conocer e inscribirte a nuestras convocatorias.
+            </p>
+            
+            <h6> Usuario: ${emailPerson} </h6>
+            <h6> Contraseña: ${passwordPerson} </h6>
+            
+        </div>
     `;
 }
 
