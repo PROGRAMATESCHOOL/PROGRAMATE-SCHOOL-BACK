@@ -13,22 +13,20 @@ const RegisterToAnnouncement = async (req, res) => {
     //     nameAnnouncement
     // } = req.body
 
-    const documentPerson = "999015"
-    const nameAnnouncement = "Convocatoria 2023 - Segundo semestre"
+    const documentPerson = "999021"
+    const nameAnnouncement = "Desarrollador Back End"
 
     const StudentRegistered = await Person.findOne({documentPerson: documentPerson}).exec()
 
     //res.send(StudentRegistered)
     //console.log(StudentRegistered)
 
-    const RegisterExist = await Questionary.findOne({q9_documentPerson: documentPerson}).exec()
+    // const RegisterExist = await Questionary.findOne({q9_documentPerson: documentPerson}).exec()
 
-    if(RegisterExist) {
-        console.log("Estudiante registrado en esta convocatoria")
-        res.send("Estudiante registrado en esta convocatoria")
-    }
-
-    else {
+    // if(RegisterExist) {
+    //     console.log("Estudiante registrado en esta convocatoria")
+    //     res.send("Estudiante registrado en esta convocatoria")
+    // }
 
         // THIS VARIABLES SHOW INFORMATION IN FRONT'S VIEW
         let form_name1Person = StudentRegistered.name1Person
@@ -95,11 +93,8 @@ const RegisterToAnnouncement = async (req, res) => {
         const idStu = await Person.findOne({documentPerson: documentPerson}, {_id:1})
         //console.log(idStu)
 
-        // // THIS TRY TO SEND ID'S STUDENTS INTO ANNOUNCEMENT MODEL
-        // Announcement.updateOne({_id: idAnn}), {
-        //     ...students: [idStu]
-        // }
-        
+        const StudentIntoAnnouncement = await Announcement.findOneAndUpdate({nameAnnouncement: nameAnnouncement}, {$push: {studentsRegistered: idStu}})
+        console.log(StudentIntoAnnouncement)        
 
         // THE NEXT CALCULATES SCORES BY THE STUDENT
         var form_ScoreProfile = 0
@@ -332,17 +327,15 @@ const RegisterToAnnouncement = async (req, res) => {
             ScoreMotivation: form_ScoreMotivation,
             ScoreLogic: form_ScoreLogic,
             ScoreTotal: form_ScoreTotal,
-            stateAnnouncementStudent: form_stateAnnouncementStudent
-
+            stateAnnouncementStudent: form_stateAnnouncementStudent,
         })
 
         NewQuestionaryOK.save();
         console.log("Se ha registrado a la convocatoria con exito")
         res.send(NewQuestionaryOK)
-            
+        
         const idRegister = NewQuestionaryOK._id
         console.log(idRegister)
-    }
 }
 
 module.exports = {

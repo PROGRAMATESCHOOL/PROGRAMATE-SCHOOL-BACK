@@ -23,19 +23,26 @@ const AddAnnouncement = async (req, res) => {
 
     console.log("Mensaje de Verificacion")
 
-    const NewAnnouncement = new Announcement({
-        nameAnnouncement: nameAnnouncement,
-        descriptionAnnouncement: descriptionAnnouncement,
-        placesAnnouncement: placesAnnouncement,
-        stateAnnouncement: "ENABLED",
-        dateStartAnnouncement: dateStartAnnouncement,
-        dateFinishAnnouncement: dateFinishAnnouncement,
-        createdBySuperAdmin: createdBySuperAdmin
-    })
+    const ExistedAnnouncement = await Announcement.findOne({nameAnnouncement: nameAnnouncement})
+    
+    if (ExistedAnnouncement) {
+        res.send("Ya existe una convocatoria con ese nombre")
+    }
+    else {
+        const NewAnnouncement = new Announcement({
+            nameAnnouncement: nameAnnouncement,
+            descriptionAnnouncement: descriptionAnnouncement,
+            placesAnnouncement: placesAnnouncement,
+            stateAnnouncement: "ENABLED",
+            dateStartAnnouncement: dateStartAnnouncement,
+            dateFinishAnnouncement: dateFinishAnnouncement,
+            createdBySuperAdmin: createdBySuperAdmin
+        })
 
-    NewAnnouncement.save();
-    console.log("Convocatoria creada con exito")
-    res.send(NewAnnouncement)
+        NewAnnouncement.save();
+        console.log("Convocatoria creada con exito")
+        res.send(NewAnnouncement)        
+    }
 };
 
 module.exports = {

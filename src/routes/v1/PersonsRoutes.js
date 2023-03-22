@@ -18,7 +18,7 @@ const StageStudent = require("../../controllers/StudentStageAnnouncement")
 
 const AnnouncementsStats = require("../../controllers/StatsAnnouncementController")
 
-
+const OpenAnnouncement = require("../../controllers/OpenAnnouncementByStudent") 
 
 const checkAuth = require("../../middleware/authentication");
 const checkProfileAuth = require("../../middleware/RoleAuth");
@@ -49,4 +49,6 @@ router
 
   .patch("/deleteStudent/:documentPerson",  ModifyStudent.modifyStudent) // Custom route used to disabled student
   
+  .get("/openannouncements/:documentPerson", OpenAnnouncement.OpenAnnouncement)
+
 module.exports = router;
