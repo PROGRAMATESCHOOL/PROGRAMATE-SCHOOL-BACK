@@ -19,13 +19,12 @@ POST http://localhost:3000/api/auth/signUp HTTP/1.1
 Content-Type: application/json
 
 {
-    "name1Person": "Juan",
-    "name2Person": "Salazar",
-    "documentPerson": "999023",
-    "emailPerson": "jsalazar@correo.com",
-    "profilePerson": "Student",
-    "agePerson": 16,
-    "institutionPerson": "Colegio Campo de la Cruz - Atlantico",
+    "name1Person": "Fernanda",
+    "name2Person": "Linares",
+    "documentPerson": "451236",
+    "emailPerson": "fllora@hotmail.com",
+    "profilePerson": "SuperAdmin",
+    "agePerson": 22,
     "statusPerson": "VERIFIED"
 }
 
@@ -47,10 +46,10 @@ POST http://localhost:3000/api/newAdmin HTTP/1.1
 Content-Type: application/json
 
 {
-    "name1Person": "Catalina",
-    "lastname1Person": "Castro",
-    "documentPerson": 988888,
-    "emailPerson": "Test_27@gmail.com",
+    "name1Person": "Fernanda",
+    "lastname1Person": "Linares",
+    "documentPerson": 451236,
+    "emailPerson": "Test_28@gmail.com",
     "positionPerson": "Formador"
 }
 

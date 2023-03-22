@@ -8,7 +8,7 @@ const { ObjectId }= require("mongoose");
 const AddAnnouncement = async (req, res) => {
     
     const {
-        //documentPerson,
+        adminId,
         nameAnnouncement,
         descriptionAnnouncement,
         placesAnnouncement,
@@ -16,9 +16,10 @@ const AddAnnouncement = async (req, res) => {
         dateFinishAnnouncement
     } = req.body
 
-    const documentPerson = "10001" // THIS IS PROVISIONAL. THIS FIELD MUST BE BRING IT FROM FRONTEND    
+    // const documentPerson = "10001" // THIS IS PROVISIONAL. THIS FIELD MUST BE BRING IT FROM FRONTEND
 
-    const createdBySuperAdmin = await Person.findOne({documentPerson: documentPerson}, {_id: 1}) //searches for an existing user with the type profile and same document
+    // const createdBySuperAdmin = await Person.findOne({documentPerson: documentPerson}, {_id: 1}) //searches for an existing user with the type profile and same document
+    const createdBySuperAdmin = await adminId
     console.log(createdBySuperAdmin)
 
     console.log("Mensaje de Verificacion")

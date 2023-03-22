@@ -27,8 +27,7 @@ const NewAdmin = async (req, res) => {
         if (profilePerson == "Admin") {
 
             const passwordP = uniqid(undefined, lastname1Person);
-            //const passwordHash = encrypt(passwordP);
-            console.log(passwordP)
+            const passwordHash = await encrypt(passwordP);
             
             const createNewAdmin = new Person({
                 name1Person: name1Person,
@@ -38,14 +37,14 @@ const NewAdmin = async (req, res) => {
                 documentPerson: documentPerson,
                 emailPerson: emailPerson,
                 profilePerson: profilePerson,
-                passwordPerson: passwordPerson,
+                passwordPerson: passwordHash,
                 positionPerson: positionPerson
             });
 
             createNewAdmin.save();
                 res
                     .status(201)
-                    .send({ status: "New admin created", data: createNewAdmin });
+                    .send({ status: "New admin created", data: createNewAdmin, passwordP});
 
         
         
