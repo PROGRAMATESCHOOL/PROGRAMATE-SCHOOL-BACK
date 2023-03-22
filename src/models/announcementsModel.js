@@ -11,6 +11,10 @@ const AnnouncementSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+    stateAnnouncement:{
+        type: String,
+        require: true    
+    },
     placesAnnouncement: {
         type: Number,
         require: true
@@ -35,3 +39,4 @@ const AnnouncementSchema = new mongoose.Schema({
 })
 
 module.exports = mongoose.model("AnnouncementModel", AnnouncementSchema)
+

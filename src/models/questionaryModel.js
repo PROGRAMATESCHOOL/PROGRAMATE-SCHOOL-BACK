@@ -111,7 +111,7 @@ const QuestionarySchema = new mongoose.Schema({
         require: false
     },
     q26_stratum: {
-        type: String,
+        type: Number,
         require: false
     },
     q27_nameGuardian: {
@@ -119,6 +119,10 @@ const QuestionarySchema = new mongoose.Schema({
         require: false
     },
     q28_relationship: {
+        type: String,
+        require: false
+    },
+    q28_1_relationshipO:{
         type: String,
         require: false
     },
@@ -131,7 +135,7 @@ const QuestionarySchema = new mongoose.Schema({
         require: false
     },
     q31_emailGuardian: {
-        type: Number,
+        type: String,
         require: false
     },
     q32_phoneGuardian: {
@@ -159,7 +163,7 @@ const QuestionarySchema = new mongoose.Schema({
         require: false
     },
     q38_family: {
-        type: Number,
+        type: String,
         require: false
     },
     q39_computer: {
@@ -244,8 +248,8 @@ const QuestionarySchema = new mongoose.Schema({
     },
     stateAnnouncementStudent: { // THIS FIELD LET US CHANGE THE STATE OF STUDENT (ENABLED OR DISABLED)
         type: String,
-        require: false
-    }
+        require: false
+    }
 })
 
 module.exports = mongoose.model("questionaryModel", QuestionarySchema);

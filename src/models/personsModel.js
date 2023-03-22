@@ -31,8 +31,8 @@ const PersonSchema = new mongoose.Schema({
         unique: true,
     },
     profilePerson: {
-        type: Number,
-        require: false
+        type: String,
+        require: true
     },
     institutionPerson: {
         type: String,
@@ -55,7 +55,7 @@ const PersonSchema = new mongoose.Schema({
         type: String,
         require: true,
     },
-//This status is add for default because all the email have to verificated - AP
+    //This status is add for default because all the email have to verificated - AP
     statusPerson:{
         type: String,
         require: true,
