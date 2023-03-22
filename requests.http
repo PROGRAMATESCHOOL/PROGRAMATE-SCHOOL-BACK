@@ -61,7 +61,7 @@ Content-Type: application/json
 
 {
     "documentPerson": "10006",
-    "nameAnnouncement": "Convocatoria 2025",
+    "nameAnnouncement": "Desarrollador Back End",
     "descriptionAnnouncement": "Estudiante grado 11 de colegios aliados",
     "placesAnnouncement": 80,
     "dateStartAnnouncement": "04-20-2025",
