@@ -11,8 +11,8 @@ let transport = nodemailer.createTransport({
     port: 465,
     secure: true,
     auth: {
-          user: process.env.userEmail,
-          pass: process.env.passEmail
+        user: process.env.userEmail,
+        pass: process.env.passEmail
     },
     tls: {
         rejectUnauthorized: false
