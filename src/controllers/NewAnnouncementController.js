@@ -27,7 +27,8 @@ const AddAnnouncement = async (req, res) => {
     const ExistedAnnouncement = await Announcement.findOne({nameAnnouncement: nameAnnouncement})
     
     if (ExistedAnnouncement) {
-        res.send("Ya existe una convocatoria con ese nombre")
+        res.send({status: "Ya existe una convocatoria con ese nombre"})
+        console.log("Ya existe una convocatoria con ese nombre")
     }
     else {
         const NewAnnouncement = new Announcement({
@@ -41,7 +42,7 @@ const AddAnnouncement = async (req, res) => {
         })
 
         NewAnnouncement.save();
-        console.log("Convocatoria creada con exito")
+        //console.log("Convocatoria creada con exito")
         res.send(NewAnnouncement)        
     }
 };

@@ -14,6 +14,8 @@ const disableAnnouncement = require("../../controllers/DisabledAnnouncementContr
 
 const  ModifyStudent = require('../../controllers/DisabledStudentController');
 
+const GetOneStudent = require("../../controllers/GetOneStudentController")
+
 const StageStudent = require("../../controllers/StudentStageAnnouncement")
 
 const AnnouncementsStats = require("../../controllers/StatsAnnouncementController")
@@ -35,6 +37,8 @@ router
   .get("/getstagestudent", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
 
   .get("/getStatistics", AnnouncementsStats.StatsAnnouncements) // Custom route used to get stats about all announcements
+
+  .get("/getonestudent", GetOneStudent.getOneStudent) // Custom route used to bring one student
 
   // .get("/public/confirm.html", SignUp. confirm)
 
