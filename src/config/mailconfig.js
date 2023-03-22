@@ -40,6 +40,7 @@ const sendEmail = async (emailPerson, subject, html ) => {
 
 const getTemplate = (name1Person, lastname1Person, token) => {
     return `
+
         <head>
             <link rel="stylesheet" href="./style.css">
             </head>
@@ -58,6 +59,7 @@ const getTemplate = (name1Person, lastname1Person, token) => {
 
 const getTemplatePassword = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
     return `
+
         <head>
             <link rel="stylesheet" href="./style.css">
         </head>
@@ -65,6 +67,7 @@ const getTemplatePassword = (name1Person, lastname1Person, emailPerson, password
         <div id="email___content">
             <img src="" alt="">
             <h2>Hola ${ name1Person + " "+ lastname1Person }</h2>
+
             <p>Tu cuenta de correo ha sido verificada con exito. A continuación en contraras tu usuario y contraseña para acceder a la pagina de Programte School donde podras conocer e inscribirte a nuestras convocatorias.
             </p>
 
@@ -73,6 +76,7 @@ const getTemplatePassword = (name1Person, lastname1Person, emailPerson, password
             
         </div>
     `;
+
 }
 
 
@@ -81,3 +85,4 @@ module.exports={
     getTemplate,
     getTemplatePassword,
 }
+
