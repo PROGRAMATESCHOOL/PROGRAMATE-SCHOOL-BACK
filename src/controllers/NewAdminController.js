@@ -1,6 +1,7 @@
 const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const uniqid = require("uniqid");
+const { encrypt } = require("../helpers/handleBcrypt");
 
 const NewAdmin = async (req, res) => {
     const {
@@ -10,7 +11,7 @@ const NewAdmin = async (req, res) => {
         lastname2Person,
         documentPerson,
         emailPerson,
-        agePerson,
+        positionPerson
     } = req.body; //Parse the request for using data
 
     const existentAdmin = await Person.findOne({ emailPerson }).exec();
@@ -21,10 +22,12 @@ const NewAdmin = async (req, res) => {
         return;
     } else {
 
-        const profilePerson = 2
+        const profilePerson = "Admin"
 
-        if (profilePerson == 2) {
-            const passwordPerson = uniqid(undefined, lastname1Person);
+        if (profilePerson == "Admin") {
+
+            const passwordP = uniqid(undefined, lastname1Person);
+            const passwordHash = await encrypt(passwordP);
             
             const createNewAdmin = new Person({
                 name1Person: name1Person,
@@ -34,16 +37,16 @@ const NewAdmin = async (req, res) => {
                 documentPerson: documentPerson,
                 emailPerson: emailPerson,
                 profilePerson: profilePerson,
-                passwordPerson: passwordPerson,
-                agePerson: agePerson,
+                passwordPerson: passwordHash,
+                positionPerson: positionPerson
             });
 
             createNewAdmin.save();
                 res
                     .status(201)
-                    .send({ status: "New admin created", data: createNewAdmin });
+                    .send({ status: "New admin created", data: createNewAdmin, passwordP});
 
-        
+            // send an email with credentials
         
             return;
         } else { //if profile person is not 2 return error code, might change in future updates
@@ -55,4 +58,3 @@ const NewAdmin = async (req, res) => {
 module.exports = {
     NewAdmin
 };
-

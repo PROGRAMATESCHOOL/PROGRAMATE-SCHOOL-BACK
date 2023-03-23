@@ -2,12 +2,17 @@ const personServices = require('../services/PersonServices');
 const Person = require('../models/personsModel');
 const bcrypt = require("bcrypt");
 
-// get the list of students
+// get one student
 
-const getAllStudents = async (req, res) => {
+const getOneStudent = async (req, res) => {
+    const {id} = req.body
+
     try {
-        const students = await Person.find({ profilePerson : "Student" });
-        res.json(students);
+        const OneStudent = await Person.find({_id: id});
+        res.json(OneStudent)
+        console.log(OneStudent)
+        // res.status(200)
+        // res.send(OneStudent);
     } catch (err) {
     //return res.status(200).json({ msg: err.message });
     res.json({ message: err.message });
@@ -15,5 +20,5 @@ const getAllStudents = async (req, res) => {
 };
 
 module.exports = {
-    getAllStudents,
+    getOneStudent,
 };

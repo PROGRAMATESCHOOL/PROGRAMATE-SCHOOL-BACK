@@ -122,6 +122,10 @@ const QuestionarySchema = new mongoose.Schema({
         type: String,
         require: false
     },
+    q28_1_relationshipO:{
+        type: String,
+        require: false
+    },
     q29_documentTypeGuardian: {
         type: String,
         require: false
@@ -242,7 +246,7 @@ const QuestionarySchema = new mongoose.Schema({
         type: Number,
         require: false
     },
-    stateAnnouncementStudent: {
+    stateAnnouncementStudent: { // THIS FIELD LET US CHANGE THE STATE OF STUDENT (ENABLED OR DISABLED)
         type: String,
         require: false
     }
