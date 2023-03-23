@@ -53,6 +53,6 @@ router
 
   .patch("/deleteStudent/:documentPerson",  ModifyStudent.modifyStudent) // Custom route used to disabled student
   
-  .get("/openannouncements/:documentPerson", OpenAnnouncement.OpenAnnouncement)
+  .get("/openannouncements", OpenAnnouncement.OpenAnnouncement)
 
 module.exports = router;
