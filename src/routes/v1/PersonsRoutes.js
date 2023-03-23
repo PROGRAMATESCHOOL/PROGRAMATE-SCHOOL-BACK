@@ -6,6 +6,7 @@ const NewAdmin = require("../../controllers/NewAdminController");
 const AdminListController = require("../../controllers/AdminListController");
 const StudentListController = require("../../controllers/StudentListController") 
 const AnnouncementListController = require("../../controllers/AnnouncementListController")
+const QuestionaryList = require("../../controllers/QuestionaryListController")
 
 const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
@@ -33,12 +34,13 @@ router
   .get("/getUsers", StudentListController.getAllStudents) //Custom route used to get all students
   .get("/confirm/:token", SignUp.confirm)
   .get("/getannouncements", AnnouncementListController.getAnnouncementList) //Custom route used to get all announcements
+  .get("/getallquestionaries", QuestionaryList.getAllQuestionaries) //Custom route used to get all questionaries
   
   .get("/getstagestudent", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
 
   .get("/getStatistics", AnnouncementsStats.StatsAnnouncements) // Custom route used to get stats about all announcements
 
-  .get("/getonestudent", GetOneStudent.getOneStudent) // Custom route used to bring one student
+  .post("/getonestudent", GetOneStudent.getOneStudent) // Custom route used to brings one student
 
   // .get("/public/confirm.html", SignUp. confirm)
 

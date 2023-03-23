@@ -168,3 +168,15 @@ Content-Type: application/json
 {
     "documentPerson": "99901"
 }
+
+###
+POST http://localhost:3000/api/getonestudent HTTP/1.1
+Content-Type: application/json
+
+{
+    "idPerson": "641558c1f2aef66d25705c4e"
+}
+
+
+### //  THIS BRING US ALL LIST OF QUESTIONARIES
+GET http://localhost:3000/api/getallquestionaries HTTP/1.1
