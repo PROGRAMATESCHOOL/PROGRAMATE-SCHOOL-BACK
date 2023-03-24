@@ -36,7 +36,7 @@ router
   .get("/getannouncements", AnnouncementListController.getAnnouncementList) //Custom route used to get all announcements
   .get("/getallquestionaries", QuestionaryList.getAllQuestionaries) //Custom route used to get all questionaries
   
-  .get("/getstagestudent", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
+  .post("/getstagestudent", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
 
   .get("/getStatistics", AnnouncementsStats.StatsAnnouncements) // Custom route used to get stats about all announcements
 
