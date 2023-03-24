@@ -20,7 +20,7 @@ const StudentStageAnnouncement = async (req, res) => {
         console.log(stageStudent)
         res 
             .status(200)
-            .send({status: "Stage Student Updated", data:stageStudent })
+            .send({data:stageStudent})
     }
     else {
         if (studentStage.stateAnnouncementStudent == "DISABLED") {
@@ -31,11 +31,13 @@ const StudentStageAnnouncement = async (req, res) => {
 
             var stageStudent = 0.4
             console.log(stageStudent)
-            //res.json(stageStudent)
+            res
+                .status(200)
+                .send({data:stageStudent})
         }
     }
 
-    res.send({ data: stageStudent })
+    //res.send(stageStudent)
 }
 
 module.exports = {

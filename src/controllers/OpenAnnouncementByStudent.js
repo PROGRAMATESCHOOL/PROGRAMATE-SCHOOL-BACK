@@ -12,9 +12,13 @@ const OpenAnnouncement = async (req, res) => {
     const AllAnnouncements = await Announcement.find({ $or: [  {studentsRegistered: { $nin: [idPerson] }} , {studentsRegistered: {$exists: false} } ]  })
 
     if(AllAnnouncements){
-        res.json(AllAnnouncements)
+        res
+            .status(200)
+            .send(AllAnnouncements)
     } else {
-        res.json("No hay convocatorias disponibles Ahora")
+        res
+            .status(201)
+            .send("No hay convocatorias disponibles Ahora")
     }
 }
     

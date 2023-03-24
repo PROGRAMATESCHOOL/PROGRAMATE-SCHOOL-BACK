@@ -17,6 +17,8 @@ const  ModifyStudent = require('../../controllers/DisabledStudentController');
 
 const GetOneStudent = require("../../controllers/GetOneStudentController")
 
+const GetOneAnnouncement = require("../../controllers/GetOneAnnouncementController")
+
 const StageStudent = require("../../controllers/StudentStageAnnouncement")
 
 const AnnouncementsStats = require("../../controllers/StatsAnnouncementController")
@@ -42,6 +44,8 @@ router
 
   .post("/getonestudent", GetOneStudent.getOneStudent) // Custom route used to brings one student
 
+  .post("/getoneannouncement", GetOneAnnouncement.getOneAnnouncement) // Custom route to bring announcement to student
+
   // .get("/public/confirm.html", SignUp. confirm)
 
   .post("/newAdmin", NewAdmin.NewAdmin)
@@ -51,7 +55,7 @@ router
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
   
   .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement) //Custom route used to delete announcement
-  .patch("/disabledAnnouncement/:nameAnnouncement", disableAnnouncement.disableAnnouncement) //Custom route used to disable announcement
+  .patch("/disabledAnnouncement", disableAnnouncement.disableAnnouncement) //Custom route used to disable announcement
 
   .patch("/deleteStudent/:documentPerson",  ModifyStudent.modifyStudent) // Custom route used to disabled student
   
