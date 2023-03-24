@@ -6,23 +6,33 @@ const Person = require("../models/personsModel");
 
 
 const disableAnnouncement = async (req, res) => {
-  const {nameAnnouncement, stateAnnouncement} = req.body
-    try{
-      const idAnnouncement = Announcement.findOne({nameAnnouncement: nameAnnouncement}, {_id:1}) // Searches for a existing announcement
-      
-      console.log(idAnnouncement)
-      const modAnnouncement = await Announcement.findOneAndUpdate({nameAnnouncement: nameAnnouncement}, {$set: {stateAnnouncement:"DISABLED"}}, {new: true},
-      (err, modAnnouncement) => {
-        if(err) return res.json({success: false, err});
-        res.status(200).json(modAnnouncement)
-      })
-      console.log(modAnnouncement)
+  const { nameAnnouncement } = req.body
+  try {
+    //const idAnnouncement = Announcement.findOne({ nameAnnouncement: nameAnnouncement }, { _id: 1 }) // Searches for a existing announcement
+    const STA = await Announcement.findOne({ nameAnnouncement: nameAnnouncement })
+    const StateA = STA.stateAnnouncement
 
-    } catch (err){
-       //res.json({message: err.message});
+    //console.log(idAnnouncement)
+    
+    if (StateA == "ENABLED") {
+    const modAnnouncement = await Announcement.findOneAndUpdate({ nameAnnouncement: nameAnnouncement }, { $set: { stateAnnouncement: "DISABLED" } }, { new: true },
+      ((err, modAnnouncement) => {
+        if (err) return res.json({ success: false, err });
+        res.status(200).json(modAnnouncement)
+    })) 
+    }
+    if (StateA == "DISABLED") {
+      const modAnnouncement = await Announcement.findOneAndUpdate({ nameAnnouncement: nameAnnouncement }, { $set: { stateAnnouncement: "ENABLED" } }, { new: true },
+        ((err, modAnnouncement) => {
+          if (err) return res.json({ success: false, err });
+          res.status(200).json(modAnnouncement)
+        }))
+      }     
+    console.log(modAnnouncement)
+    }
+    catch (err) {
+        //res.json({message: err.message});
     }
 };
- 
-module.exports = {disableAnnouncement};
 
-
+module.exports = { disableAnnouncement };

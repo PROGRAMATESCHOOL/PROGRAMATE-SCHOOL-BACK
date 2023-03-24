@@ -1,6 +1,7 @@
 const Person = require("../models/personsModel");
 const uniqid = require("uniqid");
 const { encrypt } = require("../helpers/handleBcrypt");
+const { sendEmail, getTemplatePasswordAdmin, } = require("../config/mailconfig");
 
 const NewAdmin = async (req, res) => {
     const {
@@ -27,7 +28,7 @@ const NewAdmin = async (req, res) => {
 
             const passwordP = uniqid(undefined, lastname1Person);
             const passwordHash = await encrypt(passwordP);
-            
+
             const createNewAdmin = new Person({
                 name1Person: name1Person,
                 name2Person: name2Person,
@@ -41,15 +42,30 @@ const NewAdmin = async (req, res) => {
             });
 
             createNewAdmin.save();
-                res
-                    .status(201)
-                    .send({ status: "New admin created", data: createNewAdmin, passwordP});
+            res
+                .status(201)
+                .send({ status: "New admin created", data: createNewAdmin, passwordP });
 
             // send an email with credentials
-        
+
+            const templatepasswordAdmin = getTemplatePasswordAdmin(
+                createNewAdmin.name1Person,
+                createNewAdmin.lastname1Person,
+                createNewAdmin.emailPerson,
+                passwordP
+            );
+            await sendEmail(emailPerson, "Datos de ingreso", templatepasswordAdmin);
+
+            console.log(
+                "Se han enviado los datos de ingreso al correo del admin",
+                createNewAdmin.name1Person
+            );
+
+            //End email credentials
+
             return;
         } else { //if profile person is not 2 return error code, might change in future updates
-            res.status(401).send({ status: "Not an allowed profile" }); 
+            res.status(401).send({ status: "Not an allowed profile" });
         }
     }
 };
