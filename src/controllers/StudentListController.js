@@ -1,4 +1,3 @@
-const personServices = require('../services/PersonServices');
 const Person = require('../models/personsModel');
 const bcrypt = require("bcrypt");
 
@@ -7,7 +6,7 @@ const bcrypt = require("bcrypt");
 const getAllStudents = async (req, res) => {
     try {
         const students = await Person.find({ profilePerson : "Student" });
-        res.json(students);
+        res.status(200).json(students);
     } catch (err) {
     //return res.status(200).json({ msg: err.message });
     res.json({ message: err.message });

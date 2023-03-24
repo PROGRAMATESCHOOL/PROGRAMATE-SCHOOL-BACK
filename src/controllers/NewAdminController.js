@@ -38,17 +38,18 @@ const NewAdmin = async (req, res) => {
         positionPerson: positionPerson,
       });
 
-      createNewAdmin.save();
-      res
-        .status(201)
-        .send({ status: "New admin created", data: createNewAdmin, passwordP });
+            createNewAdmin.save();
+                res
+                    .status(201)
+                    .send({ status: "New admin created", data: createNewAdmin, passwordP});
 
-      return;
-    } else {
-      //if profile person is not 2 return error code, might change in future updates
-      res.status(401).send({ status: "Not an allowed profile" });
+            // send an email with credentials
+        
+            return;
+        } else { //if profile person is not 2 return error code, might change in future updates
+            res.status(401).send({ status: "Not an allowed profile" }); 
+        }
     }
-  }
 };
 
 module.exports = {

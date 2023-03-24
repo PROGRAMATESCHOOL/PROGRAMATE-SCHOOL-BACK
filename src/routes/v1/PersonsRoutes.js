@@ -6,6 +6,7 @@ const NewAdmin = require("../../controllers/NewAdminController");
 const AdminListController = require("../../controllers/AdminListController");
 const StudentListController = require("../../controllers/StudentListController") 
 const AnnouncementListController = require("../../controllers/AnnouncementListController")
+const QuestionaryList = require("../../controllers/QuestionaryListController")
 
 const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
@@ -13,6 +14,8 @@ const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementCo
 const disableAnnouncement = require("../../controllers/DisabledAnnouncementController");
 
 const  ModifyStudent = require('../../controllers/DisabledStudentController');
+
+const GetOneStudent = require("../../controllers/GetOneStudentController")
 
 const StageStudent = require("../../controllers/StudentStageAnnouncement")
 
@@ -31,10 +34,13 @@ router
   .get("/getUsers", StudentListController.getAllStudents) //Custom route used to get all students
   .get("/confirm/:token", SignUp.confirm)
   .get("/getannouncements", AnnouncementListController.getAnnouncementList) //Custom route used to get all announcements
+  .get("/getallquestionaries", QuestionaryList.getAllQuestionaries) //Custom route used to get all questionaries
   
   .get("/getstagestudent", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
 
   .get("/getStatistics", AnnouncementsStats.StatsAnnouncements) // Custom route used to get stats about all announcements
+
+  .post("/getonestudent", GetOneStudent.getOneStudent) // Custom route used to brings one student
 
   // .get("/public/confirm.html", SignUp. confirm)
 
@@ -49,6 +55,6 @@ router
 
   .patch("/deleteStudent/:documentPerson",  ModifyStudent.modifyStudent) // Custom route used to disabled student
   
-  .get("/openannouncements/:documentPerson", OpenAnnouncement.OpenAnnouncement)
+  .get("/openannouncements", OpenAnnouncement.OpenAnnouncement)
 
 module.exports = router;
