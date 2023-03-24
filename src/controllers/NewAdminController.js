@@ -1,4 +1,3 @@
-const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const uniqid = require("uniqid");
 const { encrypt } = require("../helpers/handleBcrypt");
