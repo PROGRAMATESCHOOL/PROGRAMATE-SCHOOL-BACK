@@ -1,5 +1,4 @@
 const Person = require("../models/personsModel");
-const personServices = require("../services/PersonServices") ;
 const Announcement = require("../models/announcementsModel");
 const express = require('express');
 
