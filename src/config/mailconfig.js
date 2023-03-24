@@ -70,6 +70,29 @@ const getTemplatePassword = (name1Person, lastname1Person, emailPerson, password
 
             <p>Tu cuenta de correo ha sido verificada con exito. A continuación en contraras tu usuario y contraseña para acceder a la pagina de Programte School donde podras conocer e inscribirte a nuestras convocatorias.
             </p>
+            </br>
+            <h6> Usuario: ${emailPerson} </h6>
+            <h6> Contraseña: ${passwordPerson} </h6>
+            
+        </div>
+    `;
+
+}
+
+const getTemplatePasswordAdmin = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
+    return `
+
+        <head>
+            <link rel="stylesheet" href="./style.css">
+        </head>
+        
+        <div id="email___content">
+            <img src="" alt="">
+            <h2>Hola ${ name1Person + " "+ lastname1Person }</h2>
+
+            <p>Eres administrador de la pagina de Programate School. Tus credenciales para acceder a la pagina son las siguientes:
+            </p>
+            </br>
 
             <h6> Usuario: ${emailPerson} </h6>
             <h6> Contraseña: ${passwordPerson} </h6>
@@ -84,5 +107,6 @@ module.exports={
     sendEmail,
     getTemplate,
     getTemplatePassword,
+    getTemplatePasswordAdmin,
 }
 

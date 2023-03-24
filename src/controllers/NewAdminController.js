@@ -1,7 +1,7 @@
-const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const uniqid = require("uniqid");
 const { encrypt } = require("../helpers/handleBcrypt");
+const { sendEmail, getTemplatePasswordAdmin, } = require("../config/mailconfig");
 
 const NewAdmin = async (req, res) => {
     const {
@@ -47,6 +47,21 @@ const NewAdmin = async (req, res) => {
                     .send({ status: "New admin created", data: createNewAdmin, passwordP});
 
             // send an email with credentials
+            
+                const templatepasswordAdmin = getTemplatePasswordAdmin(
+                  createNewAdmin.name1Person,
+                  createNewAdmin.lastname1Person,
+                  createNewAdmin.emailPerson,
+                  passwordP
+                );
+                await sendEmail(emailPerson, "Datos de ingreso", templatepasswordAdmin);
+          
+                console.log(
+                  "Se han enviado los datos de ingreso al correo del admin",
+                  createNewAdmin.name1Person
+                );
+
+            //End email credentials
         
             return;
         } else { //if profile person is not 2 return error code, might change in future updates

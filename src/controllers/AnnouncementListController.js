@@ -1,4 +1,3 @@
-const PersonServices = require ('../services/PersonServices');
 const Announcement = require('../models/announcementsModel');
 const bcrypt = require ("bcrypt");
 
