@@ -1,4 +1,3 @@
-const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const { compare } = require("../helpers/handleBcrypt");
 const { tokenSign } = require("../helpers/sessionToken");

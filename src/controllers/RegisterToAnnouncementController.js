@@ -1,4 +1,3 @@
-const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const Announcement = require("../models/announcementsModel");
 const Questionary = require("../models/questionaryModel");
