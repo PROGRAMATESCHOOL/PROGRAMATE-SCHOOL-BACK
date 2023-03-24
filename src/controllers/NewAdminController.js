@@ -1,4 +1,3 @@
-const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const uniqid = require("uniqid");
 const { encrypt } = require("../helpers/handleBcrypt");
@@ -46,7 +45,7 @@ const NewAdmin = async (req, res) => {
                     .status(201)
                     .send({ status: "New admin created", data: createNewAdmin, passwordP});
 
-        
+            // send an email with credentials
         
             return;
         } else { //if profile person is not 2 return error code, might change in future updates

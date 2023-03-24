@@ -1,4 +1,3 @@
-const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const Announcement = require("../models/announcementsModel");
 const Questionary = require("../models/questionaryModel");
@@ -13,10 +12,10 @@ const RegisterToAnnouncement = async (req, res) => {
     //     nameAnnouncement
     // } = req.body
 
-    const documentPerson = "999021"
-    const nameAnnouncement = "Desarrollador Back End"
+    //const documentPerson = "999021"
+    //const nameAnnouncement = "Desarrollador Back End"
 
-    const StudentRegistered = await Person.findOne({documentPerson: documentPerson}).exec()
+    //const StudentRegistered = await Person.findOne({documentPerson: documentPerson}).exec()
 
     //res.send(StudentRegistered)
     //console.log(StudentRegistered)
@@ -39,6 +38,8 @@ const RegisterToAnnouncement = async (req, res) => {
         let form_agePerson = StudentRegistered.agePerson
 
         const {
+            idStudent,
+            idAnnouncement,
             birthdate,
             gender,
             document,
@@ -87,10 +88,10 @@ const RegisterToAnnouncement = async (req, res) => {
             logic4
         } = req.body
 
-        const idAnn = await Announcement.findOne({nameAnnouncement: nameAnnouncement}, {_id:1})
+        //const idAnn = await Announcement.findOne({nameAnnouncement: nameAnnouncement}, {_id:1})
         //console.log(idAnn)
 
-        const idStu = await Person.findOne({documentPerson: documentPerson}, {_id:1})
+        //const idStu = await Person.findOne({documentPerson: documentPerson}, {_id:1})
         //console.log(idStu)
 
         const StudentIntoAnnouncement = await Announcement.findOneAndUpdate({nameAnnouncement: nameAnnouncement}, {$push: {studentsRegistered: idStu}})
@@ -266,8 +267,8 @@ const RegisterToAnnouncement = async (req, res) => {
         }
 
         const NewQuestionaryOK = new Questionary({
-            idAnnouncement: idAnn,
-            idStudent: idStu,
+            idAnnouncement: idAnnouncement,
+            idStudent: idStudent,
             q1_name1Person: form_name1Person, 
             q2_name2Person: form_name2Person,
             q3_lastname1Person: form_lastname1Person,
