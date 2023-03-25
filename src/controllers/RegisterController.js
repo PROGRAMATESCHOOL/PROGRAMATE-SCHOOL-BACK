@@ -1,4 +1,3 @@
-const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const bcrypt = require("bcrypt");
 const { getToken, getTokenData } = require("../config/jwtConfig");
@@ -6,7 +5,7 @@ const {
   getTemplate,
   sendEmail,
   getTemplatePassword,
-} = require("../config/mailConfig");
+} = require("../config/mailconfig");
 // const { sendPassword, getTemplatePassword}= require('../config/mailPassword')
 const { v4: uuidv4 } = require("uuid");
 const { clearScreenDown } = require("readline");
@@ -22,7 +21,6 @@ const SignUp = async (req, res) => {
       lastname2Person,
       documentPerson,
       emailPerson,
-      profilePerson,
       institutionPerson,
       agePerson,
     } = req.body;
@@ -41,6 +39,8 @@ const SignUp = async (req, res) => {
       } else {
         //Get code
         const codePerson = uuidv4();
+
+        const profilePerson = "Student"
 
         //Creted a new user or student
         const passwordPerson = name1Person + lastname1Person + documentPerson;

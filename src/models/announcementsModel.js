@@ -11,58 +11,32 @@ const AnnouncementSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    stateAnnouncement:{
-        type: String,
-        require: true    
-    },
     placesAnnouncement: {
         type: Number,
         require: true
     },
-    students: [{
-        type: Schema.Types.ObjectId,
-        ref: 'PersonSchema' // Referenced from Document Person (One or Many)
-    }],
-    conditionStudent: {
-        type: Boolean,
+    stateAnnouncement: { // THIS FIELD LET US ENABLED OR DISABLED THE ANNOUNCEMENT
+        type: String,
+        default: "ENABLED",
         require: false
     },
-    dateStartAnnouncement: {
-        type: Date,
+    dateStartAnnouncement: { // FORMAT <YYYY - MM - DD>
+        type: String,
         require: false
     },
-    dateFinishAnnouncement: {
-        type: Date,
+    dateFinishAnnouncement: { // FORMAT <YYYY - MM - DD>
+        type: String,
         require: false
     },
     createdBySuperAdmin: {
         type: Schema.Types.ObjectId,
         ref: 'PersonSchema' // Referenced from Document Person (Only One)
+    },
+    studentsRegistered: {
+        type: Schema.Types.ObjectId,
+        ref: 'PersonSchema'
     }
 })
 
-  /*nameAnnouncement: {
-    type: String,
-    require: true,
-  },
-  descriptionAnnouncement: {
-    type: String,
-    require: true,
-  },
-  students: {
-    type: String,
-    require: false,
-    // Referenced from Document Person (One or Many)
-  },
-  conditionStudent: {
-    type: Boolean,
-    require: false,
-  },
-  createdBySuperAdmin: {
-    type: Schema.Types.ObjectId,
-    require: 'PersonSchema'
-    // Referenced from Document Person (Only One)
-  },
-});*/
-
 module.exports = mongoose.model("AnnouncementModel", AnnouncementSchema)
+

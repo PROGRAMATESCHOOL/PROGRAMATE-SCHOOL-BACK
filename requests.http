@@ -2,6 +2,8 @@
 GET http://localhost:3000/api/persons HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDEyMjhjNjgzMzdhMTc1N2NiNzk0OWUiLCJwcm9maWxlUGVyc29uIjoiU3R1ZGVudCIsImlhdCI6MTY3ODkxMTcwMiwiZXhwIjoxNjc4OTE4OTAyfQ.wZM2LUmAzq1BYLschArlVxUJMB0KiKMsfgPjZw7WF7E
+
+
 ### // THIS IS BY LOGIN FOR ALL PEOPLE
 POST http://localhost:3000/api/auth/login HTTP/1.1
 Content-Type: application/json
@@ -10,32 +12,33 @@ Content-Type: application/json
     "emailPerson": "default1@correo.com",
     "passwordPerson": "ManuelRicardo19733791"
 }
+
+
 ### // THIS CREATE NEW STUDENT
 POST http://localhost:3000/api/auth/signUp HTTP/1.1
 Content-Type: application/json
 
 {
-    "name1Person": "Manuel",
-    "lastname1Person": "Ricardo",
-    "documentPerson": "19733791",
-    "emailPerson": "default1@correo.com",
-    "profilePerson": "Admin",
-    "agePerson": 17,
-    "institutionPerson": "Colegio Integrada La Candelaria",
+    "name1Person": "Fernanda",
+    "name2Person": "Linares",
+    "documentPerson": "451236",
+    "emailPerson": "fllora@hotmail.com",
+    "profilePerson": "SuperAdmin",
+    "agePerson": 22,
     "statusPerson": "VERIFIED"
 }
 
-### // THIS BRING US ADMINS FROM PERSONS
+
+### // THIS BRING US ADMINS FROM DB
 GET http://localhost:3000/api/getAdmin HTTP/1.1
 
 
-###
+### // THIS BRING US STUDENTS FROM MODEL DB
 GET http://localhost:3000/api/getUsers HTTP/1.1
 
-###
-POST http://localhost:3000/api/addNewAnnouncement HTTP/1.1
-Content-Type: application/json
 
+### // THIS BRING US THE LIST OF ANNOUNCEMENTS
+GET http://localhost:3000/api/getannouncements HTTP/1.1
 
 
 ###  // CREATE NEW ADMINS
@@ -43,42 +46,34 @@ POST http://localhost:3000/api/newAdmin HTTP/1.1
 Content-Type: application/json
 
 {
-    "name1Person": "Manuel",
+    "name1Person": "Ricardo",
     "lastname1Person": "Castellanos",
-    "documentPerson": 12345678,
-    "emailPerson": "Test_3@gmail.com",
-    "agePerson": 16
+    "documentPerson": "28910808",
+    "emailPerson": "Test_100@gmail.com",
+    "positionPerson": "Desarrollador"
 }
 
-
-
-
-
-### // THIS REGISTER SCORE FOR ONE STUDENT
-POST http://localhost:3000/api/scoreannouncement HTTP/1.1
-Content-Type: application/json
-
-{
-    "ScoreProfile": 999,
-    "ScoreVocation": 123,
-    "ScoreMotivation": 13,
-    "ScoreLogic": 12,
-    "ScoreTotal": 100
-
-}
 
 ### // THIS CREATE NEW ANNOUNCEMENT
 POST http://localhost:3000/api/addnewannouncement HTTP/1.1
 Content-Type: application/json
 
 {
-    "documentPerson": "10004",
-    "nameAnnouncement": "Convocatoria 2026",
-    "descriptionAnnouncement": "Estudiante grado 11 de colegios aliados"
+    "documentPerson": "10006",
+    "nameAnnouncement": "Desarrollador Back End",
+    "descriptionAnnouncement": "Estudiante grado 11 de colegios aliados",
+    "placesAnnouncement": 80,
+    "dateStartAnnouncement": "04-20-2025",
+    "dateFinishAnnouncement": "11-14-2025"
 }
 
 ### // THIS DELETE ONE ANNOUNCEMENT
 DELETE http://localhost:3000/api/deleteannouncement HTTP/1.1
+Content-Type: application/json
+
+{
+    "nameAnnouncement": "Convocatoria 2026"
+}
 
 ### //THIS DISABLE A ANNOUNCEMENT
 PATCH  http://localhost:3000/api/disabledAnnouncement/:id HTTP/1.1
@@ -90,13 +85,107 @@ POST http://localhost:3000/api/registertoannouncement HTTP/1.1
 Content-Type: application/json
 
 {
-    "documentPerson": "70800900",
-    "nameAnnouncement": "Convocatoria 2030",
-    "birthdate": "01-02-2005",
-    "gender": "Femenino",
+    "documentPerson": "999021",
+    "nameAnnouncement": "",
+    "birthdate": "08-03-2006",
+    "gender": "Masculino",
     "document": "Cedula de Ciudadanía",
     "course": "11°",
     "sena": "NO",
     "availability": "SI",
-    "phone": 3101200300
+    "phone": 3018455774,
+    "phoneTwo": 3002599166,
+    "sisben": "SI",
+    "ethnicGroup": "NO",
+    "nationality": "Colombiana",
+    "disability": "NO",
+    "typeDisability": "Ninguna",
+    "addressStudent": "Carrera 15 # 9 - 9",
+    "departmentStudent": "Tolima",
+    "rural": "NO",
+    "bogota": "NO",
+    "stratum": "1",
+    "nameGuardian": "Hernando Castañeda",
+    "relationship": "Padre",
+    "documentTypeGuardian": "Cedula de Ciudadanía",
+    "numberIdGuardian": "900000052",
+    "emailGuardian": "hernandoc@hotmail.com",
+    "phoneGuardian": 3007485667,
+    "phoneGuardianTwo": 3026431387,
+    "addressGuardian": "Carrea 15 # 9 - 9",
+    "departmentGuardian": "Tolima",
+    "educationLevelGuardian": "Bachillerato - completo",
+    "economic": "Empleado tiempo completo",
+    "family": "5 o más",
+    "computer": "SI",
+    "internet": "SI",
+    "interests": "D",
+    "activity": "C",
+    "reportage": "A",
+    "stake": "B",
+    "webMotivation": "C",
+    "why": "A",
+    "methodology": "B",
+    "want": "A",
+    "withdrawal": "Conectividad",
+    "logic1": "El orden de llegada es B, C, D, A",
+    "logic2": "Seis tiburones no son completamente ciegos y tres son completamente ciegos",
+    "logic3": "E",
+    "logic4": "D"
 }
+
+
+###
+PATCH http://localhost:3000/api/disabledAnnouncement HTTP/1.1
+Content-Type: application/json
+
+{
+    "nameAnnouncement": "Convocatoria 2029"
+}
+
+
+###
+PATCH http://localhost:3000/api/deleteStudent/:documentPerson  HTTP/1.1
+Content-Type: application/json
+
+{
+    "documentPerson": "99901"
+}
+
+
+### // THIS BRING US INFO ABOUT PROCESS STUDENT
+GET http://localhost:3000/api/getstagestudent HTTP/1.1
+
+
+### // THIS BRING US INFO ABOUT ALL ANNOUNCEMENTS
+GET http://localhost:3000/api/getStatistics HTTP/1.1
+
+
+### // THIS BRINGS TO STUDENT THE ACTIVE ANNONCEMENTS FOR HIM
+GET http://localhost:3000/api/openannouncements/:documentPerson HTTP/1.1
+Content-Type: application/json
+
+{
+    "documentPerson": "99901"
+}
+
+### // THIS BRING US ONE UNIQUE STUDENT
+POST http://localhost:3000/api/getonestudent HTTP/1.1
+Content-Type: application/json
+
+{
+    "idPerson": "641558c1f2aef66d25705c4e"
+}
+
+
+### // THIS BRING US ONE UNIQUE ANNOUNCEMENT
+POST http://localhost:3000/api/getoneannouncement HTTP/1.1
+Content-Type: application/json
+
+{
+    "idPerson": "64155a70f2aef66d25705c70"
+}
+
+
+### //  THIS BRING US ALL LIST OF QUESTIONARIES
+GET http://localhost:3000/api/getallquestionaries HTTP/1.1
