@@ -55,7 +55,7 @@ router
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
   
   .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement) //Custom route used to delete announcement
-  .patch("/disabledAnnouncement", disableAnnouncement.disableAnnouncement) //Custom route used to disable announcement
+  .post("/disabledAnnouncement", disableAnnouncement.disableAnnouncement) //Custom route used to disable announcement
 
   .patch("/deleteStudent/:documentPerson",  ModifyStudent.modifyStudent) // Custom route used to disabled student
   
