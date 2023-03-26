@@ -11,6 +11,8 @@ const { v4: uuidv4 } = require("uuid");
 const { clearScreenDown } = require("readline");
 const { encrypt } = require("../helpers/handleBcrypt");
 
+var passwordP = ""
+
 const SignUp = async (req, res) => {
   try {
     //Get data for user -AP
@@ -43,9 +45,9 @@ const SignUp = async (req, res) => {
         const profilePerson = "Student"
 
         //Creted a new user or student
-        const passwordPerson = name1Person + lastname1Person + documentPerson;
+        passwordP = name1Person + lastname1Person + documentPerson;
 
-        const passwordHash = await encrypt(passwordPerson);
+        const passwordHash = await encrypt(passwordP);
 
         let person = new Person({
           name1Person: name1Person,
@@ -77,7 +79,7 @@ const SignUp = async (req, res) => {
           success: true,
           msg: "Registro Exitoso",
           data: person,
-          password: passwordPerson
+          password: passwordP
         });
       }
     }
@@ -144,7 +146,7 @@ const confirm = async (req, res) => {
         person.name1Person,
         person.lastname1Person,
         person.emailPerson,
-        person.passwordPerson
+        passwordP
       );
       await sendEmail(emailPerson, "Datos de ingreso", templatepassword);
 

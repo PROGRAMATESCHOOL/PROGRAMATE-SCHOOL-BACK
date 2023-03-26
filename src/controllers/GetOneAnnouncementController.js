@@ -7,7 +7,6 @@ const getOneAnnouncement = async (req,res) => {
     try {
         const oneAnnouncement = await Questionary.findOne({idStudent: idPerson})
         
-
         var oneAnnoun
 
         if(oneAnnouncement) {

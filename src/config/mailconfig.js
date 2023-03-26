@@ -55,7 +55,7 @@ const getTemplate = (name1Person, lastname1Person, token) => {
     `;
 };
 
-const getTemplatePassword = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
+const getTemplatePassword = (name1Person, lastname1Person, emailPerson, passwordP) => {
     return `
         <head>
             <link rel="stylesheet" href="./style.css">
@@ -68,7 +68,7 @@ const getTemplatePassword = (name1Person, lastname1Person, emailPerson, password
             </p>
             </br>
             <h6> Usuario: ${emailPerson} </h6>
-            <h6> Contraseña: ${passwordPerson} </h6>
+            <h6> Contraseña: ${passwordP} </h6>
             
         </div>
     `;
@@ -88,7 +88,7 @@ const getTemplatePasswordAdmin = (name1Person, lastname1Person, emailPerson, pas
             </p>
             </br>
             <h6> Usuario: ${emailPerson} </h6>
-            <h6> Contraseña: ${passwordPerson} </h6>
+            <h6> Contraseña: ${passwordP} </h6>
             
         </div>
     `;
