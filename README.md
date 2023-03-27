@@ -51,8 +51,19 @@ bash
   <h2>Project Documentation<img width="40" src="https://media1.giphy.com/media/JwOUH7TbHFHg3LnX18/giphy.gif?cid=ecf05e472ft6iopxnm5wmaxiyizyb4gk2a7m32i17zow50nk&rid=giphy.gif&ct=s"/></h2>
     In this space, the documentation will be posted if you have any questions or want to know more about the project.
   bash
-<https://honorable-fisherman-c88.notion.site/Documentaci-n-Progr-mate-School-6b9a798332554f5b8cf54b706148369b/>
+   https://honorable-fisherman-c88.notion.site/Documentaci-n-Progr-mate-School-6b9a798332554f5b8cf54b706148369b
 </div>
+
+<div>
+  <h2>videos of the page<img width="40" src="https://media0.giphy.com/media/jO2LAutp4HtzKBPHSS/giphy_s.gif?cid=ecf05e47fiiaptfvf4l8z548rhwci38ys10qy7jmdzoaexao&rid=giphy_s.gif&ct=s"/></h2>
+    in these links we find all the part of flow, user history and the visual part.
+bash
+   
+  https://youtu.be/vLzsv-gcA5E  <br/>
+  https://youtu.be/iSyNyKpyGZE
+  
+</div>
+
 
 <h2> Built with <img width="50" src="https://media4.giphy.com/media/BFcibA1iSocGQJKqGO/200w.webp?cid=ecf05e47aepb75aav47t08l20x9jk5rmb6efz8gaucq7ffl0&rid=200w.webp&ct=s"/></h2>
 
