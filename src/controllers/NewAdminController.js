@@ -1,7 +1,7 @@
 const Person = require("../models/personsModel");
 const uniqid = require("uniqid");
 const { encrypt } = require("../helpers/handleBcrypt");
-const { sendEmail, getTemplatePasswordAdmin, } = require("../config/mailconfig");
+const { sendEmail, getTemplatePasswordAdmin, getTemplateRecoverPassword } = require("../config/mailconfig");
 
 const NewAdmin = async (req, res) => {
   const {
@@ -22,6 +22,7 @@ const NewAdmin = async (req, res) => {
     return;
   } else {
     const profilePerson = "Admin";
+
 
     if (profilePerson == "Admin") {
       const passwordP = uniqid(undefined, lastname1Person);
@@ -66,9 +67,35 @@ const NewAdmin = async (req, res) => {
         } else { //if profile person is not 2 return error code, might change in future updates
             res.status(401).send({ status: "Not an allowed profile" }); 
         }
-    }
+    } 
 };
+
+const RecoverPassword = async (req, res) => {
+  const  {emailPerson} = req.body;
+    
+    const existedEmailAdmin = await Person.findOne({ emailPerson:emailPerson }).exec();
+     
+    if (existedEmailAdmin) {
+      const passwordPerson = uniqid(undefined, existedEmailAdmin.lastname1Person);
+      const templateRecoverPassword = getTemplateRecoverPassword(
+        existedEmailAdmin.name1Person,
+        existedEmailAdmin.lastname1Person,
+        existedEmailAdmin.emailPerson,
+        passwordPerson
+        
+      );
+      await sendEmail(emailPerson, "Recuperación de contraseña", templateRecoverPassword);
+      
+      res.status(200).send({ status: "Se han enviado los datos de recuperación de contraseña del Administrador"});
+
+      console.log(
+        "Se han enviado los datos de recuperación de contraseña del administrador: ",
+        existedEmailAdmin.emailPerson
+      );
+    } else { res.status(401).send({ status: "No existe un usuario con este correo" }); }
+  };
 
 module.exports = {
   NewAdmin,
+  RecoverPassword
 };

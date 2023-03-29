@@ -19,7 +19,7 @@ POST http://localhost:3000/api/auth/signUp HTTP/1.1
 Content-Type: application/json
 
 {
-    "name1Person": "AdriPrueba28",
+    "name1Person": "AdriPrueba29",
     "lastname1Person": "Linares",
     "documentPerson": "45123336",
     "emailPerson": "yafinik133@cyclesat.com",
@@ -45,14 +45,22 @@ POST http://localhost:3000/api/newAdmin HTTP/1.1
 Content-Type: application/json
 
 {
-    "name1Person": "Adri Admin 99",
+    "name1Person": "AdriAdmin29",
     "lastname1Person": "PruebaAdmin",
     "documentPerson": "11230808",
-    "emailPerson": "sadon15992@asoflex.com",
+    "emailPerson": "yafinik133@cyclesat.com",
+    "profilePerson": "Admin",
     "positionPerson": "Desarrollador"
 }
+###Recover password for an admin
+POST http://localhost:3000/api/recoverPasswordAdmin HTTP/1.1
+Content-Type: application/json
 
-###
+{
+    "emailPerson": "yafinik133@cyclesat.com"
+}
+
+###Recover password for a student
 POST http://localhost:3000/api/recoverPassword HTTP/1.1
 Content-Type: application/json
 

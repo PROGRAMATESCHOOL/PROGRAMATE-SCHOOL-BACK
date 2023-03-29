@@ -127,19 +127,18 @@ const confirm = async (req, res) => {
 
     if (person.statusPerson === "VERIFIED") {
       //Get Template Password
+      const passwordPerson = person.name1Person+person.lastname1Person+person.documentPerson
 
       const templatepassword = getTemplatePassword(
         person.name1Person,
         person.lastname1Person,
         person.emailPerson,
-        person.passwordPerson
+        passwordPerson
       );
       await sendEmail(emailPerson, "Datos de ingreso", templatepassword);
 
-      return res.json({
-        success: false,
-        msg: "Error al enviar datos de ingreso",
-      });
+      
+      return res.status(200).send({ status: "Se ha verificado el correo, revisalo nuevamente para conocer tus credenciales" });
     }
 
     //Redirect confirmation

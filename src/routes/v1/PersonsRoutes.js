@@ -29,8 +29,9 @@ router
   .get("/confirm/:token", SignUp.confirm)
   .get("/getannouncements", AnnouncementListController.getAnnouncementList) //Custom route used to get all announcements
   .get("/getallquestionaries", QuestionaryList.getAllQuestionaries) //Custom route used to get all questionaries
-  .post("/recoverPassword", SignUp.RecoverPassword) // Custom route used to recoverPassword
-  
+  .post("/recoverPassword", SignUp.RecoverPassword) // Custom route used to recoverPassword for a student
+
+  .post("/recoverPasswordAdmin", NewAdmin.RecoverPassword) // Custom route used to recoverPassword for an Admin
   .post("/getstagestudent", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
 
   .get("/getStatistics", AnnouncementsStats.StatsAnnouncements) // Custom route used to get stats about all announcements
