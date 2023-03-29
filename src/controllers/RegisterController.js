@@ -21,8 +21,8 @@ const SignUp = async (req, res) => {
       agePerson,
     } = req.body;
 
-        //Verify that the user Does Not exist -AP
-        //let person =await Person.findOne({documentPerson, emailPerson,}) || null;
+    //Verify that the user Does Not exist -AP
+    //let person =await Person.findOne({documentPerson, emailPerson,}) || null;
 
     const existedDocumentUser = await Person.findOne({ documentPerson }).exec();
     const existedEmailUser = await Person.findOne({ emailPerson }).exec();
@@ -36,7 +36,7 @@ const SignUp = async (req, res) => {
         //Get code
         const codePerson = uuidv4();
 
-        const profilePerson = "Student"
+        const profilePerson = "Student";
 
         //Creted a new user or student
         const passwordPerson = name1Person + lastname1Person + documentPerson;
@@ -73,15 +73,15 @@ const SignUp = async (req, res) => {
           success: true,
           msg: "Registro Exitoso",
           data: person,
-          password: passwordPerson
+          password: passwordPerson,
         });
       }
     }
   } catch (error) {
-    console.log(error);
     return res.json({
       success: false,
       msg: "Error al registrar usuario",
+      errors: error,
     });
   }
 };
@@ -100,7 +100,6 @@ const confirm = async (req, res) => {
         msg: "Error al obtener data",
       });
     }
-    // console.log(data, "esta es la data del token");
 
     const { emailPerson, codePerson } = data.data;
 
@@ -126,13 +125,6 @@ const confirm = async (req, res) => {
     person.statusPerson = "VERIFIED";
     await person.save();
 
-    console.log(
-      "El estatus del usuario ",
-      person.emailPerson,
-      "ahora es: ",
-      person.statusPerson
-    );
-
     if (person.statusPerson === "VERIFIED") {
       //Get Template Password
 
@@ -144,11 +136,6 @@ const confirm = async (req, res) => {
       );
       await sendEmail(emailPerson, "Datos de ingreso", templatepassword);
 
-      console.log(
-        "Se han enviado los datos de ingreso al correo",
-        person.emailPerson
-      );
-
       return res.json({
         success: false,
         msg: "Error al enviar datos de ingreso",
@@ -158,10 +145,10 @@ const confirm = async (req, res) => {
     //Redirect confirmation
     return res.redirect("../../public/confirm.html");
   } catch (error) {
-    console.log(error);
     return res.json({
       success: false,
       msg: "Error al confirmar usuario",
+      errors: error,
     });
   }
 };

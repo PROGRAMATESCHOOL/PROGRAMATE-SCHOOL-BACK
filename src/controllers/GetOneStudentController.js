@@ -1,23 +1,19 @@
-const Person = require('../models/personsModel');
+const Person = require("../models/personsModel");
 const bcrypt = require("bcrypt");
 
 // get one student
 
 const getOneStudent = async (req, res) => {
-    const {id} = req.body
+  const { idPerson } = req.body;
 
-    try {
-        const OneStudent = await Person.find({_id: id});
-        res.json(OneStudent)
-        console.log(OneStudent)
-        // res.status(200)
-        // res.send(OneStudent);
-    } catch (err) {
-    //return res.status(200).json({ msg: err.message });
-    res.json({ message: err.message });
-    }
+  try {
+    const oneStudent = await Person.findOne({ _id: idPerson });
+    res.status(200).send(oneStudent);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 };
 
 module.exports = {
-    getOneStudent,
+  getOneStudent,
 };
