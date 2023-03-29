@@ -58,6 +58,7 @@ const NewAdmin = async (req, res) => {
                   "Se han enviado los datos de ingreso al correo del admin",
                   createNewAdmin.name1Person
                 );
+                
 
             //End email credentials
         
