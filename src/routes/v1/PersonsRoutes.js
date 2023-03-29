@@ -38,13 +38,13 @@ router
   .get("/getannouncements", AnnouncementListController.getAnnouncementList) //Custom route used to get all announcements
   .get("/getallquestionaries", QuestionaryList.getAllQuestionaries) //Custom route used to get all questionaries
   
-  .get("/getstagestudent", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
+  .get("/getstagestudent:/idPerson", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
 
   .get("/getStatistics", AnnouncementsStats.StatsAnnouncements) // Custom route used to get stats about all announcements
 
-  .get("/getonestudent", GetOneStudent.getOneStudent) // Custom route used to brings one student
+  .post("/getonestudent", GetOneStudent.getOneStudent) // Custom route used to brings one student
 
-  .get("/getoneannouncement", GetOneAnnouncement.getOneAnnouncement) // Custom route to bring announcement to student
+  .get("/getoneannouncement/:idPerson", GetOneAnnouncement.getOneAnnouncement) // Custom route to bring announcement to student
 
   // .get("/public/confirm.html", SignUp. confirm)
 

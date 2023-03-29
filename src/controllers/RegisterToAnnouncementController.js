@@ -67,14 +67,7 @@ const RegisterToAnnouncement = async (req, res) => {
 
     const StudentRegistered = await Person.find({ _id: idStudent }).exec()
 
-    //const dPerson = StudentRegistered.documentPerson
-
-    // const RegisterExist = await Questionary.find({ q9_documentPerson: dPerson }).exec()
-
-    // if (RegisterExist) {
-    //     console.log("Estudiante registrado en esta convocatoria")
-    //     res.send("Estudiante registrado en esta convocatoria")
-    // }
+    
 
     //THIS VARIABLES SHOW INFORMATION IN FRONT'S VIEW
     let form_name1Person = StudentRegistered.name1Person
@@ -95,20 +88,7 @@ const RegisterToAnnouncement = async (req, res) => {
     const StudentIntoAnnouncement = await Announcement.findOneAndUpdate({ _id: idAnnouncement }, { $push: { studentsRegistered: idStu } })
     console.log(StudentIntoAnnouncement)
 
-    const formStudent = await Questionary.findOneAndUpdate({ _id: idAnnouncement },
-        { $push:  {
-            q1_name1Person: StudentRegistered.name1Person,
-            q2_name2Person: StudentRegistered.name2Person,
-            q3_lastname1Person: StudentRegistered.lastname1Person,
-            q4_lastname2Person: StudentRegistered.lastname2Person,
-            q6_agePerson: StudentRegistered.Person,
-            q9_documentPerson: StudentRegistered.documentPerson,
-            q10_institutionPerson: StudentRegistered.institutionPerson,
-            q14_emailPerson: StudentRegistered.emailPerson,
-        }})
-
-    constStudent 
-
+    
     // THE NEXT CALCULATES SCORES BY THE STUDENT
     var form_ScoreProfile = 0
     var form_ScoreVocation = 0
@@ -346,9 +326,26 @@ const RegisterToAnnouncement = async (req, res) => {
     NewQuestionaryOK.save();
     console.log("Se ha registrado a la convocatoria con exito")
     res.send(NewQuestionaryOK)
-
+    
     const idRegister = NewQuestionaryOK._id
     console.log(idRegister)
+
+    const formUpdated = await NewQuestionaryOK.findOneAndUpdate(
+        { idStudent: idPerson },
+            {
+            $push: {
+                q1_name1Person: StudentRegistered.name1Person,
+                q2_name2Person: StudentRegistered.name2Person,
+                q3_lastname1Person: StudentRegistered.lastname1Person,
+                q4_lastname2Person: StudentRegistered.lastname2Person,
+                q6_agePerson: StudentRegistered.agePerson,
+                q9_documentPerson: StudentRegistered.documentPerson,
+                q10_institutionPerson: StudentRegistered.institutionPerson,
+                q14_emailPerson: StudentRegistered.emailPerson,
+            },
+        }
+    );
+
 }
 
 module.exports = {

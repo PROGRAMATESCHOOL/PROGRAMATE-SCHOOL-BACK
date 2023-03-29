@@ -7,20 +7,18 @@ const getOneAnnouncement = async (req,res) => {
     try {
         const oneAnnouncement = await Questionary.findOne({idStudent: idPerson})
         
-        var oneAnnoun
-
         if(oneAnnouncement) {
             const idAnnoun = oneAnnouncement.idAnnouncement
             
             const Announ = await Announcement.findOne({_id: idAnnoun})
-            oneAnnoun = Announ.nameAnnouncement
+            const  oneAnnoun = Announ.nameAnnouncement
             res.status(200).json(oneAnnoun)
         }
         else {
-            nameAnnoun = "No está aplicando a niguna convocatoria. Aplica ahora mismo"
-                res.status(200).json("No está aplicando a niguna convocatoria. Aplica ahora mismo")
+            const nameAnnoun = "No estás aplicando a ninguna convocatoria. Aplica ahora mismo"
+            res.status(200).json(nameAnnoun)
         }
-    } catch(errr) {
+    } catch(err) {
         res.status(500).json({ message: err.message })
     }
 }

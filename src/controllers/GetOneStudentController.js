@@ -7,9 +7,9 @@ const getOneStudent = async (req, res) => {
     const { idPerson } = req.body
 
     try {
-        const oneStudent = await Person.findOne({ _id: idPerson });
+        const oneStudent = await Person.findOne({ _id: idPerson })
         res.status(200).send(oneStudent);
-        console.log(req.body.idPerson)
+        console.log(oneStudent)
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

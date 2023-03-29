@@ -170,11 +170,11 @@ GET http://localhost:3000/api/openannouncements HTTP/1.1
 Content-Type: application/json
 
 {
-    "documentPerson": "99901"
+    "idPerson": "641557f8f2aef66d25705c41"
 }
 
 ### // THIS BRING US ONE UNIQUE STUDENT
-GET http://localhost:3000/api/getonestudent HTTP/1.1
+GET http://localhost:3000/api/getonestudent/:idPerson HTTP/1.1
 Content-Type: application/json
 
 {
