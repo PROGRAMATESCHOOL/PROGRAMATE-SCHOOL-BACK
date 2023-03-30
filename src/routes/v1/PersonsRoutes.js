@@ -13,7 +13,7 @@ const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementControll
 const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController");
 const disableAnnouncement = require("../../controllers/DisabledAnnouncementController");
 
-const  ModifyStudent = require('../../controllers/DisabledStudentController');
+const ModifyStudent = require('../../controllers/DisabledStudentController');
 
 const GetOneStudent = require("../../controllers/GetOneStudentController")
 
@@ -24,6 +24,10 @@ const StageStudent = require("../../controllers/StudentStageAnnouncement")
 const AnnouncementsStats = require("../../controllers/StatsAnnouncementController")
 
 const OpenAnnouncement = require("../../controllers/OpenAnnouncementByStudent") 
+
+const SignUpRecovery = require("../../controllers/NewAdminController")
+
+const RecoveryPassword = require("../../controllers/RecoveryPassword");
 
 const checkAuth = require("../../middleware/authentication");
 const checkProfileAuth = require("../../middleware/RoleAuth");
@@ -37,6 +41,12 @@ router
   .get("/confirm/:token", SignUp.confirm)
   .get("/getannouncements", AnnouncementListController.getAnnouncementList) //Custom route used to get all announcements
   .get("/getallquestionaries", QuestionaryList.getAllQuestionaries) //Custom route used to get all questionaries
+
+  .post("/recoverPassword", SignUpRecovery.RecoverPassword) // Custom route used to recoverPassword for a student
+
+  .post("/recoverPasswordAdmin", NewAdmin.RecoverPassword) // Custom route used to recoverPassword for an Admin
+
+  .post("/passwordrecovery/:emailPerson", RecoveryPassword.recoveryPassword)
   
   .get("/getstagestudent:/idPerson", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
 

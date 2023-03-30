@@ -193,3 +193,12 @@ Content-Type: application/json
 
 ### //  THIS BRING US ALL LIST OF QUESTIONARIES
 GET http://localhost:3000/api/getallquestionaries HTTP/1.1
+
+
+###
+POST http://localhost:3000/api/passwordrecovery HTTP/1.1
+Content-Type: application/json
+
+{
+    "emailPerson": "kejayo2988@fectode.com"
+}

@@ -1,7 +1,7 @@
 const Person = require("../models/personsModel");
 const uniqid = require("uniqid");
 const { encrypt } = require("../helpers/handleBcrypt");
-const { sendEmail, getTemplatePasswordAdmin, } = require("../config/mailconfig");
+const { sendEmail, getTemplatePasswordAdmin, getTemplateRecoverPassword } = require("../config/mailconfig");
 
 const NewAdmin = async (req, res) => {
     const {
@@ -11,21 +11,20 @@ const NewAdmin = async (req, res) => {
         lastname2Person,
         documentPerson,
         emailPerson,
-        positionPerson
+        positionPerson,
     } = req.body; //Parse the request for using data
 
     const existentAdmin = await Person.findOne({ emailPerson }).exec();
     const existentDocumentAdmin = await Person.findOne({ documentPerson }).exec(); //searches for an existing user with the same document or email
 
     if (existentAdmin || existentDocumentAdmin) {
-        res.status(409).send({ status: "Admin already exists" }); //Compares in case already exists and return error code 
+        res.status(409).send({ status: "Admin already exists" }); //Compares in case already exists and return error code
         return;
     } else {
+        const profilePerson = "Admin";
 
-        const profilePerson = "Admin"
 
         if (profilePerson == "Admin") {
-
             const passwordP = uniqid(undefined, lastname1Person);
             const passwordHash = await encrypt(passwordP);
 
@@ -38,7 +37,7 @@ const NewAdmin = async (req, res) => {
                 emailPerson: emailPerson,
                 profilePerson: profilePerson,
                 passwordPerson: passwordHash,
-                positionPerson: positionPerson
+                positionPerson: positionPerson,
             });
 
             createNewAdmin.save();
@@ -61,6 +60,7 @@ const NewAdmin = async (req, res) => {
                 createNewAdmin.name1Person
             );
 
+
             //End email credentials
 
             return;
@@ -70,6 +70,33 @@ const NewAdmin = async (req, res) => {
     }
 };
 
+const RecoverPassword = async (req, res) => {
+    const { emailPerson } = req.body;
+
+    const existedEmailAdmin = await Person.findOne({ emailPerson: emailPerson }).exec();
+
+    if (existedEmailAdmin) {
+        const passwordPerson = uniqid(undefined, existedEmailAdmin.lastname1Person);
+        
+        const templateRecoverPassword = getTemplateRecoverPassword(
+            existedEmailAdmin.name1Person,
+            existedEmailAdmin.lastname1Person,
+            existedEmailAdmin.emailPerson,
+            passwordPerson
+        );
+
+        await sendEmail(emailPerson, "Recuperación de contraseña", templateRecoverPassword);
+
+        res.status(200).send({ status: "Se han enviado los datos de recuperación de contraseña del Administrador" });
+
+        console.log(
+            "Se han enviado los datos de recuperación de contraseña del administrador: ",
+            existedEmailAdmin.emailPerson
+        );
+    } else { res.status(401).send({ status: "No existe un usuario con este correo" }); }
+};
+
 module.exports = {
-    NewAdmin
+    NewAdmin,
+    RecoverPassword
 };
