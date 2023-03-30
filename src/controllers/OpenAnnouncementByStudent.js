@@ -1,6 +1,6 @@
-const Person = require("../models/personsModel")
-const Questionary = require("../models/questionaryModel")
-const Announcement = require("../models/announcementsModel")
+const Person = require("../models/personsModel");
+const Questionary = require("../models/questionaryModel");
+const Announcement = require("../models/announcementsModel");
 
 const OpenAnnouncement = async (req, res) => {
     
@@ -32,7 +32,7 @@ const OpenAnnouncement = async (req, res) => {
         res.send("ESTUDIANTE NO ENCONTRADO")
     }
 }
-    
+
 module.exports = {
-    OpenAnnouncement
-}
+  OpenAnnouncement,
+};

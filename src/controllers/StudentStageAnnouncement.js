@@ -1,6 +1,6 @@
-const Person = require("../models/personsModel")
-const Questionary = require("../models/questionaryModel")
-const Annonuncement = require("../models/announcementsModel")
+const Person = require("../models/personsModel");
+const Questionary = require("../models/questionaryModel");
+const Annonuncement = require("../models/announcementsModel");
 
 const StudentStageAnnouncement = async (req, res) => {
 
@@ -31,5 +31,5 @@ const StudentStageAnnouncement = async (req, res) => {
 }
 
 module.exports = {
-    StudentStageAnnouncement
-}
+  StudentStageAnnouncement,
+};
