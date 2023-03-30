@@ -45,7 +45,6 @@ router
   .post("/newAdmin", NewAdmin.NewAdmin)
   
   .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
-  
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
   
   .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement) //Custom route used to delete announcement
