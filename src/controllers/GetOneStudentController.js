@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 // get one student
 
 const getOneStudent = async (req, res) => {
+
   const { idPerson } = req.body;
 
   try {
