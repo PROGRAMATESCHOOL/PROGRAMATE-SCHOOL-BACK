@@ -1,4 +1,3 @@
-const PersonServices = require ('../services/PersonServices');
 const Announcement = require('../models/announcementsModel');
 const bcrypt = require ("bcrypt");
 
@@ -7,7 +6,6 @@ const getAnnouncementList = (req, res) => {
     Announcement.find((err, result) => {
         if (err) throw new Error(err);
         res.json(result);
-        console.log(result);
     });
 }
 

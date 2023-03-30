@@ -1,4 +1,3 @@
-const personServices = require("../services/PersonServices");
 const Person = require("../models/personsModel");
 const bcrypt = require("bcrypt");
 
@@ -7,7 +6,6 @@ const getAllPersons = (req, res) => {
   Person.find((err, result) => {
     if (err) throw new Error(err);
     res.json(result);
-    console.log(result);
   });
 };
 

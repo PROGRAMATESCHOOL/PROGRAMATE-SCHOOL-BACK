@@ -11,10 +11,6 @@ const AnnouncementSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    stateAnnouncement:{
-        type: String,
-        require: true    
-    },
     placesAnnouncement: {
         type: Number,
         require: true
@@ -35,6 +31,10 @@ const AnnouncementSchema = new mongoose.Schema({
     createdBySuperAdmin: {
         type: Schema.Types.ObjectId,
         ref: 'PersonSchema' // Referenced from Document Person (Only One)
+    },
+    studentsRegistered: {
+        type: Schema.Types.ObjectId,
+        ref: 'PersonSchema'
     }
 })
 
