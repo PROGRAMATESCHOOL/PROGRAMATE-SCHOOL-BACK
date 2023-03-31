@@ -31,24 +31,6 @@ const OpenAnnouncement = async (req, res) => {
         res.send("ESTUDIANTE NO ENCONTRADO")
     }
 }
-
-        if(!AllAnnouncements){
-            res.status(200)
-            res.send("IN PROCESS")
-        }
-        if(AllAnnouncements){
-            res.status(200)
-            res.send("OPEN")
-        } 
-        else {
-            res.status(201)
-            res.send("No hay convocatorias disponibles Ahora")
-        }
-    }
-    if(!idStudent) {
-        res.send("ESTUDIANTE NO ENCONTRADO")
-    }
-}
     
 module.exports = {
     OpenAnnouncement
