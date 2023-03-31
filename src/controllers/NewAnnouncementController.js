@@ -41,7 +41,6 @@ const AddAnnouncement = async (req, res) => {
         })
 
         NewAnnouncement.save();
-        //console.log("Convocatoria creada con exito")
         res.send(NewAnnouncement)        
     }
 };

@@ -12,7 +12,6 @@ const loginPerson = async (req, res) => {
 
   const checkPassword = await compare(passwordPerson, user.passwordPerson); //Test if password sent by user is the same as the password hash saved in database
 
-
   if (!checkPassword) {
     return res.status(403).send({ errors: ["Contraseña incorrecta"] });
   }

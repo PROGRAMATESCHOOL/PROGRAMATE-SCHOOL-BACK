@@ -9,11 +9,9 @@ const getOneStudent = async (req, res) => {
     try {
         const oneStudent = await Person.findOne({ _id: idPerson })
         res.status(200).send(oneStudent);
-        console.log(oneStudent)
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
-
 };
 
 module.exports = {

@@ -3,7 +3,6 @@ const Questionary = require("../models/questionaryModel");
 const Announcement = require("../models/announcementsModel");
 const Person = require("../models/personsModel");
 
-
 const editAnnouncement = async (req, res) => {
     const {nameAnnouncement} = req.body
 
@@ -20,8 +19,7 @@ const editAnnouncement = async (req, res) => {
             },
             {new: true}
         )
-    }
-    catch (err){
+    } catch (err){
         res.json({ message: err.message })
     }
 }
