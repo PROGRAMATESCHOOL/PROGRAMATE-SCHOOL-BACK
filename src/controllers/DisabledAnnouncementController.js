@@ -20,7 +20,7 @@ const disableAnnouncement = async (req, res) => {
         { new: true },
         (err, modAnnouncement) => {
           if (err) return res.json({ success: false, err });
-          res.status(200).json(modAnnouncement);
+          res.status(200).send({ data: modAnnouncement });
         }
       );
     }
@@ -31,7 +31,7 @@ const disableAnnouncement = async (req, res) => {
         { new: true },
         (err, modAnnouncement) => {
           if (err) return res.json({ success: false, err });
-          res.status(200).json(modAnnouncement);
+          res.status(200).send({ data: modAnnouncement })
         }
       );
     }

@@ -11,12 +11,17 @@ const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
 const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController");
 const disableAnnouncement = require("../../controllers/DisabledAnnouncementController");
-const  ModifyStudent = require('../../controllers/DisabledStudentController');
+const ModifyStudent = require('../../controllers/DisabledStudentController');
 const GetOneStudent = require("../../controllers/GetOneStudentController")
 const GetOneAnnouncement = require("../../controllers/GetOneAnnouncementController")
 const StageStudent = require("../../controllers/StudentStageAnnouncement")
 const AnnouncementsStats = require("../../controllers/StatsAnnouncementController")
 const OpenAnnouncement = require("../../controllers/OpenAnnouncementByStudent") 
+
+const SignUpRecovery = require("../../controllers/NewAdminController")
+
+const RecoveryPassword = require("../../controllers/RecoveryPassword");
+
 const checkAuth = require("../../middleware/authentication");
 const checkProfileAuth = require("../../middleware/RoleAuth");
 
@@ -29,16 +34,20 @@ router
   .get("/confirm/:token", SignUp.confirm)
   .get("/getannouncements", AnnouncementListController.getAnnouncementList) //Custom route used to get all announcements
   .get("/getallquestionaries", QuestionaryList.getAllQuestionaries) //Custom route used to get all questionaries
-  .post("/recoverPassword", SignUp.RecoverPassword) // Custom route used to recoverPassword for a student
+  .post("/recoverPassword", SignUpRecovery.RecoverPassword) // Custom route used to recoverPassword for a student
 
   .post("/recoverPasswordAdmin", NewAdmin.RecoverPassword) // Custom route used to recoverPassword for an Admin
-  .post("/getstagestudent", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
+
+  .post("/passwordrecovery/:emailPerson", RecoveryPassword.recoveryPassword)
+  
+  .get("/getstagestudent:/idPerson", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
+
 
   .get("/getStatistics", AnnouncementsStats.StatsAnnouncements) // Custom route used to get stats about all announcements
 
   .post("/getonestudent", GetOneStudent.getOneStudent) // Custom route used to brings one student
 
-  .post("/getoneannouncement", GetOneAnnouncement.getOneAnnouncement) // Custom route to bring announcement to student
+  .get("/getoneannouncement/:idPerson", GetOneAnnouncement.getOneAnnouncement) // Custom route to bring announcement to student
 
   // .get("/public/confirm.html", SignUp. confirm)
 
@@ -48,7 +57,8 @@ router
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
   
   .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement) //Custom route used to delete announcement
-  .patch("/disabledAnnouncement", disableAnnouncement.disableAnnouncement) //Custom route used to disable announcement
+  
+  .patch("/disabledAnnouncement/:nameAnnouncement", disableAnnouncement.disableAnnouncement) //Custom route used to disable announcement
 
   .patch("/deleteStudent/:documentPerson",  ModifyStudent.modifyStudent) // Custom route used to disabled student
   
