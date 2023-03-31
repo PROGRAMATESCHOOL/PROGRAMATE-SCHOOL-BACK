@@ -121,29 +121,6 @@ const getTemplatePasswordAdmin = (name1Person, lastname1Person, emailPerson, pas
 
 }
 
-const getTemplateRecoverPassword = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
-    return `
-
-        <head>
-            <link rel="stylesheet" href="./style.css">
-        </head>
-        
-        <div id="email___content">
-            <img src="" alt="">
-            <h2>Hola ${ name1Person + " "+ lastname1Person }</h2>
-
-            <p>Haz solicitado recuperar tu constraseña, a continuación se muestran tus credenciales:
-            </p>
-            </br>
-
-            <h6> Usuario: ${emailPerson} </h6>
-            <h6> Contraseña: ${passwordPerson} </h6>
-            
-        </div>
-    `;
-
-}
-
 module.exports = {
     sendEmail,
     getTemplate,
