@@ -15,7 +15,6 @@ const getTokenData = ( token ) => {
             data = decoded;
         }
     });
-
     return data;
 }
 

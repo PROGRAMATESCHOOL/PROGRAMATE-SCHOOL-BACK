@@ -51,11 +51,13 @@ const getTemplate = (name1Person, lastname1Person, token) => {
                 href="http://localhost:3000/api/confirm/${token}"
                 target="_blank"
             >Confirmar Cuenta</a>
+            <br/>
+            <img src='https://raw.githubusercontent.com/MariaHerrera03/ImageBank/main/Progr%C3%A1mateSchool/educamas-blanco-y-negro.png' alt='Educamas'/>
         </div>
     `;
 };
 
-const getTemplatePassword = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
+const getTemplatePassword = (name1Person, lastname1Person, emailPerson, passwordP) => {
     return `
         <head>
             <link rel="stylesheet" href="./style.css">
@@ -68,15 +70,39 @@ const getTemplatePassword = (name1Person, lastname1Person, emailPerson, password
             </p>
             </br>
             <h6> Usuario: ${emailPerson} </h6>
-            <h6> Contraseña: ${passwordPerson} </h6>
-            
+            <h6> Contraseña: ${passwordP} </h6>
+            <br/>
+            <img src='https://raw.githubusercontent.com/MariaHerrera03/ImageBank/main/Progr%C3%A1mateSchool/educamas-blanco-y-negro.png' alt='Educamas'/>
         </div>
     `;
 
 }
 
-const getTemplatePasswordAdmin = (name1Person, lastname1Person, emailPerson, passwordP) => {
+const getTemplatePasswordAdmin = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
     return `
+
+        <head>
+            <link rel="stylesheet" href="./style.css">
+        </head>
+        
+        <div id="email___content">
+            <img src="" alt="">
+            <h2>Hola ${name1Person+ " " + lastname1Person}</h2>
+
+            <p>Eres administrador de la pagina de Programate School. Tus credenciales para acceder a la pagina son las siguientes:
+            </p>
+            </br>
+
+            <h6> Usuario: ${emailPerson} </h6>
+            <h6> Contraseña: ${passwordP} </h6>
+            <br/>
+            <img src='https://raw.githubusercontent.com/MariaHerrera03/ImageBank/main/Progr%C3%A1mateSchool/educamas-blanco-y-negro.png' alt='Educamas'/>
+        </div>
+    `;
+}
+
+    const getTemplateRecoverPassword = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
+        return `
         <head>
             <link rel="stylesheet" href="./style.css">
         </head>
@@ -84,7 +110,7 @@ const getTemplatePasswordAdmin = (name1Person, lastname1Person, emailPerson, pas
         <div id="email___content">
             <img src="" alt="">
             <h2>Hola ${name1Person + " " + lastname1Person}</h2>
-            <p>Eres administrador de la pagina de Programate School. Tus credenciales para acceder a la pagina son las siguientes:
+            <p>Has solicitado recuperar tu constraseña, a continuación se muestran tus credenciales:
             </p>
             </br>
             <h6> Usuario: ${emailPerson} </h6>
@@ -95,10 +121,34 @@ const getTemplatePasswordAdmin = (name1Person, lastname1Person, emailPerson, pas
 
 }
 
+const getTemplateRecoverPassword = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
+    return `
+
+        <head>
+            <link rel="stylesheet" href="./style.css">
+        </head>
+        
+        <div id="email___content">
+            <img src="" alt="">
+            <h2>Hola ${ name1Person + " "+ lastname1Person }</h2>
+
+            <p>Haz solicitado recuperar tu constraseña, a continuación se muestran tus credenciales:
+            </p>
+            </br>
+
+            <h6> Usuario: ${emailPerson} </h6>
+            <h6> Contraseña: ${passwordPerson} </h6>
+            
+        </div>
+    `;
+
+}
 
 module.exports = {
     sendEmail,
     getTemplate,
     getTemplatePassword,
     getTemplatePasswordAdmin,
+    getTemplateRecoverPassword,
 }
+

@@ -14,18 +14,17 @@ Content-Type: application/json
 }
 
 
-### // THIS CREATE NEW STUDENT
+### // THIS CREATE SUPER ADMIN
 POST http://localhost:3000/api/auth/signUp HTTP/1.1
 Content-Type: application/json
 
 {
-    "name1Person": "Fernanda",
-    "name2Person": "Linares",
-    "documentPerson": "451236",
-    "emailPerson": "fllora@hotmail.com",
-    "profilePerson": "SuperAdmin",
-    "agePerson": 22,
-    "statusPerson": "VERIFIED"
+    "name1Person": "AdriPrueba29",
+    "lastname1Person": "Linares",
+    "documentPerson": "45123336",
+    "emailPerson": "yafinik133@cyclesat.com",
+    "profilePerson": "Student",
+    "agePerson": 22
 }
 
 
@@ -46,11 +45,27 @@ POST http://localhost:3000/api/newAdmin HTTP/1.1
 Content-Type: application/json
 
 {
-    "name1Person": "Ricardo",
-    "lastname1Person": "Castellanos",
-    "documentPerson": "28910808",
-    "emailPerson": "Test_100@gmail.com",
+    "name1Person": "AdriAdmin29",
+    "lastname1Person": "PruebaAdmin",
+    "documentPerson": "11230808",
+    "emailPerson": "yafinik133@cyclesat.com",
+    "profilePerson": "Admin",
     "positionPerson": "Desarrollador"
+}
+###Recover password for an admin
+POST http://localhost:3000/api/recoverPasswordAdmin HTTP/1.1
+Content-Type: application/json
+
+{
+    "emailPerson": "yafinik133@cyclesat.com"
+}
+
+###Recover password for a student
+POST http://localhost:3000/api/recoverPassword HTTP/1.1
+Content-Type: application/json
+
+{
+    "emailPerson": "yafinik133@cyclesat.com"
 }
 
 
@@ -68,20 +83,13 @@ Content-Type: application/json
 }
 
 ### // THIS DELETE ONE ANNOUNCEMENT
-DELETE http://localhost:3000/api/deleteannouncement HTTP/1.1
-Content-Type: application/json
+# DELETE http://localhost:3000/api/deleteannouncement HTTP/1.1
+# Content-Type: application/json
 
 {
-  "nameAnnouncement": "Convocatoria 2025"
+  "nameAnnouncement": "Convocatoria 2020"
 }
 
-###
-POST http://localhost:3000/api/disableannouncement HTTP/1.1
-Content-Type: application/json
-
-{
-    "nameAnnouncement": "Convocatoria 2026"
-}
 
 ### //THIS DISABLE A ANNOUNCEMENT
 PATCH  http://localhost:3000/api/disabledAnnouncement/:id HTTP/1.1
@@ -144,7 +152,7 @@ Content-Type: application/json
 
 
 ###
-PATCH http://localhost:3000/api/disabledAnnouncement HTTP/1.1
+PATCH http://localhost:3000/api/disabledAnnouncement/:nameAnnouncement HTTP/1.1
 Content-Type: application/json
 
 {
@@ -160,9 +168,20 @@ Content-Type: application/json
     "documentPerson": "99901"
 }
 
+###
+PATCH  http://localhost:3000/api/deleteStudent/:10200300 HTTP/1.1
+Content-Type: application/json
+
+  {
+      "documentPerson": "10200300"
+ }
 
 ### // THIS BRING US INFO ABOUT PROCESS STUDENT
 GET http://localhost:3000/api/getstagestudent HTTP/1.1
+Content-Type: application/json
+{
+    "idPerson": "64155856f2aef66d25705c49"
+}
 
 
 ### // THIS BRING US INFO ABOUT ALL ANNOUNCEMENTS
@@ -170,15 +189,15 @@ GET http://localhost:3000/api/getStatistics HTTP/1.1
 
 
 ### // THIS BRINGS TO STUDENT THE ACTIVE ANNONCEMENTS FOR HIM
-GET http://localhost:3000/api/openannouncements/:documentPerson HTTP/1.1
+GET http://localhost:3000/api/openannouncements HTTP/1.1
 Content-Type: application/json
 
 {
-    "documentPerson": "99901"
+    "idPerson": "641557f8f2aef66d25705c41"
 }
 
 ### // THIS BRING US ONE UNIQUE STUDENT
-POST http://localhost:3000/api/getonestudent HTTP/1.1
+GET http://localhost:3000/api/getonestudent/:idPerson HTTP/1.1
 Content-Type: application/json
 
 {
@@ -187,7 +206,7 @@ Content-Type: application/json
 
 
 ### // THIS BRING US ONE UNIQUE ANNOUNCEMENT
-POST http://localhost:3000/api/getoneannouncement HTTP/1.1
+GET http://localhost:3000/api/getoneannouncement HTTP/1.1
 Content-Type: application/json
 
 {
@@ -197,3 +216,12 @@ Content-Type: application/json
 
 ### //  THIS BRING US ALL LIST OF QUESTIONARIES
 GET http://localhost:3000/api/getallquestionaries HTTP/1.1
+
+
+###
+POST http://localhost:3000/api/passwordrecovery HTTP/1.1
+Content-Type: application/json
+
+{
+    "emailPerson": "kejayo2988@fectode.com"
+}

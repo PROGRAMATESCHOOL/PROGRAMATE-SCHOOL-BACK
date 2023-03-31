@@ -14,5 +14,5 @@ const getAllQuestionaries = async (req, res) => {
 };
 
 module.exports = {
-  getAllQuestionaries,
+    getAllQuestionaries,
 };
