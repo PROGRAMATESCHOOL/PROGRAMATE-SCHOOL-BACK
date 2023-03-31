@@ -17,10 +17,10 @@ const loginPerson = async (req, res) => {
   }
   if (checkPassword) {
     const sessionToken = await tokenSign(user);
-    
+
     res.status(200).send({
-      Message: "login successful", 
-      sessionToken
+      Message: "login successful",
+      sessionToken,
     }); //Success status created for password
   }
 };

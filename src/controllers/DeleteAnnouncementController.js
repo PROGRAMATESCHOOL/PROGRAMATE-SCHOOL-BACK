@@ -22,4 +22,8 @@ async function deleteAnnouncement(req, res) {
   }
 }
 
+<<<<<<< HEAD
 module.exports = { deleteAnnouncement };
+=======
+module.exports = { deleteAnnouncement };
+>>>>>>> 1d62b190014f8c9e6348b2331eddb8d5a3d62ee6
