@@ -19,10 +19,10 @@ let transport = nodemailer.createTransport({
     }
 });
 
-const sendEmail = async (emailPerson, subject, html ) => {
+const sendEmail = async (emailPerson, subject, html) => {
     try {
         await transport.sendMail({
-            from: ` ProgramateSchool <$( process.env.userEmail )>` ,// sender address
+            from: ` ProgramateSchool <$( process.env.userEmail )>`,// sender address
             to: emailPerson, // list of receivers
             subject,// Subject line
             // text: "Holaaaa, vamos a verificar tu correo", // plain text body
@@ -35,16 +35,14 @@ const sendEmail = async (emailPerson, subject, html ) => {
         // .status (401)
         // .send({status: 'Error con el email', data:sendEmail})     
 
-    }     
+    }
 }
 
 const getTemplate = (name1Person, lastname1Person, token) => {
     return `
-
         <head>
             <link rel="stylesheet" href="./style.css">
             </head>
-
             <div id="email___content">
             <img src="" alt="">
             <h2>Hola ${name1Person + " " + lastname1Person}</h2>
@@ -53,11 +51,77 @@ const getTemplate = (name1Person, lastname1Person, token) => {
                 href="http://localhost:3000/api/confirm/${token}"
                 target="_blank"
             >Confirmar Cuenta</a>
+            <br/>
+            <img src='https://raw.githubusercontent.com/MariaHerrera03/ImageBank/main/Progr%C3%A1mateSchool/educamas-blanco-y-negro.png' alt='Educamas'/>
         </div>
     `;
 };
 
-const getTemplatePassword = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
+const getTemplatePassword = (name1Person, lastname1Person, emailPerson, passwordP) => {
+    return `
+        <head>
+            <link rel="stylesheet" href="./style.css">
+        </head>
+        
+        <div id="email___content">
+            <img src="" alt="">
+            <h2>Hola ${name1Person + " " + lastname1Person}</h2>
+            <p>Tu cuenta de correo ha sido verificada con exito. A continuación en contraras tu usuario y contraseña para acceder a la pagina de Programte School donde podras conocer e inscribirte a nuestras convocatorias.
+            </p>
+            </br>
+            <h6> Usuario: ${emailPerson} </h6>
+            <h6> Contraseña: ${passwordP} </h6>
+            <br/>
+            <img src='https://raw.githubusercontent.com/MariaHerrera03/ImageBank/main/Progr%C3%A1mateSchool/educamas-blanco-y-negro.png' alt='Educamas'/>
+        </div>
+    `;
+
+}
+
+const getTemplatePasswordAdmin = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
+    return `
+
+        <head>
+            <link rel="stylesheet" href="./style.css">
+        </head>
+        
+        <div id="email___content">
+            <img src="" alt="">
+            <h2>Hola ${name1Person+ " " + lastname1Person}</h2>
+
+            <p>Eres administrador de la pagina de Programate School. Tus credenciales para acceder a la pagina son las siguientes:
+            </p>
+            </br>
+
+            <h6> Usuario: ${emailPerson} </h6>
+            <h6> Contraseña: ${passwordP} </h6>
+            <br/>
+            <img src='https://raw.githubusercontent.com/MariaHerrera03/ImageBank/main/Progr%C3%A1mateSchool/educamas-blanco-y-negro.png' alt='Educamas'/>
+        </div>
+    `;
+}
+
+    const getTemplateRecoverPassword = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
+        return `
+        <head>
+            <link rel="stylesheet" href="./style.css">
+        </head>
+        
+        <div id="email___content">
+            <img src="" alt="">
+            <h2>Hola ${name1Person + " " + lastname1Person}</h2>
+            <p>Has solicitado recuperar tu constraseña, a continuación se muestran tus credenciales:
+            </p>
+            </br>
+            <h6> Usuario: ${emailPerson} </h6>
+            <h6> Contraseña: ${passwordPerson} </h6>
+            
+        </div>
+    `;
+
+}
+
+const getTemplateRecoverPassword = (name1Person, lastname1Person, emailPerson, passwordPerson) => {
     return `
 
         <head>
@@ -68,8 +132,9 @@ const getTemplatePassword = (name1Person, lastname1Person, emailPerson, password
             <img src="" alt="">
             <h2>Hola ${ name1Person + " "+ lastname1Person }</h2>
 
-            <p>Tu cuenta de correo ha sido verificada con exito. A continuación en contraras tu usuario y contraseña para acceder a la pagina de Programte School donde podras conocer e inscribirte a nuestras convocatorias.
+            <p>Haz solicitado recuperar tu constraseña, a continuación se muestran tus credenciales:
             </p>
+            </br>
 
             <h6> Usuario: ${emailPerson} </h6>
             <h6> Contraseña: ${passwordPerson} </h6>
@@ -79,10 +144,11 @@ const getTemplatePassword = (name1Person, lastname1Person, emailPerson, password
 
 }
 
-
-module.exports={
+module.exports = {
     sendEmail,
     getTemplate,
     getTemplatePassword,
+    getTemplatePasswordAdmin,
+    getTemplateRecoverPassword,
 }
 

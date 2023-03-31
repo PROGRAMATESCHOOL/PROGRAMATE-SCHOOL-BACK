@@ -1,11 +1,7 @@
 const Person = require("../models/personsModel");
 const bcrypt = require("bcrypt");
 const { getToken, getTokenData } = require("../config/jwtConfig");
-const {
-  getTemplate,
-  sendEmail,
-  getTemplatePassword,
-} = require("../config/mailconfig");
+const { getTemplate, sendEmail, getTemplatePassword, getTemplateRecoverPassword, } = require("../config/mailconfig");
 // const { sendPassword, getTemplatePassword}= require('../config/mailPassword')
 const { v4: uuidv4 } = require("uuid");
 const { clearScreenDown } = require("readline");
@@ -25,8 +21,8 @@ const SignUp = async (req, res) => {
       agePerson,
     } = req.body;
 
-        //Verify that the user Does Not exist -AP
-        //let person =await Person.findOne({documentPerson, emailPerson,}) || null;
+    //Verify that the user Does Not exist -AP
+    //let person =await Person.findOne({documentPerson, emailPerson,}) || null;
 
     const existedDocumentUser = await Person.findOne({ documentPerson }).exec();
     const existedEmailUser = await Person.findOne({ emailPerson }).exec();
@@ -40,7 +36,7 @@ const SignUp = async (req, res) => {
         //Get code
         const codePerson = uuidv4();
 
-        const profilePerson = "Student"
+        const profilePerson = "Student";
 
         //Creted a new user or student
         const passwordPerson = name1Person + lastname1Person + documentPerson;
@@ -77,15 +73,15 @@ const SignUp = async (req, res) => {
           success: true,
           msg: "Registro Exitoso",
           data: person,
-          password: passwordPerson
+          password: passwordPerson,
         });
       }
     }
   } catch (error) {
-    console.log(error);
     return res.json({
       success: false,
       msg: "Error al registrar usuario",
+      errors: error,
     });
   }
 };
@@ -104,7 +100,6 @@ const confirm = async (req, res) => {
         msg: "Error al obtener data",
       });
     }
-    // console.log(data, "esta es la data del token");
 
     const { emailPerson, codePerson } = data.data;
 
@@ -130,47 +125,67 @@ const confirm = async (req, res) => {
     person.statusPerson = "VERIFIED";
     await person.save();
 
-    console.log(
-      "El estatus del usuario ",
-      person.emailPerson,
-      "ahora es: ",
-      person.statusPerson
-    );
-
     if (person.statusPerson === "VERIFIED") {
       //Get Template Password
+      const passwordPerson = person.name1Person + person.lastname1Person + person.documentPerson
 
       const templatepassword = getTemplatePassword(
         person.name1Person,
         person.lastname1Person,
         person.emailPerson,
-        person.passwordPerson
+        passwordPerson
       );
       await sendEmail(emailPerson, "Datos de ingreso", templatepassword);
 
-      console.log(
-        "Se han enviado los datos de ingreso al correo",
-        person.emailPerson
-      );
 
-      return res.json({
-        success: false,
-        msg: "Error al enviar datos de ingreso",
-      });
+      return res.status(200).send({ status: "Se ha verificado el correo, revisalo nuevamente para conocer tus credenciales" });
     }
 
     //Redirect confirmation
     return res.redirect("../../public/confirm.html");
   } catch (error) {
-    console.log(error);
     return res.json({
       success: false,
       msg: "Error al confirmar usuario",
+      errors: error,
     });
   }
 };
 
+const RecoverPassword = async (req, res) => {
+  const { emailPerson } = req.body;
+
+
+  const existedEmailUser = await Person.findOne({ emailPerson: emailPerson }).exec();
+  const passwordPerson = existedEmailUser.name1Person + existedEmailUser.lastname1Person + existedEmailUser.documentPerson;
+
+  if (existedEmailUser, passwordPerson) {
+
+    const templateRecoverPassword = getTemplateRecoverPassword(
+      existedEmailUser.name1Person,
+      existedEmailUser.lastname1Person,
+      existedEmailUser.documentPerson,
+      passwordPerson
+
+    );
+    await sendEmail(emailPerson, "Recuperación de contraseña", templateRecoverPassword);
+
+    res.status(200).send({ status: "Se han enviado los datos de recuperación de contraseña " });
+
+    console.log(
+      "Se han enviado los datos de recuperación de contraseña de: ",
+      existedEmailUser.name1Person
+    );
+  } else {
+    res.status(401).send({ status: "No existe un usuario con este correo" });
+  }
+
+
+
+}
+
 module.exports = {
   SignUp,
   confirm,
+  RecoverPassword,
 };

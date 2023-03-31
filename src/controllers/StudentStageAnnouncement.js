@@ -3,40 +3,31 @@ const Questionary = require("../models/questionaryModel")
 const Annonuncement = require("../models/announcementsModel")
 
 const StudentStageAnnouncement = async (req, res) => {
+
+    const { idPerson } = req.body
+
+    const studentQuestionary = await Questionary.find({})
+    console.log(studentQuestionary)
+
+    var stageStudent = 0 // FRONT NEEDS THIS VARIABLE BY SHOW INFO ABOUT PROCESS STUDENT
     
-    //THE NEST VARIABLE MUST BE TO OBTAIN FROM COOKIES
-    const documentPerson = "99901" //THIS IS PROVISIONAL
-
-    const studentID = await Person.findOne({documentPerson: documentPerson}, {_id:1})
-    //console.log(studentID)
-    //res.json(studentID)
-
-    const studentStage = await Questionary.findOne({idStudent: studentID}, {_id:1, stateAnnouncementStudent:1})
-    //console.log(studentStage)
-    //res.json(studentStage)
-
-    var stageStudent = 0.0 // FRONT NEEDS THIS VARIABLE BY SHOW INFO ABOUT PROCESS STUDENT
-
-    if(!studentStage){
-        console.log("El porcentaje de avance es de 20%")
-        res.json("El porcentaje de avance es de 20%")
-
-        var stageStudent = 0.2
-                console.log(stageStudent)
-                res.json(stageStudent)
+    if (studentQuestionary.idStudent != idPerson) {
+        stageStudent = 0.05
+        res.send(stageStudent)
     }
-    else {
-        if (studentStage.stateAnnouncementStudent == "DISABLED"){
-            res.send("Está inactivo en esta convocatoria")
-        } else {
-                console.log("El porcentaje de avance es de 60%")
-                //res.json("El porcentaje de avance es de 60%")
+    
+    if (studentQuestionary.idStudent == idPerson) {
+        var statusStudent = studentQuestionary.stateAnnouncementStudent
 
-                var stageStudent = 0.6
-                console.log(stageStudent)
-                res.json(stageStudent)
-            }
+        if (statusStudent == "ENABLED"){
+            stageStudent = 0.4
+            res.send(stageStudent)
         }
+        else {
+            stageStudent = 100
+            res.send(stageStudent)
+        }
+    }
 }
 
 module.exports = {
