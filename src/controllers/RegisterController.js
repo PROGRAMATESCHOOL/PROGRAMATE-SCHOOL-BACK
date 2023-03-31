@@ -1,7 +1,7 @@
 const Person = require("../models/personsModel");
 const bcrypt = require("bcrypt");
 const { getToken, getTokenData } = require("../config/jwtConfig");
-const { getTemplate,  sendEmail, getTemplatePassword, getTemplateRecoverPassword, } = require("../config/mailconfig");
+const { getTemplate, sendEmail, getTemplatePassword, getTemplateRecoverPassword, } = require("../config/mailconfig");
 // const { sendPassword, getTemplatePassword}= require('../config/mailPassword')
 const { v4: uuidv4 } = require("uuid");
 const { clearScreenDown } = require("readline");
@@ -127,7 +127,7 @@ const confirm = async (req, res) => {
 
     if (person.statusPerson === "VERIFIED") {
       //Get Template Password
-      const passwordPerson = person.name1Person+person.lastname1Person+person.documentPerson
+      const passwordPerson = person.name1Person + person.lastname1Person + person.documentPerson
 
       const templatepassword = getTemplatePassword(
         person.name1Person,
@@ -137,7 +137,7 @@ const confirm = async (req, res) => {
       );
       await sendEmail(emailPerson, "Datos de ingreso", templatepassword);
 
-      
+
       return res.status(200).send({ status: "Se ha verificado el correo, revisalo nuevamente para conocer tus credenciales" });
     }
 
@@ -153,35 +153,35 @@ const confirm = async (req, res) => {
 };
 
 const RecoverPassword = async (req, res) => {
-  const  {emailPerson} = req.body;
+  const { emailPerson } = req.body;
 
-  
-    const existedEmailUser = await Person.findOne({ emailPerson:emailPerson }).exec();
-    const passwordPerson = existedEmailUser.name1Person + existedEmailUser.lastname1Person + existedEmailUser.documentPerson;
 
-    if (existedEmailUser) {
-      
-      const templateRecoverPassword = getTemplateRecoverPassword(
-        existedEmailUser.name1Person,
-        existedEmailUser.lastname1Person,
-        existedEmailUser.documentPerson,
-        passwordPerson
-        
-      );
-      await sendEmail(emailPerson, "Recuperación de contraseña", templateRecoverPassword);
-      
-      res.status(200).send({ status: "Se han enviado los datos de recuperación de contraseña "});
+  const existedEmailUser = await Person.findOne({ emailPerson: emailPerson }).exec();
+  const passwordPerson = existedEmailUser.name1Person + existedEmailUser.lastname1Person + existedEmailUser.documentPerson;
 
-      console.log(
-        "Se han enviado los datos de recuperación de contraseña de: ",
-        existedEmailUser.name1Person
-      );
-    } else {
-      res.status(401).send({ status: "No existe un usuario con este correo" });
+  if (existedEmailUser, passwordPerson) {
+
+    const templateRecoverPassword = getTemplateRecoverPassword(
+      existedEmailUser.name1Person,
+      existedEmailUser.lastname1Person,
+      existedEmailUser.documentPerson,
+      passwordPerson
+
+    );
+    await sendEmail(emailPerson, "Recuperación de contraseña", templateRecoverPassword);
+
+    res.status(200).send({ status: "Se han enviado los datos de recuperación de contraseña " });
+
+    console.log(
+      "Se han enviado los datos de recuperación de contraseña de: ",
+      existedEmailUser.name1Person
+    );
+  } else {
+    res.status(401).send({ status: "No existe un usuario con este correo" });
   }
-  
 
-  
+
+
 }
 
 module.exports = {
