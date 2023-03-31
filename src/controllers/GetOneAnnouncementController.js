@@ -1,8 +1,8 @@
-const Questionary = require("../models/questionaryModel");
-const Announcement = require("../models/announcementsModel");
+const Questionary = require("../models/questionaryModel")
+const Announcement = require("../models/announcementsModel")
 
-const getOneAnnouncement = async (req, res) => {
-  const { idPerson } = req.body;
+const getOneAnnouncement = async (req,res) => {
+    const {idPerson} = req.body
 
     try {
         const oneAnnouncement = await Questionary.findOne({idStudent: idPerson})
@@ -21,11 +21,8 @@ const getOneAnnouncement = async (req, res) => {
     } catch(err) {
         res.status(500).json({ message: err.message })
     }
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
+}
 
 module.exports = {
-  getOneAnnouncement,
-};
+    getOneAnnouncement
+}

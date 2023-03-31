@@ -7,14 +7,13 @@ const bcrypt = require("bcrypt");
 //let nAnnouncement = req.body.nameAnnouncement
 
 const RegisterToAnnouncement = async (req, res) => {
-
     // const {
     //     documentPerson,
     // } = req.body
 
-  //const documentPerson = "999021"
-  //const nameAnnouncement = "Desarrollador Back End"
-  
+    //const documentPerson = "999021"
+    //const nameAnnouncement = "Desarrollador Back End"
+
     const {
         idStudent,
         idAnnouncement,
@@ -169,24 +168,6 @@ const RegisterToAnnouncement = async (req, res) => {
     console.log("Puntaje Vocación: ", +form_ScoreVocation)
     //res.send({message: "Puntaje Vocación: "+form_ScoreVocation })
 
-  // SCORE FOR SECTION VOCATION
-  if (interests == "D") {
-    form_ScoreVocation += 1;
-  }
-  if (activity == "C") {
-    form_ScoreVocation += 1;
-  }
-  if (reportage == "A") {
-    form_ScoreVocation += 1;
-  }
-  if (stake == "B") {
-    form_ScoreVocation += 1;
-  }
-  if (webMotivation == "C") {
-    form_ScoreVocation += 1;
-  }
-  if (form_ScoreVocation < 3) {
-    form_ScoreVocation = 1;
 
     // SCORE FOR SECTION MOTIVATION
     if (why == "A") {
@@ -215,27 +196,6 @@ const RegisterToAnnouncement = async (req, res) => {
     console.log("Puntaje Motivación: ", +form_ScoreMotivation)
     //res.send({message: "Puntaje Profile: "+form_ScoreMotivation })
 
-  // SCORE FOR SECTION MOTIVATION
-  if (why == "A") {
-    form_ScoreMotivation += 1;
-  }
-  if (methodology == "B") {
-    form_ScoreMotivation += 1;
-  }
-  if (want == "A") {
-    form_ScoreMotivation += 1;
-  }
-  if (form_ScoreMotivation == 1) {
-    form_ScoreMotivation = 1;
-    // form_statusAnnouncement = "DISABLED"
-  }
-  if (form_ScoreMotivation == 2) {
-    form_ScoreMotivation = 3;
-  }
-  if (form_ScoreMotivation == 3) {
-    form_ScoreMotivation = 5;
-  }
-  //res.send({message: "Puntaje Profile: "+form_ScoreMotivation })
 
     // SCORE FOR SECTION LOGIC
     if (logic1 == "El orden de llegada es B, C, D, A") {
@@ -389,5 +349,5 @@ const RegisterToAnnouncement = async (req, res) => {
 }
 
 module.exports = {
-  RegisterToAnnouncement,
-};
+    RegisterToAnnouncement
+}
