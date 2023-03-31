@@ -7,22 +7,15 @@ const AdminListController = require("../../controllers/AdminListController");
 const StudentListController = require("../../controllers/StudentListController") 
 const AnnouncementListController = require("../../controllers/AnnouncementListController")
 const QuestionaryList = require("../../controllers/QuestionaryListController")
-
 const NewAnnouncement = require("../../controllers/NewAnnouncementController")
 const DeleteAnnouncement = require("../../controllers/DeleteAnnouncementController");
 const SignUpInAnnouncement = require("../../controllers/RegisterToAnnouncementController");
 const disableAnnouncement = require("../../controllers/DisabledAnnouncementController");
-
 const ModifyStudent = require('../../controllers/DisabledStudentController');
-
 const GetOneStudent = require("../../controllers/GetOneStudentController")
-
 const GetOneAnnouncement = require("../../controllers/GetOneAnnouncementController")
-
 const StageStudent = require("../../controllers/StudentStageAnnouncement")
-
 const AnnouncementsStats = require("../../controllers/StatsAnnouncementController")
-
 const OpenAnnouncement = require("../../controllers/OpenAnnouncementByStudent") 
 
 const SignUpRecovery = require("../../controllers/NewAdminController")
@@ -41,7 +34,6 @@ router
   .get("/confirm/:token", SignUp.confirm)
   .get("/getannouncements", AnnouncementListController.getAnnouncementList) //Custom route used to get all announcements
   .get("/getallquestionaries", QuestionaryList.getAllQuestionaries) //Custom route used to get all questionaries
-
   .post("/recoverPassword", SignUpRecovery.RecoverPassword) // Custom route used to recoverPassword for a student
 
   .post("/recoverPasswordAdmin", NewAdmin.RecoverPassword) // Custom route used to recoverPassword for an Admin
@@ -49,6 +41,7 @@ router
   .post("/passwordrecovery/:emailPerson", RecoveryPassword.recoveryPassword)
   
   .get("/getstagestudent:/idPerson", StageStudent.StudentStageAnnouncement) // Custom route used to get info about process one student
+
 
   .get("/getStatistics", AnnouncementsStats.StatsAnnouncements) // Custom route used to get stats about all announcements
 
@@ -61,7 +54,6 @@ router
   .post("/newAdmin", NewAdmin.NewAdmin)
   
   .post("/addnewannouncement", NewAnnouncement.AddAnnouncement)
-  
   .post("/registertoannouncement", SignUpInAnnouncement.RegisterToAnnouncement)
   
   .delete("/DeleteAnnouncement", DeleteAnnouncement.deleteAnnouncement) //Custom route used to delete announcement

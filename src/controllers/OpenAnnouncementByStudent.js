@@ -1,6 +1,6 @@
-const Person = require("../models/personsModel");
-const Questionary = require("../models/questionaryModel");
-const Announcement = require("../models/announcementsModel");
+const Person = require("../models/personsModel")
+const Questionary = require("../models/questionaryModel")
+const Announcement = require("../models/announcementsModel")
 
 const OpenAnnouncement = async (req, res) => {
     
@@ -14,7 +14,6 @@ const OpenAnnouncement = async (req, res) => {
 
         const AllAnnouncements = await Announcement.find( {$or: [ {studentsRegistered: { $nin: [idStudent] }}, {studentsRegistered: { $exists: false}}]})
         console.log(AllAnnouncements)
-
         if(!AllAnnouncements){
             res.status(200)
             res.send("IN PROCESS")
@@ -33,6 +32,24 @@ const OpenAnnouncement = async (req, res) => {
     }
 }
 
+        if(!AllAnnouncements){
+            res.status(200)
+            res.send("IN PROCESS")
+        }
+        if(AllAnnouncements){
+            res.status(200)
+            res.send("OPEN")
+        } 
+        else {
+            res.status(201)
+            res.send("No hay convocatorias disponibles Ahora")
+        }
+    }
+    if(!idStudent) {
+        res.send("ESTUDIANTE NO ENCONTRADO")
+    }
+}
+    
 module.exports = {
-  OpenAnnouncement,
-};
+    OpenAnnouncement
+}
