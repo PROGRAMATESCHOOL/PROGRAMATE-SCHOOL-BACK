@@ -60,7 +60,8 @@ bash
 bash
    
   https://youtu.be/vLzsv-gcA5E  <br/>
-  https://youtu.be/iSyNyKpyGZE
+  https://youtu.be/iSyNyKpyGZE  <br/>
+  https://www.youtube.com/watch?v=Xq3-Lu1mPi8 
   
 </div>
 
